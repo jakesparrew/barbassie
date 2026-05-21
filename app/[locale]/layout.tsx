@@ -1,6 +1,7 @@
 // app/[locale]/layout.tsx
+import type { Metadata } from "next"
 import { NextIntlClientProvider } from "next-intl"
-import { getMessages, setRequestLocale } from "next-intl/server"
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import localFont from "next/font/local"
 import { isLocale, locales } from "@/lib/i18n"
@@ -21,6 +22,34 @@ const gothic = localFont({
   display: "swap",
   variable: "--font-gothic",
 })
+
+export async function generateMetadata({
+  params,
+}: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: "hero" })
+  return {
+    metadataBase: new URL("https://barbassie.be"),
+    title: { default: "Bar Bassie · Wintercircus Ghent", template: "%s · Bar Bassie" },
+    description: t("tagline"),
+    openGraph: {
+      title: "Bar Bassie · Wintercircus Ghent",
+      description: t("tagline"),
+      url: "/",
+      siteName: "Bar Bassie",
+      images: ["/og/cover.jpg"],
+      type: "website",
+      locale,
+    },
+    twitter: { card: "summary_large_image" },
+    alternates: {
+      canonical: locale === "en" ? "/" : `/${locale}`,
+      languages: {
+        en: "/", nl: "/nl", fr: "/fr",
+      },
+    },
+  }
+}
 
 export const generateStaticParams = () => locales.map((locale) => ({ locale }))
 
