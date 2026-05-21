@@ -482,7 +482,7 @@ export type Hours = {
   # RESEND_API_KEY=
   # SUPERSHIFT_URL=
   ```
-- **Vercel project**: link via `vercel link` in the local repo; production domain wired up via Vercel dashboard.
+- **Vercel project**: `jakesparrew/barbassie` (matches the GitHub repo); link via `vercel link` in the local repo; production domain wired up via Vercel dashboard.
 - **Domain**: barbassie.be DNS points to Vercel A/AAAA + CNAME records when ready to cut over from current host.
 
 ## 18. Out of scope (V1)
