@@ -1,37 +1,181 @@
 // components/sections/Gallery.tsx
+"use client"
+import { useState } from "react"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
 import { SectionLabel } from "@/components/ui/SectionLabel"
+import { Modal } from "@/components/ui/Modal"
+import { cn } from "@/lib/cn"
 
-const photos = [
-  "/photos/gallery-1.jpg",
-  "/photos/gallery-2.jpg",
-  "/photos/gallery-3.jpg",
-  "/photos/gallery-4.jpg",
-  "/photos/gallery-5.jpg",
-  "/photos/gallery-6.jpg",
+type Photo = { src: string; alt: string }
+
+const photos: Photo[] = [
+  {
+    src: "/gallery/interior-sofa.jpg",
+    alt: "Bar Bassie interior: mint green curved sofa, chandelier, and rooftop window view",
+  },
+  {
+    src: "/gallery/cocktails-rim.jpg",
+    alt: "Two coupe cocktails with chili-salt rims being poured",
+  },
+  {
+    src: "/gallery/oysters-trio.jpg",
+    alt: "Trio of dressed oysters on ice in a metal bowl",
+  },
+  {
+    src: "/gallery/charcuterie-paleta.jpg",
+    alt: "Charcuterie plate with paleta iberico on Bassie-branded paper",
+  },
+  {
+    src: "/gallery/cocktail-bassie-glass.jpg",
+    alt: "Cucumber cocktail in a BASSIE-branded wine glass on a warm-lit shelf",
+  },
+  {
+    src: "/gallery/ceviche-verbena.jpg",
+    alt: "Ceviche with verbena leaves and olive oil drizzle on a moss-green surface",
+  },
+  {
+    src: "/gallery/dessert-brulee.jpg",
+    alt: "Crème brûlée with berries in a silver coupe",
+  },
 ]
 
 export function Gallery() {
   const t = useTranslations("gallery")
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const active = activeIndex !== null ? photos[activeIndex] : null
+
   return (
     <section id="gallery" className="bg-bg px-4 py-24">
       <div className="mx-auto max-w-6xl">
         <SectionLabel className="text-center">{t("label").toUpperCase()}</SectionLabel>
-        <div className="mt-10 columns-2 gap-3 md:columns-3 [&>div]:mb-3">
-          {photos.map((src) => (
-            <div key={src} className="break-inside-avoid">
+
+        {/* Masonry-style grid via CSS columns */}
+        <div className="mt-10 columns-2 gap-3 md:columns-3 [&>button]:mb-3">
+          {photos.map((p, i) => (
+            <button
+              key={p.src}
+              type="button"
+              onClick={() => setActiveIndex(i)}
+              aria-label={`Open photo ${i + 1} of ${photos.length}: ${p.alt}`}
+              className="focus-visible:ring-accent group block w-full overflow-hidden rounded break-inside-avoid focus-visible:ring-2 focus-visible:outline-none"
+            >
               <Image
-                src={src}
-                alt=""
-                width={800}
-                height={1000}
-                className="h-auto w-full rounded shadow"
+                src={p.src}
+                alt={p.alt}
+                width={1200}
+                height={1600}
+                sizes="(min-width: 768px) 33vw, 50vw"
+                className="h-auto w-full transition-transform duration-500 group-hover:scale-105"
               />
-            </div>
+            </button>
           ))}
         </div>
       </div>
+
+      {/* Lightbox */}
+      <Modal
+        open={active !== null}
+        onClose={() => setActiveIndex(null)}
+        ariaLabel={active?.alt ?? "Photo"}
+      >
+        {active && (
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setActiveIndex(null)}
+              aria-label="Close"
+              className="absolute -top-12 right-0 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5"
+                aria-hidden
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+
+            <Image
+              src={active.src}
+              alt={active.alt}
+              width={1600}
+              height={2400}
+              priority
+              className="max-h-[85vh] w-auto max-w-full rounded shadow-2xl"
+            />
+
+            {/* Prev / Next */}
+            {photos.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveIndex((i) =>
+                      i === null ? null : (i - 1 + photos.length) % photos.length
+                    )
+                  }
+                  aria-label="Previous photo"
+                  className={cn(
+                    "absolute top-1/2 left-2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full",
+                    "bg-white/10 text-white backdrop-blur transition hover:bg-white/20",
+                    "focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+                  )}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                    aria-hidden
+                  >
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActiveIndex((i) =>
+                      i === null ? null : (i + 1) % photos.length
+                    )
+                  }
+                  aria-label="Next photo"
+                  className={cn(
+                    "absolute top-1/2 right-2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full",
+                    "bg-white/10 text-white backdrop-blur transition hover:bg-white/20",
+                    "focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+                  )}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                    aria-hidden
+                  >
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </button>
+              </>
+            )}
+          </div>
+        )}
+      </Modal>
     </section>
   )
 }
