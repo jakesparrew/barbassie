@@ -20,7 +20,6 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         poster="/hero/hero-poster.jpg"
         aria-hidden
       >
-        <source src="/hero/hero-1080.webm" type="video/webm" />
         <source src="/hero/hero-1080.mp4" type="video/mp4" />
       </video>
       <img
