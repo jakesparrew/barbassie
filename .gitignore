@@ -43,3 +43,5 @@ next-env.d.ts
 
 # raw assets — too large to commit
 assets/hero/source.mp4
+
+.vercel
