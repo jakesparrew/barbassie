@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "format": "prettier --write .",
     "convert-fonts": "node scripts/convert-fonts.mjs",
-    "transcode-hero": "node scripts/transcode-hero.mjs"
+    "transcode-hero": "node scripts/transcode-hero.mjs",
+    "extract-panels": "node scripts/extract-menu-panels.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
