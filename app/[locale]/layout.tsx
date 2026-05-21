@@ -5,6 +5,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { notFound } from "next/navigation"
 import localFont from "next/font/local"
 import { isLocale, locales } from "@/lib/i18n"
+import { SchemaOrg } from "@/components/SchemaOrg"
 import "../globals.css"
 
 const lioney = localFont({
@@ -68,6 +69,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${lioney.variable} ${marsha.variable} ${gothic.variable}`}>
       <body>
+        <SchemaOrg />
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
