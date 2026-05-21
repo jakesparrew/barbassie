@@ -1,14 +1,35 @@
 // app/[locale]/page.tsx
-import { getTranslations, setRequestLocale } from "next-intl/server"
-import { isLocale, defaultLocale } from "@/lib/i18n"
+"use client"
+import { useRef } from "react"
+import { Hero } from "@/components/sections/Hero"
+import { About } from "@/components/sections/About"
+import { Menu } from "@/components/sections/Menu"
+import { Location } from "@/components/sections/Location"
+import { Gallery } from "@/components/sections/Gallery"
+import { Jobs } from "@/components/sections/Jobs"
+import { Reservation } from "@/components/sections/Reservation"
+import { Footer } from "@/components/sections/Footer"
+import { StickyNav } from "@/components/StickyNav"
+import { PopupGate, type PopupGateHandle } from "@/components/PopupGate"
 
-export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params
-  setRequestLocale(isLocale(locale) ? locale : defaultLocale)
-  const t = await getTranslations()
+export default function Home() {
+  const popupRef = useRef<PopupGateHandle>(null)
+  const openHappening = () => popupRef.current?.open()
+
   return (
-    <main className="min-h-screen flex items-center justify-center">
-      <h1 className="font-title text-6xl">{t("hero.tagline")}</h1>
-    </main>
+    <>
+      <StickyNav onHappeningClick={openHappening} />
+      <main>
+        <Hero onHappeningClick={openHappening} />
+        <About />
+        <Menu />
+        <Location />
+        <Gallery />
+        <Jobs />
+        <Reservation />
+      </main>
+      <Footer />
+      <PopupGate ref={popupRef} />
+    </>
   )
 }
