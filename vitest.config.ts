@@ -5,6 +5,11 @@ import path from "node:path"
 
 export default defineConfig({
   plugins: [react()],
+  css: {
+    // Prevent Vite from loading the Next.js postcss.config.mjs (string plugin
+    // format is incompatible with Vite's internal PostCSS loader)
+    postcss: { plugins: [] },
+  },
   test: {
     environment: "happy-dom",
     globals: true,
