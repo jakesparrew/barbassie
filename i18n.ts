@@ -3,11 +3,11 @@ import { getRequestConfig } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { isLocale, defaultLocale } from "./lib/i18n"
 
-export default getRequestConfig(async ({ locale }) => {
-  const resolved = locale ?? defaultLocale
-  if (!isLocale(resolved)) notFound()
+export default getRequestConfig(async ({ requestLocale }) => {
+  const locale = (await requestLocale) ?? defaultLocale
+  if (!isLocale(locale)) notFound()
   return {
-    locale: resolved,
-    messages: (await import(`./messages/${resolved}.json`)).default,
+    locale,
+    messages: (await import(`./messages/${locale}.json`)).default,
   }
 })
