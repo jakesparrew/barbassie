@@ -1,0 +1,47 @@
+{
+  "nav": { "menu": "Menu", "reservation": "Reservatie", "happening": "Wat is er" },
+  "hero": { "tagline": "Frisse drinks · Kleine gerechten · Schitterend uitzicht" },
+  "hours": {
+    "weekdays": "Ma · Wo · Do  16:00 — Middernacht",
+    "weekends": "Vr · Za  12:00 — 01:00",
+    "closed": "Gesloten op di · zo"
+  },
+  "about": {
+    "pullQuote": "Duik erin, beweeg mee — en geniet van het circus van het leven.",
+    "body": "Bar Bassie is de rooftop bar op de top van het Wintercircus in Gent. Frisse drinks, deelbare hapjes en een vooraan-plaats boven de centrale arena."
+  },
+  "menu": {
+    "label": "Menu",
+    "drinks": "Drank",
+    "food": "Eten",
+    "download": "Download menu (PDF)",
+    "tapToOpen": "Tik om te openen"
+  },
+  "location": {
+    "label": "Locatie",
+    "body": "Binnenin het iconische Wintercircus van Gent, helemaal bovenaan. Het interieur loopt over in een rooftop-terras met weids zicht over de stad — een vooraan-plek boven de centrale arena.",
+    "addressLine1": "Lammerstraat 13",
+    "addressLine2": "9000 Gent",
+    "directions": "Routebeschrijving"
+  },
+  "gallery": { "label": "Galerij" },
+  "jobs": {
+    "label": "Jobs",
+    "noOpenings": "Geen openstaande vacatures op dit moment. Stuur ons toch een berichtje.",
+    "apply": "Solliciteer"
+  },
+  "reserve": {
+    "label": "Reserveren",
+    "walkIns": "Walk-ins altijd welkom voor kleine groepen.",
+    "groups": "Voor groepen vanaf 6 personen: stuur ons een WhatsApp en we regelen het.",
+    "whatsappCta": "Stuur ons een WhatsApp",
+    "whatsappPrefill": "Hoi Bassie! We willen graag een tafel reserveren — "
+  },
+  "footer": {
+    "contact": "Contact",
+    "hours": "Openingsuren",
+    "follow": "Volg ons",
+    "designed": "Ontworpen door LOBSTER Antwerpen"
+  },
+  "popup": { "close": "Sluiten", "happening": "Wat is er" }
+}

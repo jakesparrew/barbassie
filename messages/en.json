@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "menu": "Menu",
+    "reservation": "Reservation",
+    "happening": "Happening"
+  },
+  "hero": {
+    "tagline": "Cooling drinks · Small plates · Stunning views"
+  },
+  "hours": {
+    "weekdays": "Mon · Wed · Thu  16:00 — Midnight",
+    "weekends": "Fri · Sat  12:00 — 01:00",
+    "closed": "Closed Tue · Sun"
+  },
+  "about": {
+    "pullQuote": "Plunge in, move with it — and enjoy life's circus.",
+    "body": "Bar Bassie is the rooftop bar perched at the very top of Ghent's Wintercircus. Cooling drinks, sharable small plates, and a front-row seat overlooking the central arena."
+  },
+  "menu": {
+    "label": "Menu",
+    "drinks": "Drinks",
+    "food": "Food",
+    "download": "Download menu (PDF)",
+    "tapToOpen": "Tap to open"
+  },
+  "location": {
+    "label": "Location",
+    "body": "Set inside Ghent's iconic Wintercircus, all the way at the top, the bar's interior flows into a rooftop terrace with sweeping views over the city skyline — a front-row seat overlooking the central arena.",
+    "addressLine1": "Lammerstraat 13",
+    "addressLine2": "9000 Ghent",
+    "directions": "Get directions"
+  },
+  "gallery": {
+    "label": "Gallery"
+  },
+  "jobs": {
+    "label": "Jobs",
+    "noOpenings": "No current openings. Send us a hello anyway.",
+    "apply": "Apply"
+  },
+  "reserve": {
+    "label": "Reserve",
+    "walkIns": "Walk-ins always welcome for small groups.",
+    "groups": "For groups of 6 or more, message us on WhatsApp and we'll set you up.",
+    "whatsappCta": "Message us on WhatsApp",
+    "whatsappPrefill": "Hi Bassie! We'd love to reserve a table — "
+  },
+  "footer": {
+    "contact": "Contact",
+    "hours": "Hours",
+    "follow": "Follow",
+    "designed": "Designed by LOBSTER Antwerp"
+  },
+  "popup": {
+    "close": "Close",
+    "happening": "Happening"
+  }
+}

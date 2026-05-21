@@ -1,0 +1,47 @@
+{
+  "nav": { "menu": "Menu", "reservation": "Réservation", "happening": "Évènement" },
+  "hero": { "tagline": "Boissons fraîches · Petites assiettes · Vue imprenable" },
+  "hours": {
+    "weekdays": "Lun · Mer · Jeu  16h — Minuit",
+    "weekends": "Ven · Sam  12h — 1h",
+    "closed": "Fermé mar · dim"
+  },
+  "about": {
+    "pullQuote": "Plonge, suis le mouvement — et profite du cirque de la vie.",
+    "body": "Bar Bassie est le rooftop bar tout en haut du Wintercircus de Gand. Boissons fraîches, assiettes à partager et une vue plongeante sur l'arène centrale."
+  },
+  "menu": {
+    "label": "Menu",
+    "drinks": "Boissons",
+    "food": "À manger",
+    "download": "Télécharger le menu (PDF)",
+    "tapToOpen": "Touchez pour ouvrir"
+  },
+  "location": {
+    "label": "Localisation",
+    "body": "À l'intérieur du Wintercircus emblématique de Gand, tout en haut. L'intérieur s'ouvre sur une terrasse en rooftop avec vue sur la ville — une place de choix au-dessus de l'arène centrale.",
+    "addressLine1": "Lammerstraat 13",
+    "addressLine2": "9000 Gand",
+    "directions": "Itinéraire"
+  },
+  "gallery": { "label": "Galerie" },
+  "jobs": {
+    "label": "Emplois",
+    "noOpenings": "Aucun poste ouvert pour le moment. Écris-nous quand même.",
+    "apply": "Postuler"
+  },
+  "reserve": {
+    "label": "Réserver",
+    "walkIns": "Walk-ins toujours les bienvenus pour les petits groupes.",
+    "groups": "Pour les groupes de 6 personnes ou plus, écris-nous sur WhatsApp.",
+    "whatsappCta": "Écris-nous sur WhatsApp",
+    "whatsappPrefill": "Salut Bassie ! On aimerait réserver une table — "
+  },
+  "footer": {
+    "contact": "Contact",
+    "hours": "Horaires",
+    "follow": "Suis-nous",
+    "designed": "Conçu par LOBSTER Anvers"
+  },
+  "popup": { "close": "Fermer", "happening": "Évènement" }
+}
