@@ -1,12 +1,12 @@
 // components/FoldBrochure.tsx
 "use client"
-import { useState, useId } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react"
 import { useTranslations } from "next-intl"
+import { Modal } from "@/components/ui/Modal"
 import { cn } from "@/lib/cn"
 
 type FoldBrochureProps = {
-  /** Panel image URLs. Index 0 = cover. */
+  /** Panel image URLs. First N are cover side, next N are the inside spread. */
   panels: string[]
   /** Number of panels per side (3 = rolvouw, 2 = luik). */
   panelsPerSide: 2 | 3
@@ -18,84 +18,124 @@ type FoldBrochureProps = {
   alt: string
 }
 
-export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: FoldBrochureProps) {
+export function FoldBrochure({
+  panels,
+  panelsPerSide,
+  label,
+  pdfHref,
+  alt,
+}: FoldBrochureProps) {
   const t = useTranslations("menu")
   const [open, setOpen] = useState(false)
-  const id = useId()
 
-  // First N panels are the cover/back side; second N are the inside spread.
+  const cover = panels[0]
+  // First N panels are the cover/back side; next N are the inside spread.
   const inside = panels.slice(panelsPerSide, panelsPerSide * 2)
 
   return (
-    <div className="flex flex-col items-stretch gap-4">
-      <h3 className="font-subtitle text-ink tracking-wide uppercase">{label}</h3>
+    <>
+      <div className="flex flex-col items-stretch gap-4">
+        <h3 className="font-subtitle text-ink text-center tracking-wide uppercase">
+          {label}
+        </h3>
 
-      {/* Desktop: 3D fold */}
-      <div className="relative hidden md:block">
         <button
           type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls={`brochure-${id}`}
-          className="focus-visible:ring-accent block w-full rounded-md focus-visible:ring-2 focus-visible:outline-none"
+          onClick={() => setOpen(true)}
+          aria-label={`${t("tapToOpen")} — ${label}`}
+          className="focus-visible:ring-accent group block w-full rounded-md focus-visible:ring-2 focus-visible:outline-none"
         >
-          <motion.div
-            className="relative mx-auto aspect-[3/4] w-full max-w-[420px]"
-            style={{ perspective: 1200 }}
-          >
-            {/* Using motion.img intentionally for explicit 3D transform/positioning control */}
-            <motion.img
-              src={panels[0]}
+          <div className="relative mx-auto aspect-[3/4] w-full max-w-[420px] overflow-hidden rounded-md shadow-xl transition-transform duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl">
+            {/* eslint-disable-next-line @next/next/no-img-element -- intentional for poster-style cover */}
+            <img
+              src={cover}
               alt={alt}
-              className="absolute inset-0 h-full w-full rounded-md object-cover shadow-xl"
-              animate={{ rotateY: open ? -180 : 0 }}
-              transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-              style={{ transformOrigin: "left center", backfaceVisibility: "hidden" }}
+              className="h-full w-full object-cover"
+              loading="lazy"
             />
-          </motion.div>
-          <p className="font-body text-ink/70 mt-2 text-center text-sm motion-reduce:hidden">
-            {open ? "" : t("tapToOpen")}
+            {/* Subtle "tap to open" overlay hint, visible on hover/focus */}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+              <span className="font-subtitle text-sm tracking-wide text-white uppercase">
+                {t("tapToOpen")}
+              </span>
+            </div>
+          </div>
+          <p className="font-body text-ink/60 mt-2 text-center text-sm md:hidden">
+            {t("tapToOpen")}
           </p>
         </button>
 
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              id={`brochure-${id}`}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 8 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className={cn("mt-4 grid gap-2", panelsPerSide === 3 ? "grid-cols-3" : "grid-cols-2")}
-              role="group"
-              aria-label={label}
-              onClick={() => setOpen(false)}
-            >
-              {inside.map((src, i) => (
-                // eslint-disable-next-line @next/next/no-img-element -- intentional: explicit positioning control in fold grid
-                <img key={i} src={src} alt={alt} className="h-auto w-full rounded-sm shadow-md" />
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <a
+          href={pdfHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-subtitle text-accent inline-flex items-center gap-2 self-center text-sm tracking-wide uppercase hover:underline"
+        >
+          {t("download")}
+        </a>
       </div>
 
-      {/* Mobile: vertical stack of inside panels (no 3D) */}
-      <div className="flex flex-col gap-3 md:hidden">
-        {inside.map((src, i) => (
-          // eslint-disable-next-line @next/next/no-img-element -- intentional: explicit positioning control in mobile stack
-          <img key={i} src={src} alt={alt} className="h-auto w-full rounded-sm shadow" />
-        ))}
-      </div>
-
-      <a
-        href={pdfHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-subtitle text-accent inline-flex items-center gap-2 self-center text-sm tracking-wide uppercase hover:underline"
+      {/* Lightbox: shows the unfolded inside spread at readable size */}
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        ariaLabel={`${label} menu`}
+        className="w-full"
       >
-        {t("download")}
-      </a>
-    </div>
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Close"
+            className="absolute -top-12 right-0 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5"
+              aria-hidden
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
+          {/* Desktop: inside spread side-by-side. Mobile: vertical stack. */}
+          <div
+            className={cn(
+              "max-h-[85vh] gap-2 overflow-y-auto rounded-md md:gap-3",
+              "flex flex-col md:grid",
+              panelsPerSide === 3 ? "md:grid-cols-3" : "md:grid-cols-2"
+            )}
+          >
+            {inside.map((src, i) => (
+              // eslint-disable-next-line @next/next/no-img-element -- intentional for direct sizing in modal
+              <img
+                key={i}
+                src={src}
+                alt={`${alt} — panel ${i + 1}`}
+                className="h-auto w-full rounded-sm bg-white shadow-2xl"
+              />
+            ))}
+          </div>
+
+          <div className="mt-4 text-center">
+            <a
+              href={pdfHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-subtitle text-white/90 text-sm tracking-wide uppercase hover:text-white hover:underline"
+            >
+              {t("download")}
+            </a>
+          </div>
+        </div>
+      </Modal>
+    </>
   )
 }
