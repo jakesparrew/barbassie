@@ -11,7 +11,8 @@
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
     "format": "prettier --write .",
-    "convert-fonts": "node scripts/convert-fonts.mjs"
+    "convert-fonts": "node scripts/convert-fonts.mjs",
+    "transcode-hero": "node scripts/transcode-hero.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
