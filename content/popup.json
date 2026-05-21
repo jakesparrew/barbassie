@@ -1,0 +1,12 @@
+{
+  "active": true,
+  "kind": "poster",
+  "image": "/popup/bassie-goes-mexico.jpg",
+  "imageAlt": {
+    "en": "Bassie Goes Mexico — Tequila Surprise. Live mariachi band on Saturdays. Custom menu. 11–31 May.",
+    "nl": "Bassie Goes Mexico — Tequila Surprise. Live mariachi-band op zaterdag. Speciale kaart. 11–31 mei.",
+    "fr": "Bassie Goes Mexico — Tequila Surprise. Orchestre mariachi le samedi. Carte spéciale. 11–31 mai."
+  },
+  "dateStart": "2026-05-11",
+  "dateEnd": "2026-05-31"
+}

@@ -1,0 +1,9 @@
+[
+  { "weekday": "mon", "open": "16:00", "close": "00:00" },
+  { "weekday": "tue" },
+  { "weekday": "wed", "open": "16:00", "close": "00:00" },
+  { "weekday": "thu", "open": "16:00", "close": "00:00" },
+  { "weekday": "fri", "open": "12:00", "close": "01:00" },
+  { "weekday": "sat", "open": "12:00", "close": "01:00" },
+  { "weekday": "sun" }
+]
