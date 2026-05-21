@@ -6,7 +6,7 @@ export function SectionLabel({ children, className }: { children: ReactNode; cla
   return (
     <h2
       className={cn(
-        "font-subtitle uppercase tracking-wide text-accent text-3xl md:text-4xl",
+        "font-subtitle text-accent text-3xl tracking-wide uppercase md:text-4xl",
         className
       )}
     >

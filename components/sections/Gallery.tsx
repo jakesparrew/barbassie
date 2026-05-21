@@ -15,10 +15,10 @@ const photos = [
 export function Gallery() {
   const t = useTranslations("gallery")
   return (
-    <section id="gallery" className="bg-bg py-24 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section id="gallery" className="bg-bg px-4 py-24">
+      <div className="mx-auto max-w-6xl">
         <SectionLabel className="text-center">{t("label").toUpperCase()}</SectionLabel>
-        <div className="mt-10 columns-2 md:columns-3 gap-3 [&>div]:mb-3">
+        <div className="mt-10 columns-2 gap-3 md:columns-3 [&>div]:mb-3">
           {photos.map((src) => (
             <div key={src} className="break-inside-avoid">
               <Image
@@ -26,7 +26,7 @@ export function Gallery() {
                 alt=""
                 width={800}
                 height={1000}
-                className="w-full h-auto rounded shadow"
+                className="h-auto w-full rounded shadow"
               />
             </div>
           ))}

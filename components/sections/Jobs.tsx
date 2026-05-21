@@ -11,17 +11,17 @@ export function Jobs() {
   const jobs = getJobs()
 
   return (
-    <section id="jobs" className="bg-bg py-24 px-4">
-      <div className="max-w-3xl mx-auto">
+    <section id="jobs" className="bg-bg px-4 py-24">
+      <div className="mx-auto max-w-3xl">
         <SectionLabel className="text-center">{t("label").toUpperCase()}</SectionLabel>
         {jobs.length === 0 ? (
-          <p className="mt-8 text-center font-body text-ink/70">{t("noOpenings")}</p>
+          <p className="font-body text-ink/70 mt-8 text-center">{t("noOpenings")}</p>
         ) : (
           <ul className="mt-10 space-y-8">
             {jobs.map((job) => (
-              <li key={job.id} className="border-l-2 border-accent pl-4">
-                <h3 className="font-title text-2xl text-ink">{job.title[locale]}</h3>
-                <p className="mt-2 font-body text-ink/80">{job.description[locale]}</p>
+              <li key={job.id} className="border-accent border-l-2 pl-4">
+                <h3 className="font-title text-ink text-2xl">{job.title[locale]}</h3>
+                <p className="font-body text-ink/80 mt-2">{job.description[locale]}</p>
                 <Pill
                   href={`mailto:${job.applyEmail}?subject=${encodeURIComponent(`Bar Bassie — application: ${job.title.en}`)}`}
                   className="mt-3"

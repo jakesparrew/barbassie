@@ -16,7 +16,7 @@ const base =
   "inline-flex items-center justify-center rounded-full px-5 py-2 font-subtitle uppercase tracking-wide text-sm transition-transform duration-150 ease-out hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
 
 const variants: Record<NonNullable<Common["variant"]>, string> = {
-  solid:   "bg-accent text-white shadow-sm",
+  solid: "bg-accent text-white shadow-sm",
   outline: "border-2 border-accent text-accent",
 }
 

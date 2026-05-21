@@ -26,7 +26,9 @@ const gothic = localFont({
 
 export async function generateMetadata({
   params,
-}: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "hero" })
   return {
@@ -46,7 +48,9 @@ export async function generateMetadata({
     alternates: {
       canonical: locale === "en" ? "/" : `/${locale}`,
       languages: {
-        en: "/", nl: "/nl", fr: "/fr",
+        en: "/",
+        nl: "/nl",
+        fr: "/fr",
       },
     },
   }

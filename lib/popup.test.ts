@@ -1,8 +1,6 @@
 // lib/popup.test.ts
 import { describe, it, expect, beforeEach } from "vitest"
-import {
-  isPopupActiveNow, shouldAutoOpenToday, markSeen, popupId, type Popup,
-} from "./popup"
+import { isPopupActiveNow, shouldAutoOpenToday, markSeen, popupId, type Popup } from "./popup"
 
 const sample: Popup = {
   active: true,
@@ -10,7 +8,7 @@ const sample: Popup = {
   image: "/popup/bassie-goes-mexico.jpg",
   imageAlt: { en: "x", nl: "x", fr: "x" },
   dateStart: "2026-05-11",
-  dateEnd:   "2026-05-31",
+  dateEnd: "2026-05-31",
 }
 
 describe("popupId", () => {

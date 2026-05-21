@@ -14,30 +14,36 @@ const photos = [
 export function Location() {
   const t = useTranslations("location")
   return (
-    <section id="location" className="bg-bg py-24 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section id="location" className="bg-bg px-4 py-24">
+      <div className="mx-auto max-w-6xl">
         <SectionLabel className="text-center">{t("label").toUpperCase()}</SectionLabel>
-        <p className="mt-8 max-w-3xl mx-auto font-body text-ink/80 text-lg leading-relaxed text-center">
+        <p className="font-body text-ink/80 mx-auto mt-8 max-w-3xl text-center text-lg leading-relaxed">
           {t("body")}
         </p>
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4">
           {photos.map((src) => (
             <div key={src} className="relative aspect-square overflow-hidden rounded">
-              <Image src={src} alt="" fill className="object-cover" sizes="(max-width:768px) 50vw, 25vw" />
+              <Image
+                src={src}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="(max-width:768px) 50vw, 25vw"
+              />
             </div>
           ))}
         </div>
         <div className="mt-10 flex flex-col items-center gap-2">
-          <p className="font-subtitle uppercase tracking-wide text-ink">
+          <p className="font-subtitle text-ink tracking-wide uppercase">
             {t("addressLine1")} · {t("addressLine2")}
           </p>
           <a
             href="https://maps.google.com/?q=Lammerstraat+13,+9000+Gent"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-subtitle uppercase text-sm tracking-wide text-accent hover:underline"
+            className="font-subtitle text-accent inline-flex items-center gap-2 text-sm tracking-wide uppercase hover:underline"
           >
-            <Icon.MapPin className="w-4 h-4" /> {t("directions")}
+            <Icon.MapPin className="h-4 w-4" /> {t("directions")}
           </a>
         </div>
       </div>

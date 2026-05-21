@@ -4,12 +4,12 @@ import { useTranslations } from "next-intl"
 export function About() {
   const t = useTranslations("about")
   return (
-    <section id="about" className="bg-bg py-24 px-4">
-      <div className="max-w-3xl mx-auto text-center">
-        <blockquote className="font-subtitle uppercase tracking-wide text-accent text-2xl md:text-3xl leading-tight">
+    <section id="about" className="bg-bg px-4 py-24">
+      <div className="mx-auto max-w-3xl text-center">
+        <blockquote className="font-subtitle text-accent text-2xl leading-tight tracking-wide uppercase md:text-3xl">
           {t("pullQuote")}
         </blockquote>
-        <p className="mt-8 font-body text-ink/80 text-lg leading-relaxed">{t("body")}</p>
+        <p className="font-body text-ink/80 mt-8 text-lg leading-relaxed">{t("body")}</p>
       </div>
     </section>
   )

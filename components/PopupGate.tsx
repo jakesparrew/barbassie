@@ -3,9 +3,7 @@
 import { useEffect, useState, useImperativeHandle, forwardRef } from "react"
 import { PopupModal } from "./PopupModal"
 import { getPopup } from "@/lib/content"
-import {
-  isPopupActiveNow, shouldAutoOpenToday, markSeen, popupId,
-} from "@/lib/popup"
+import { isPopupActiveNow, shouldAutoOpenToday, markSeen, popupId } from "@/lib/popup"
 import { todayBrussels } from "@/lib/dates"
 
 export type PopupGateHandle = { open: () => void }
@@ -21,9 +19,15 @@ export const PopupGate = forwardRef<PopupGateHandle>(function PopupGate(_, ref) 
     if (active && shouldAutoOpenToday(id, today)) setOpen(true)
   }, [active, id, today])
 
-  useImperativeHandle(ref, () => ({
-    open: () => { if (active) setOpen(true) },
-  }), [active])
+  useImperativeHandle(
+    ref,
+    () => ({
+      open: () => {
+        if (active) setOpen(true)
+      },
+    }),
+    [active]
+  )
 
   const onClose = () => {
     setOpen(false)

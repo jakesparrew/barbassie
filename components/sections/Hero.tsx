@@ -21,21 +21,24 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         aria-hidden
       >
         <source src="/hero/hero-1080.webm" type="video/webm" />
-        <source src="/hero/hero-1080.mp4"  type="video/mp4" />
+        <source src="/hero/hero-1080.mp4" type="video/mp4" />
       </video>
       <img
         src="/hero/hero-poster.jpg"
         alt=""
-        className="absolute inset-0 h-full w-full object-cover hidden motion-reduce:block"
+        className="absolute inset-0 hidden h-full w-full object-cover motion-reduce:block"
         aria-hidden
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50" aria-hidden />
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50"
+        aria-hidden
+      />
 
-      <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4">
-        <h1 className="font-title text-[18vw] md:text-[12rem] leading-none tracking-tight drop-shadow-lg">
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
+        <h1 className="font-title text-[18vw] leading-none tracking-tight drop-shadow-lg md:text-[12rem]">
           BASSIE
         </h1>
-        <p className="mt-6 font-subtitle uppercase tracking-widest text-sm md:text-base">
+        <p className="font-subtitle mt-6 text-sm tracking-widest uppercase md:text-base">
           {t("hero.tagline")}
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
@@ -45,8 +48,10 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         </div>
       </div>
 
-      <div className="absolute bottom-6 inset-x-0 z-10 px-4 text-center font-subtitle text-xs md:text-sm tracking-wider">
-        <p>{t("hours.weekdays")} · {t("hours.weekends")} · {t("hours.closed")}</p>
+      <div className="font-subtitle absolute inset-x-0 bottom-6 z-10 px-4 text-center text-xs tracking-wider md:text-sm">
+        <p>
+          {t("hours.weekdays")} · {t("hours.weekends")} · {t("hours.closed")}
+        </p>
       </div>
     </section>
   )

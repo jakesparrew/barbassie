@@ -15,8 +15,8 @@ describe("dates", () => {
 
   it("isWithinRange — start <= d <= end", () => {
     expect(isWithinRange("2026-05-15", "2026-05-11", "2026-05-31")).toBe(true)
-    expect(isWithinRange("2026-05-11", "2026-05-11", "2026-05-31")).toBe(true)  // start inclusive
-    expect(isWithinRange("2026-05-31", "2026-05-11", "2026-05-31")).toBe(true)  // end inclusive
+    expect(isWithinRange("2026-05-11", "2026-05-11", "2026-05-31")).toBe(true) // start inclusive
+    expect(isWithinRange("2026-05-31", "2026-05-11", "2026-05-31")).toBe(true) // end inclusive
     expect(isWithinRange("2026-06-01", "2026-05-11", "2026-05-31")).toBe(false)
     expect(isWithinRange("2026-05-10", "2026-05-11", "2026-05-31")).toBe(false)
   })

@@ -16,7 +16,7 @@ export type Popup = {
 }
 
 const KEY_DATE = "barbassie:popup:lastSeenDate"
-const KEY_ID   = "barbassie:popup:id"
+const KEY_ID = "barbassie:popup:id"
 
 /** Stable identifier so a swapped pop-up re-shows. */
 export const popupId = (p: Popup): string => {
@@ -32,7 +32,7 @@ export const isPopupActiveNow = (p: Popup, todayIso: string): boolean =>
 export const shouldAutoOpenToday = (id: string, todayIso: string): boolean => {
   if (typeof window === "undefined") return false
   const seenDate = localStorage.getItem(KEY_DATE)
-  const seenId   = localStorage.getItem(KEY_ID)
+  const seenId = localStorage.getItem(KEY_ID)
   return seenDate !== todayIso || seenId !== id
 }
 

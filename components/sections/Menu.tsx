@@ -21,10 +21,10 @@ const foodPanels = [
 export function Menu() {
   const t = useTranslations("menu")
   return (
-    <section id="menu" className="bg-bg py-24 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section id="menu" className="bg-bg px-4 py-24">
+      <div className="mx-auto max-w-6xl">
         <SectionLabel className="text-center">{t("label").toUpperCase()}</SectionLabel>
-        <div className="mt-12 grid md:grid-cols-2 gap-12">
+        <div className="mt-12 grid gap-12 md:grid-cols-2">
           <FoldBrochure
             label={t("drinks")}
             panels={drinksPanels}

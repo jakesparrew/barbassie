@@ -53,7 +53,7 @@ export function Modal({
       <div
         ref={contentRef}
         onClick={closeOnContentClick ? onClose : undefined}
-        className={cn("relative max-w-[90vw] max-h-[90vh]", className)}
+        className={cn("relative max-h-[90vh] max-w-[90vw]", className)}
       >
         {children}
       </div>

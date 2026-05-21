@@ -48,16 +48,19 @@ export function LocaleSwitcher({ className }: { className?: string }) {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1 font-subtitle uppercase text-sm tracking-wide"
+        className="font-subtitle inline-flex items-center gap-1 text-sm tracking-wide uppercase"
       >
-        <Icon.Globe className="w-4 h-4" aria-hidden />
+        <Icon.Globe className="h-4 w-4" aria-hidden />
         {localeNames[current]}
-        <Icon.ChevronDown className={cn("w-4 h-4 transition-transform", open && "rotate-180")} aria-hidden />
+        <Icon.ChevronDown
+          className={cn("h-4 w-4 transition-transform", open && "rotate-180")}
+          aria-hidden
+        />
       </button>
       {open && (
         <ul
           role="menu"
-          className="absolute right-0 mt-2 min-w-[10rem] rounded-md bg-bg shadow-lg ring-1 ring-ink/10 p-1 z-50"
+          className="bg-bg ring-ink/10 absolute right-0 z-50 mt-2 min-w-[10rem] rounded-md p-1 shadow-lg ring-1"
         >
           {locales.map((loc) => (
             <li key={loc}>
@@ -65,7 +68,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
                 role="menuitem"
                 onClick={() => onPick(loc)}
                 className={cn(
-                  "w-full text-left px-3 py-2 rounded font-body text-sm",
+                  "font-body w-full rounded px-3 py-2 text-left text-sm",
                   loc === current ? "bg-accent/10 text-accent" : "hover:bg-ink/5"
                 )}
               >

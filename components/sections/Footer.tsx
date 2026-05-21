@@ -10,21 +10,27 @@ const IG = "https://instagram.com/barbassie.wintercircus"
 export function Footer() {
   const t = useTranslations()
   return (
-    <footer className="bg-ink text-bg py-16 px-4">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
+    <footer className="bg-ink text-bg px-4 py-16">
+      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
         <div>
-          <h4 className="font-subtitle uppercase text-accent text-sm tracking-wide">
+          <h4 className="font-subtitle text-accent text-sm tracking-wide uppercase">
             {t("footer.contact")}
           </h4>
-          <ul className="mt-4 space-y-2 font-body">
+          <ul className="font-body mt-4 space-y-2">
             <li>
-              <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 hover:text-accent">
-                <Icon.Mail className="w-4 h-4" /> {EMAIL}
+              <a
+                href={`mailto:${EMAIL}`}
+                className="hover:text-accent inline-flex items-center gap-2"
+              >
+                <Icon.Mail className="h-4 w-4" /> {EMAIL}
               </a>
             </li>
             <li>
-              <a href={`https://wa.me/${PHONE}`} className="inline-flex items-center gap-2 hover:text-accent">
-                <Icon.Whatsapp className="w-4 h-4" /> +32 470 48 72 52
+              <a
+                href={`https://wa.me/${PHONE}`}
+                className="hover:text-accent inline-flex items-center gap-2"
+              >
+                <Icon.Whatsapp className="h-4 w-4" /> +32 470 48 72 52
               </a>
             </li>
             <li className="font-body">
@@ -34,10 +40,10 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="font-subtitle uppercase text-accent text-sm tracking-wide">
+          <h4 className="font-subtitle text-accent text-sm tracking-wide uppercase">
             {t("footer.hours")}
           </h4>
-          <ul className="mt-4 space-y-2 font-body">
+          <ul className="font-body mt-4 space-y-2">
             <li>{t("hours.weekdays")}</li>
             <li>{t("hours.weekends")}</li>
             <li>{t("hours.closed")}</li>
@@ -45,13 +51,18 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="font-subtitle uppercase text-accent text-sm tracking-wide">
+          <h4 className="font-subtitle text-accent text-sm tracking-wide uppercase">
             {t("footer.follow")}
           </h4>
-          <ul className="mt-4 space-y-2 font-body">
+          <ul className="font-body mt-4 space-y-2">
             <li>
-              <a href={IG} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-accent">
-                <Icon.Instagram className="w-4 h-4" /> @barbassie.wintercircus
+              <a
+                href={IG}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent inline-flex items-center gap-2"
+              >
+                <Icon.Instagram className="h-4 w-4" /> @barbassie.wintercircus
               </a>
             </li>
           </ul>
@@ -60,7 +71,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <p className="mt-12 text-center font-body text-bg/60 text-xs">
+      <p className="font-body text-bg/60 mt-12 text-center text-xs">
         © Bar Bassie · {t("footer.designed")}
       </p>
     </footer>
