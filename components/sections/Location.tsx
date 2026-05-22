@@ -6,8 +6,8 @@ import { SectionLabel } from "@/components/ui/SectionLabel"
 import { Icon } from "@/components/ui/Icon"
 import { RevealOnView } from "@/components/ui/RevealOnView"
 
-// Using gallery shots until we have dedicated Wintercircus venue photography.
-// Drop new files into /public/photos/ and switch the paths back when ready.
+// Mockup shows 2 venue tiles on mobile (rooftop + interior).
+// We expose 4 in the array but only render 2 on mobile / 4 on desktop.
 const photos = [
   "/gallery/interior-sofa.jpg",
   "/gallery/cocktail-bassie-glass.jpg",
@@ -27,8 +27,16 @@ export function Location() {
           {t("body")}
         </p>
         <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4">
-          {photos.map((src) => (
-            <div key={src} className="relative aspect-square overflow-hidden rounded">
+          {photos.map((src, i) => (
+            <div
+              key={src}
+              className={
+                // Mockup shows 2 tiles on mobile; reveal the other 2 from md+
+                i >= 2
+                  ? "relative hidden aspect-square overflow-hidden rounded md:block"
+                  : "relative aspect-square overflow-hidden rounded"
+              }
+            >
               <Image
                 src={src}
                 alt=""
@@ -55,17 +63,17 @@ export function Location() {
           </figcaption>
         </figure>
 
-        <div className="mt-10 flex flex-col items-center gap-2">
-          <p className="font-subtitle text-ink tracking-wide uppercase">
-            {t("addressLine1")} · {t("addressLine2")}
+        <div className="mt-8 flex flex-col items-center gap-2">
+          <p className="font-body text-ink text-xs tracking-[0.18em] uppercase md:text-sm">
+            Wintercircus, {t("addressLine1")}, {t("addressLine2")}
           </p>
           <a
             href="https://maps.google.com/?q=Lammerstraat+13,+9000+Gent"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-subtitle text-accent inline-flex items-center gap-2 text-sm tracking-wide uppercase hover:underline"
+            className="font-subtitle text-accent inline-flex items-center gap-1.5 text-xs tracking-wide uppercase hover:underline"
           >
-            <Icon.MapPin className="h-4 w-4" /> {t("directions")}
+            <Icon.MapPin className="h-3.5 w-3.5" /> {t("directions")}
           </a>
         </div>
       </RevealOnView>

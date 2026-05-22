@@ -11,9 +11,10 @@
   },
   "hero": {
     "taglineLine1": "Cooling drinks",
-    "taglineLine2": "Small plates & stunning views",
+    "taglineLine2": "Small plates and stunning views",
     "infoLine1": "Rooftop bar · Wintercircus, Lammerstraat 13, 9000 Ghent",
-    "infoLine2": "Just walk in. Groups of 6 people or more: reservation via WhatsApp"
+    "infoLine2": "Just walk in. Groups of 6 people or more: reservation via WhatsApp",
+    "address": "Wintercircus, Lammerstraat 13, 9000 Ghent"
   },
   "hours": {
     "weekdays": "Mon · Wed · Thu  16:00 — Midnight",

@@ -25,10 +25,10 @@ export function About() {
       />
 
       <RevealOnView className="relative mx-auto max-w-3xl text-center text-[color:var(--color-bg)]">
-        <blockquote className="font-subtitle text-accent text-2xl leading-tight tracking-wide uppercase drop-shadow-lg md:text-4xl">
+        <blockquote className="font-title text-accent text-3xl leading-[0.95] tracking-tight uppercase drop-shadow-lg md:text-5xl">
           {t("pullQuote")}
         </blockquote>
-        <p className="font-body mt-8 text-lg leading-relaxed drop-shadow-md md:text-xl">
+        <p className="font-body mt-8 text-sm leading-relaxed tracking-wide uppercase drop-shadow-md md:text-base">
           {t("body")}
         </p>
       </RevealOnView>

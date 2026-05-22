@@ -64,12 +64,12 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         aria-hidden
       />
 
-      {/* Top info bar */}
+      {/* Top bar — just INSTAGRAM left, CONTACT right (mockup p1) */}
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-        className="font-body absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-4 px-4 pt-5 text-xs tracking-wide uppercase md:px-8 md:pt-7 md:text-sm"
+        className="font-body absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-4 px-4 pt-5 text-xs tracking-wide uppercase md:px-8 md:pt-7 md:text-sm"
       >
         <a
           href={instagramUrl}
@@ -79,59 +79,58 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         >
           {t("nav.instagram")}
         </a>
-        <p className="hidden max-w-xl text-center leading-relaxed md:block">
-          {t("hero.infoLine1")}
-          <br />
-          {t("hero.infoLine2")}
-        </p>
         <a href="#footer" className="hover:text-accent transition-colors">
           {t("nav.contact")}
         </a>
       </motion.div>
 
-      {/* Mobile info text (under top bar) */}
-      <p className="font-body absolute inset-x-0 top-14 z-10 px-4 text-center text-[10px] leading-relaxed tracking-wide uppercase md:hidden">
-        {t("hero.infoLine1")}
-        <br />
-        {t("hero.infoLine2")}
-      </p>
-
-      {/* Center: BASSIE wordmark + tagline + hamburger/menu */}
+      {/* Center stack: BASSIE logo → tagline → hours → hamburger */}
       <motion.div
         className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center"
         initial="hidden"
         animate="show"
-        transition={{ staggerChildren: 0.18, delayChildren: 0.15 }}
+        transition={{ staggerChildren: 0.14, delayChildren: 0.15 }}
       >
-        {/* BASSIE logo image (proper brand asset) */}
+        {/* BASSIE wordmark */}
         {/* eslint-disable-next-line @next/next/no-img-element -- crisp transparent PNG, no optimization needed */}
         <motion.img
           variants={fadeUp}
           src="/logo-bassie.png"
           alt="BASSIE"
-          className="w-[90vw] max-w-[1100px] drop-shadow-2xl"
+          className="w-[80vw] max-w-[900px] drop-shadow-2xl"
         />
 
-        {/* Tagline */}
+        {/* Tagline (font-subtitle uppercase) */}
         <motion.p
           variants={fadeUp}
-          className="font-subtitle mt-2 text-sm tracking-widest uppercase drop-shadow-lg md:mt-4 md:text-lg"
+          className="font-subtitle mt-3 text-xs tracking-[0.18em] uppercase drop-shadow-lg md:text-sm"
         >
           {t("hero.taglineLine1")}
           <br />
           {t("hero.taglineLine2")}
         </motion.p>
 
-        {/* Hamburger / button stack */}
-        <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center md:mt-14">
+        {/* Hours block — 3 lines stacked, smaller than tagline */}
+        <motion.div
+          variants={fadeUp}
+          className="font-subtitle mt-6 text-[10px] leading-relaxed tracking-[0.15em] uppercase drop-shadow-lg md:text-[11px]"
+        >
+          <p>{t("hours.weekdays")}</p>
+          <p>{t("hours.weekends")}</p>
+          <p>{t("hours.closed")}</p>
+        </motion.div>
+
+        {/* Magenta hamburger / expanded menu */}
+        <motion.div variants={fadeUp} className="mt-8 flex flex-col items-center md:mt-10">
           {!menuOpen ? (
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
               aria-label={t("nav.openMenu")}
               aria-expanded={false}
-              className="text-accent focus-visible:ring-accent group flex h-14 w-14 items-center justify-center rounded-md transition-transform duration-200 hover:scale-110 focus-visible:ring-2 focus-visible:outline-none"
+              className="text-accent focus-visible:ring-accent group flex h-12 w-12 items-center justify-center rounded-md transition-transform duration-200 hover:scale-110 focus-visible:ring-2 focus-visible:outline-none"
             >
+              {/* Equal-bar (=) icon per mockup, not the 3-line hamburger */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -139,12 +138,11 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
                 stroke="currentColor"
                 strokeWidth="3"
                 strokeLinecap="round"
-                className="h-9 w-9 drop-shadow-lg"
+                className="h-8 w-8 drop-shadow-lg"
                 aria-hidden
               >
-                <line x1="3" y1="7" x2="21" y2="7" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="17" x2="21" y2="17" />
+                <line x1="3" y1="9" x2="21" y2="9" />
+                <line x1="3" y1="15" x2="21" y2="15" />
               </svg>
             </button>
           ) : (
@@ -210,16 +208,14 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         </motion.div>
       </motion.div>
 
-      {/* Bottom hours strip */}
+      {/* Bottom address strip (mockup p1) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.0, duration: 0.9 }}
-        className="font-subtitle absolute inset-x-0 bottom-5 z-10 px-4 text-center text-[10px] tracking-wider uppercase drop-shadow-lg md:text-xs"
+        className="font-body absolute inset-x-0 bottom-6 z-10 px-4 text-center text-[11px] tracking-[0.18em] uppercase drop-shadow-lg md:text-xs"
       >
-        <p>
-          {t("hours.weekdays")} · {t("hours.weekends")} · {t("hours.closed")}
-        </p>
+        <p>{t("hero.address")}</p>
       </motion.div>
     </section>
   )

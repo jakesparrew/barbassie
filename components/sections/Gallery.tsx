@@ -3,7 +3,6 @@
 import { useState } from "react"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
-import { SectionLabel } from "@/components/ui/SectionLabel"
 import { Modal } from "@/components/ui/Modal"
 import { RevealOnView } from "@/components/ui/RevealOnView"
 import { cn } from "@/lib/cn"
@@ -49,10 +48,38 @@ export function Gallery() {
   return (
     <section id="gallery" className="bg-bg px-4 py-24">
       <RevealOnView className="mx-auto max-w-6xl">
-        <SectionLabel className="text-center">{t("label").toUpperCase()}</SectionLabel>
+        {/* Mockup p6: two-line heading "BASSIE'S" (big magenta) + "GALLERY" (small underlined) */}
+        <header className="text-center">
+          <h2 className="font-title text-accent text-5xl leading-[0.95] tracking-tight uppercase md:text-7xl">
+            BASSIE&rsquo;S
+          </h2>
+          <p className="font-subtitle text-ink mt-1 inline-block border-b border-current text-xs tracking-[0.25em] uppercase">
+            {t("label")}
+          </p>
+        </header>
 
-        {/* Masonry-style grid via CSS columns */}
-        <div className="mt-10 columns-2 gap-3 md:columns-3 [&>button]:mb-3">
+        {/* Mockup p6 shows a 2x2 grid on mobile (4 photos).
+            We render a 2-col grid on mobile and reveal the rest from md+ in 3 cols. */}
+        <div className="mt-10 grid grid-cols-2 gap-3 md:hidden">
+          {photos.slice(0, 4).map((p, i) => (
+            <button
+              key={p.src}
+              type="button"
+              onClick={() => setActiveIndex(i)}
+              aria-label={`Open photo ${i + 1} of ${photos.length}: ${p.alt}`}
+              className="focus-visible:ring-accent group relative block aspect-square w-full overflow-hidden rounded focus-visible:ring-2 focus-visible:outline-none"
+            >
+              <Image
+                src={p.src}
+                alt={p.alt}
+                fill
+                sizes="50vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </button>
+          ))}
+        </div>
+        <div className="mt-10 hidden columns-3 gap-3 md:block [&>button]:mb-3">
           {photos.map((p, i) => (
             <button
               key={p.src}

@@ -11,9 +11,10 @@
   },
   "hero": {
     "taglineLine1": "Boissons fraîches",
-    "taglineLine2": "Petites assiettes & vue imprenable",
+    "taglineLine2": "Petites assiettes et vue imprenable",
     "infoLine1": "Rooftop bar · Wintercircus, Lammerstraat 13, 9000 Gand",
-    "infoLine2": "Entrée libre. Groupes de 6 personnes ou plus : réservation via WhatsApp"
+    "infoLine2": "Entrée libre. Groupes de 6 personnes ou plus : réservation via WhatsApp",
+    "address": "Wintercircus, Lammerstraat 13, 9000 Gand"
   },
   "hours": {
     "weekdays": "Lun · Mer · Jeu  16h — Minuit",
