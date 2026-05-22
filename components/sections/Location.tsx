@@ -1,8 +1,10 @@
 // components/sections/Location.tsx
+"use client"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
 import { SectionLabel } from "@/components/ui/SectionLabel"
 import { Icon } from "@/components/ui/Icon"
+import { RevealOnView } from "@/components/ui/RevealOnView"
 
 const photos = [
   "/photos/wintercircus-dome.jpg",
@@ -15,7 +17,7 @@ export function Location() {
   const t = useTranslations("location")
   return (
     <section id="location" className="bg-bg px-4 py-24">
-      <div className="mx-auto max-w-6xl">
+      <RevealOnView className="mx-auto max-w-6xl">
         <SectionLabel className="text-center">{t("label").toUpperCase()}</SectionLabel>
         <p className="font-body text-ink/80 mx-auto mt-8 max-w-3xl text-center text-lg leading-relaxed">
           {t("body")}
@@ -46,7 +48,7 @@ export function Location() {
             <Icon.MapPin className="h-4 w-4" /> {t("directions")}
           </a>
         </div>
-      </div>
+      </RevealOnView>
     </section>
   )
 }

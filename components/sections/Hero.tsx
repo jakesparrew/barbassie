@@ -1,8 +1,14 @@
 // components/sections/Hero.tsx
 "use client"
 import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 import { cn } from "@/lib/cn"
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } },
+} as const
 
 export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
   const t = useTranslations()
@@ -58,7 +64,12 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
       />
 
       {/* Top info bar */}
-      <div className="font-body absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-4 px-4 pt-5 text-xs tracking-wide uppercase md:px-8 md:pt-7 md:text-sm">
+      <motion.div
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+        className="font-body absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-4 px-4 pt-5 text-xs tracking-wide uppercase md:px-8 md:pt-7 md:text-sm"
+      >
         <a
           href="https://instagram.com/barbassie"
           target="_blank"
@@ -75,7 +86,7 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         <a href="#footer" className="hover:text-accent transition-colors">
           {t("nav.contact")}
         </a>
-      </div>
+      </motion.div>
 
       {/* Mobile info text (under top bar) */}
       <p className="font-body absolute inset-x-0 top-14 z-10 px-4 text-center text-[10px] leading-relaxed tracking-wide uppercase md:hidden">
@@ -85,24 +96,33 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
       </p>
 
       {/* Center: BASSIE wordmark + tagline + hamburger/menu */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
+      <motion.div
+        className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center"
+        initial="hidden"
+        animate="show"
+        transition={{ staggerChildren: 0.18, delayChildren: 0.15 }}
+      >
         {/* BASSIE logo image (proper brand asset) */}
         {/* eslint-disable-next-line @next/next/no-img-element -- crisp transparent PNG, no optimization needed */}
-        <img
+        <motion.img
+          variants={fadeUp}
           src="/logo-bassie.png"
           alt="BASSIE"
           className="w-[90vw] max-w-[1100px] drop-shadow-2xl"
         />
 
         {/* Tagline */}
-        <p className="font-subtitle mt-2 text-sm tracking-widest uppercase drop-shadow-lg md:mt-4 md:text-lg">
+        <motion.p
+          variants={fadeUp}
+          className="font-subtitle mt-2 text-sm tracking-widest uppercase drop-shadow-lg md:mt-4 md:text-lg"
+        >
           {t("hero.taglineLine1")}
           <br />
           {t("hero.taglineLine2")}
-        </p>
+        </motion.p>
 
         {/* Hamburger / button stack */}
-        <div className="mt-10 flex flex-col items-center md:mt-14">
+        <motion.div variants={fadeUp} className="mt-10 flex flex-col items-center md:mt-14">
           {!menuOpen ? (
             <button
               type="button"
@@ -186,15 +206,20 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
               </button>
             </nav>
           )}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Bottom hours strip */}
-      <div className="font-subtitle absolute inset-x-0 bottom-5 z-10 px-4 text-center text-[10px] tracking-wider uppercase drop-shadow-lg md:text-xs">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.0, duration: 0.9 }}
+        className="font-subtitle absolute inset-x-0 bottom-5 z-10 px-4 text-center text-[10px] tracking-wider uppercase drop-shadow-lg md:text-xs"
+      >
         <p>
           {t("hours.weekdays")} · {t("hours.weekends")} · {t("hours.closed")}
         </p>
-      </div>
+      </motion.div>
     </section>
   )
 }

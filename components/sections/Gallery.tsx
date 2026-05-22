@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useTranslations } from "next-intl"
 import { SectionLabel } from "@/components/ui/SectionLabel"
 import { Modal } from "@/components/ui/Modal"
+import { RevealOnView } from "@/components/ui/RevealOnView"
 import { cn } from "@/lib/cn"
 
 type Photo = { src: string; alt: string }
@@ -47,7 +48,7 @@ export function Gallery() {
 
   return (
     <section id="gallery" className="bg-bg px-4 py-24">
-      <div className="mx-auto max-w-6xl">
+      <RevealOnView className="mx-auto max-w-6xl">
         <SectionLabel className="text-center">{t("label").toUpperCase()}</SectionLabel>
 
         {/* Masonry-style grid via CSS columns */}
@@ -58,7 +59,7 @@ export function Gallery() {
               type="button"
               onClick={() => setActiveIndex(i)}
               aria-label={`Open photo ${i + 1} of ${photos.length}: ${p.alt}`}
-              className="focus-visible:ring-accent group block w-full overflow-hidden rounded break-inside-avoid focus-visible:ring-2 focus-visible:outline-none"
+              className="focus-visible:ring-accent group block w-full break-inside-avoid overflow-hidden rounded focus-visible:ring-2 focus-visible:outline-none"
             >
               <Image
                 src={p.src}
@@ -71,7 +72,7 @@ export function Gallery() {
             </button>
           ))}
         </div>
-      </div>
+      </RevealOnView>
 
       {/* Lightbox */}
       <Modal
@@ -146,9 +147,7 @@ export function Gallery() {
                 <button
                   type="button"
                   onClick={() =>
-                    setActiveIndex((i) =>
-                      i === null ? null : (i + 1) % photos.length
-                    )
+                    setActiveIndex((i) => (i === null ? null : (i + 1) % photos.length))
                   }
                   aria-label="Next photo"
                   className={cn(

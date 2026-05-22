@@ -1,7 +1,9 @@
 // components/sections/Menu.tsx
+"use client"
 import { useTranslations } from "next-intl"
 import { SectionLabel } from "@/components/ui/SectionLabel"
 import { FoldBrochure } from "@/components/FoldBrochure"
+import { RevealOnView } from "@/components/ui/RevealOnView"
 
 const drinksPanels = [
   "/menu/drinks/panel-1.jpg",
@@ -22,7 +24,7 @@ export function Menu() {
   const t = useTranslations("menu")
   return (
     <section id="menu" className="bg-bg px-4 py-24">
-      <div className="mx-auto max-w-6xl">
+      <RevealOnView className="mx-auto max-w-6xl">
         <SectionLabel className="text-center">{t("label").toUpperCase()}</SectionLabel>
         <div className="mt-12 grid gap-12 md:grid-cols-2">
           <FoldBrochure
@@ -40,7 +42,7 @@ export function Menu() {
             alt={`Bar Bassie ${t("food")} menu`}
           />
         </div>
-      </div>
+      </RevealOnView>
     </section>
   )
 }

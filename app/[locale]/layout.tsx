@@ -31,13 +31,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "hero" })
+  const description = `${t("taglineLine1")} · ${t("taglineLine2")}`
   return {
     metadataBase: new URL("https://barbassie.be"),
     title: { default: "Bar Bassie · Wintercircus Ghent", template: "%s · Bar Bassie" },
-    description: t("tagline"),
+    description,
     openGraph: {
       title: "Bar Bassie · Wintercircus Ghent",
-      description: t("tagline"),
+      description,
       url: "/",
       siteName: "Bar Bassie",
       images: ["/og/cover.jpg"],
