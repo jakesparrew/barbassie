@@ -15,6 +15,8 @@ const photos = [
   "/gallery/cocktails-rim.jpg",
 ]
 
+const FLOORPLAN = "/photos/wintercircus-floorplan.png"
+
 export function Location() {
   const t = useTranslations("location")
   return (
@@ -37,6 +39,22 @@ export function Location() {
             </div>
           ))}
         </div>
+
+        {/* Wintercircus floorplan — entrances + elevator to the 4th-floor boardroom (Bar Bassie). */}
+        <figure className="mt-8 overflow-hidden rounded">
+          <Image
+            src={FLOORPLAN}
+            alt="Wintercircus floorplan: entrances from Sint-Pietersnieuwstraat, Makeba Plein, and Lammerstraat 13. Elevator to the 4th-floor boardroom where Bar Bassie lives."
+            width={1600}
+            height={960}
+            sizes="(max-width:768px) 100vw, 1100px"
+            className="bg-bg h-auto w-full"
+          />
+          <figcaption className="font-subtitle text-ink/60 mt-3 text-center text-[10px] tracking-[0.2em] uppercase">
+            {t("floorplanCaption")}
+          </figcaption>
+        </figure>
+
         <div className="mt-10 flex flex-col items-center gap-2">
           <p className="font-subtitle text-ink tracking-wide uppercase">
             {t("addressLine1")} · {t("addressLine2")}
