@@ -6,11 +6,11 @@ import { About } from "@/components/sections/About"
 import { Menu } from "@/components/sections/Menu"
 import { Location } from "@/components/sections/Location"
 import { Gallery } from "@/components/sections/Gallery"
-import { Jobs } from "@/components/sections/Jobs"
 import { Reservation } from "@/components/sections/Reservation"
 import { Footer } from "@/components/sections/Footer"
 import { StickyNav } from "@/components/StickyNav"
 import { PopupGate, type PopupGateHandle } from "@/components/PopupGate"
+import { JobsBadge } from "@/components/JobsBadge"
 
 export default function Home() {
   const popupRef = useRef<PopupGateHandle>(null)
@@ -25,11 +25,11 @@ export default function Home() {
         <About />
         <Location />
         <Gallery />
-        <Jobs />
         <Reservation />
       </main>
       <Footer />
       <PopupGate ref={popupRef} />
+      <JobsBadge />
     </>
   )
 }
