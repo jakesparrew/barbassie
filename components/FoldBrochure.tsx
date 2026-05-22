@@ -29,7 +29,15 @@ export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: Fol
   return (
     <>
       <div className="flex flex-col items-stretch gap-4">
-        <h3 className="font-subtitle text-ink text-center tracking-wide uppercase">{label}</h3>
+        {/* Mockup styling: big magenta serif title, small underlined "Menu" tagline */}
+        <header className="text-center">
+          <h3 className="font-title text-accent text-4xl leading-none tracking-tight uppercase md:text-5xl">
+            {label}
+          </h3>
+          <p className="font-subtitle text-ink mt-1 inline-block border-b border-current text-xs tracking-[0.25em] uppercase">
+            {t("label")}
+          </p>
+        </header>
 
         <button
           type="button"
