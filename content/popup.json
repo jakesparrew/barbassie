@@ -1,27 +1,27 @@
 {
   "active": true,
   "kind": "poster",
-  "image": "/popup/bassie-goes-mexico.jpg",
+  "image": "/popup/sip-and-slurp.jpg",
   "imageAlt": {
-    "en": "Bassie Goes Mexico — Tequila Surprise. Live mariachi band on Saturdays. Custom menu. 11–31 May.",
-    "nl": "Bassie Goes Mexico — Tequila Surprise. Live mariachi-band op zaterdag. Speciale kaart. 11–31 mei.",
-    "fr": "Bassie Goes Mexico — Tequila Surprise. Orchestre mariachi le samedi. Carte spéciale. 11–31 mai."
+    "en": "Sip & Slurp at Bassie — Oysters & Bloody Mary's, Sunday 23.03.25, 11h–18h",
+    "nl": "Sip & Slurp bij Bassie — Oesters & Bloody Mary's, zondag 23.03.25, 11u–18u",
+    "fr": "Sip & Slurp chez Bassie — Huîtres & Bloody Mary's, dimanche 23.03.25, 11h–18h"
   },
-  "dateStart": "2026-05-11",
-  "dateEnd": "2026-05-31",
+  "dateStart": "2026-05-01",
+  "dateEnd": "2026-12-31",
   "title": {
-    "en": "Bassie Goes Mexico",
-    "nl": "Bassie Goes Mexico",
-    "fr": "Bassie Goes Mexico"
+    "en": "Sip & Slurp",
+    "nl": "Sip & Slurp",
+    "fr": "Sip & Slurp"
   },
   "subtitle": {
-    "en": "Tequila Surprise",
-    "nl": "Tequila Surprise",
-    "fr": "Tequila Surprise"
+    "en": "Oysters & Bloody Mary's",
+    "nl": "Oesters & Bloody Mary's",
+    "fr": "Huîtres & Bloody Mary's"
   },
   "detail": {
-    "en": "11 → 31 May · 7/7 · Live mariachi band on Saturdays · Custom menu",
-    "nl": "11 → 31 mei · 7/7 · Live mariachi-band op zaterdag · Speciale kaart",
-    "fr": "11 → 31 mai · 7/7 · Orchestre mariachi le samedi · Carte spéciale"
+    "en": "Sunday 23.03.25 · 11h — 18h",
+    "nl": "Zondag 23.03.25 · 11u — 18u",
+    "fr": "Dimanche 23.03.25 · 11h — 18h"
   }
 }

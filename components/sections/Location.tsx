@@ -6,11 +6,13 @@ import { SectionLabel } from "@/components/ui/SectionLabel"
 import { Icon } from "@/components/ui/Icon"
 import { RevealOnView } from "@/components/ui/RevealOnView"
 
+// Using gallery shots until we have dedicated Wintercircus venue photography.
+// Drop new files into /public/photos/ and switch the paths back when ready.
 const photos = [
-  "/photos/wintercircus-dome.jpg",
-  "/photos/wintercircus-interior.jpg",
-  "/photos/wintercircus-rooftop.jpg",
-  "/photos/wintercircus-exterior.jpg",
+  "/gallery/interior-sofa.jpg",
+  "/gallery/cocktail-bassie-glass.jpg",
+  "/gallery/oysters-trio.jpg",
+  "/gallery/cocktails-rim.jpg",
 ]
 
 export function Location() {
