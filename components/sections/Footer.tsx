@@ -4,10 +4,7 @@ import { useTranslations, useLocale } from "next-intl"
 import { Icon } from "@/components/ui/Icon"
 import { LocaleSwitcher } from "@/components/ui/LocaleSwitcher"
 import { defaultLocale, type Locale } from "@/lib/i18n"
-
-const EMAIL = "hello@barbassie.be"
-const PHONE = "32470487252"
-const IG = "https://instagram.com/barbassie.wintercircus"
+import { CONTACT, instagramUrl, mailtoUrl, whatsappUrl } from "@/lib/contact"
 
 export function Footer() {
   const t = useTranslations()
@@ -23,18 +20,20 @@ export function Footer() {
           <ul className="font-body mt-4 space-y-2">
             <li>
               <a
-                href={`mailto:${EMAIL}`}
+                href={mailtoUrl()}
                 className="hover:text-accent inline-flex items-center gap-2"
               >
-                <Icon.Mail className="h-4 w-4" /> {EMAIL}
+                <Icon.Mail className="h-4 w-4" /> {CONTACT.email}
               </a>
             </li>
             <li>
               <a
-                href={`https://wa.me/${PHONE}`}
+                href={whatsappUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-accent inline-flex items-center gap-2"
               >
-                <Icon.Whatsapp className="h-4 w-4" /> +32 470 48 72 52
+                <Icon.Whatsapp className="h-4 w-4" /> {CONTACT.phoneDisplay}
               </a>
             </li>
             <li className="font-body">
@@ -61,12 +60,12 @@ export function Footer() {
           <ul className="font-body mt-4 space-y-2">
             <li>
               <a
-                href={IG}
+                href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-accent inline-flex items-center gap-2"
               >
-                <Icon.Instagram className="h-4 w-4" /> @barbassie.wintercircus
+                <Icon.Instagram className="h-4 w-4" /> @{CONTACT.instagramHandle}
               </a>
             </li>
             <li>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { useTranslations } from "next-intl"
 import { cn } from "@/lib/cn"
+import { instagramUrl } from "@/lib/contact"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -71,7 +72,7 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         className="font-body absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-4 px-4 pt-5 text-xs tracking-wide uppercase md:px-8 md:pt-7 md:text-sm"
       >
         <a
-          href="https://instagram.com/barbassie"
+          href={instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-accent transition-colors"
