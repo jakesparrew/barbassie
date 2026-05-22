@@ -15,7 +15,7 @@ const photos = [
   "/gallery/cocktails-rim.jpg",
 ]
 
-const FLOORPLAN = "/photos/wintercircus-floorplan.png"
+const FLOORPLAN = "/photos/wintercircus-floorplan.jpg"
 
 export function Location() {
   const t = useTranslations("location")
