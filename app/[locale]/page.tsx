@@ -10,7 +10,6 @@ import { Reservation } from "@/components/sections/Reservation"
 import { Footer } from "@/components/sections/Footer"
 import { StickyNav } from "@/components/StickyNav"
 import { PopupGate, type PopupGateHandle } from "@/components/PopupGate"
-import { JobsBadge } from "@/components/JobsBadge"
 
 export default function Home() {
   const popupRef = useRef<PopupGateHandle>(null)
@@ -29,7 +28,6 @@ export default function Home() {
       </main>
       <Footer />
       <PopupGate ref={popupRef} />
-      <JobsBadge />
     </>
   )
 }

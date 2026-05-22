@@ -43,8 +43,12 @@
   },
   "jobs": {
     "label": "Jobs",
+    "heading": "Work with us at Bassie",
+    "intro": "We're a small rooftop crew at the Wintercircus. Long summer nights, sharp drinks, sharable plates, and a view that does the heavy lifting. If you want in, here's what we're looking for right now.",
     "noOpenings": "No current openings. Send us a hello anyway.",
-    "apply": "Apply"
+    "apply": "Apply",
+    "openApplicationLine": "Don't see a fit? Send an open application to",
+    "back": "Back to Bassie"
   },
   "reserve": {
     "label": "Reserve",
@@ -57,6 +61,7 @@
     "contact": "Contact",
     "hours": "Hours",
     "follow": "Follow",
+    "jobs": "Jobs",
     "designed": "Designed by LOBSTER Antwerp"
   },
   "popup": {

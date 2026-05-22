@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "id": "bartender",
+    "title": {
+      "en": "Bartender",
+      "nl": "Barman / Barvrouw",
+      "fr": "Barman / Barmaid"
+    },
+    "description": {
+      "en": "Run the bar on busy summer nights. Mix our signature cocktails, hold service, look after every guest at the counter. Two evening shifts a week minimum, weekends included. Cocktail experience or strong willingness to learn — we'll train you on the rest.",
+      "nl": "Run de bar tijdens drukke zomeravonden. Mix onze signature cocktails, hou de service strak, en zorg voor elke gast aan de toog. Minimaal twee avondshifts per week, weekends inbegrepen. Cocktailervaring of de drive om te leren — de rest leren we je graag aan.",
+      "fr": "Tiens le bar pendant les soirées d'été chargées. Prépare nos cocktails signature, gère le service et chouchoute les clients au comptoir. Deux shifts du soir minimum par semaine, week-ends compris. Expérience cocktail ou forte envie d'apprendre — on te forme sur le reste."
+    },
+    "applyEmail": "hello@barbassie.be"
+  },
+  {
+    "id": "floor-staff",
+    "title": {
+      "en": "Floor staff / Runner",
+      "nl": "Zaalmedewerker / Runner",
+      "fr": "Personnel de salle / Runner"
+    },
+    "description": {
+      "en": "Take orders on the rooftop, run drinks and small plates, make sure tables are happy. Friendly, quick on your feet, fluent in Dutch or English (bonus for French). Flexible shifts — perfect for students or as a second job.",
+      "nl": "Neem bestellingen op het dakterras, breng drinks en kleine gerechten, en zorg dat de tafels in orde zijn. Vriendelijk, snel ter been, vloeiend in Nederlands of Engels (Frans is een plus). Flexibele shifts — ideaal voor studenten of als bijbaan.",
+      "fr": "Prends les commandes sur la terrasse, sers les drinks et les petites assiettes, et veille à ce que les tables soient contentes. Sympa, rapide, fluent en néerlandais ou en anglais (français en bonus). Horaires flexibles — parfait pour les étudiants ou en complément d'un autre job."
+    },
+    "applyEmail": "hello@barbassie.be"
+  },
+  {
+    "id": "kitchen-helper",
+    "title": {
+      "en": "Kitchen helper",
+      "nl": "Keukenhulp",
+      "fr": "Aide-cuisine"
+    },
+    "description": {
+      "en": "Prep our small-plates menu (oysters, charcuterie, croquetas, pastas) alongside the chef. Plating, mise en place, end-of-night cleanup. Tidy and reliable matters more than years on the job. We invest in people who stay curious.",
+      "nl": "Bereid samen met de chef onze kleine-gerechten kaart (oesters, charcuterie, croquetas, pasta's). Dresseren, mise en place, eindje opruimen. Netjes en betrouwbaar telt meer dan jaren ervaring. We investeren in mensen die nieuwsgierig blijven.",
+      "fr": "Prépare avec le chef notre carte de petites assiettes (huîtres, charcuterie, croquetas, pâtes). Dressage, mise en place, nettoyage de fin de service. La propreté et la fiabilité comptent plus que les années d'expérience. On investit dans les gens qui restent curieux."
+    },
+    "applyEmail": "hello@barbassie.be"
+  },
+  {
+    "id": "weekend-host",
+    "title": {
+      "en": "Weekend host",
+      "nl": "Weekend host",
+      "fr": "Hôte / Hôtesse de week-end"
+    },
+    "description": {
+      "en": "Welcome guests at the rooftop entrance Friday and Saturday evenings. Seat walk-ins, manage the WhatsApp reservation list, keep the energy up. A people person with a clear head when it's full. Two evenings a week, paid in cash or invoice.",
+      "nl": "Verwelkom gasten aan de ingang van het dakterras op vrijdag- en zaterdagavond. Plaats walk-ins, beheer de WhatsApp-reservatielijst, hou de sfeer erin. Een mensenmens met een helder hoofd als het druk is. Twee avonden per week, cash of factuur.",
+      "fr": "Accueille les clients à l'entrée de la terrasse les vendredi et samedi soir. Place les walk-ins, gère la liste de réservations WhatsApp, maintiens l'énergie. Une personne de contact qui garde la tête froide quand c'est complet. Deux soirées par semaine, payé en cash ou sur facture."
+    },
+    "applyEmail": "hello@barbassie.be"
+  }
+]

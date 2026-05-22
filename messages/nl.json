@@ -41,8 +41,12 @@
   "gallery": { "label": "Galerij" },
   "jobs": {
     "label": "Jobs",
+    "heading": "Werken bij Bassie",
+    "intro": "We zijn een kleine rooftop-crew in het Wintercircus. Lange zomeravonden, scherpe drinks, deelbare hapjes en een zicht dat het zware werk doet. Heb je goesting? Dit zijn de plekken die nu open staan.",
     "noOpenings": "Geen openstaande vacatures op dit moment. Stuur ons toch een berichtje.",
-    "apply": "Solliciteer"
+    "apply": "Solliciteer",
+    "openApplicationLine": "Niets dat bij je past? Stuur een spontane sollicitatie naar",
+    "back": "Terug naar Bassie"
   },
   "reserve": {
     "label": "Reserveren",
@@ -55,6 +59,7 @@
     "contact": "Contact",
     "hours": "Openingsuren",
     "follow": "Volg ons",
+    "jobs": "Jobs",
     "designed": "Ontworpen door LOBSTER Antwerpen"
   },
   "popup": { "close": "Sluiten", "happening": "Wat is er" }

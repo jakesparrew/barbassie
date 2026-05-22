@@ -41,8 +41,12 @@
   "gallery": { "label": "Galerie" },
   "jobs": {
     "label": "Emplois",
+    "heading": "Travailler chez Bassie",
+    "intro": "On est une petite équipe rooftop au Wintercircus. Longues soirées d'été, drinks pointus, assiettes à partager et une vue qui fait tout le boulot. Envie d'en être ? Voilà les postes qu'on cherche en ce moment.",
     "noOpenings": "Aucun poste ouvert pour le moment. Écris-nous quand même.",
-    "apply": "Postuler"
+    "apply": "Postuler",
+    "openApplicationLine": "Rien ne te correspond ? Envoie une candidature spontanée à",
+    "back": "Retour chez Bassie"
   },
   "reserve": {
     "label": "Réserver",
@@ -55,6 +59,7 @@
     "contact": "Contact",
     "hours": "Horaires",
     "follow": "Suis-nous",
+    "jobs": "Emplois",
     "designed": "Conçu par LOBSTER Anvers"
   },
   "popup": { "close": "Fermer", "happening": "Évènement" }

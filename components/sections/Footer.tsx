@@ -1,7 +1,9 @@
 // components/sections/Footer.tsx
-import { useTranslations } from "next-intl"
+import Link from "next/link"
+import { useTranslations, useLocale } from "next-intl"
 import { Icon } from "@/components/ui/Icon"
 import { LocaleSwitcher } from "@/components/ui/LocaleSwitcher"
+import { defaultLocale, type Locale } from "@/lib/i18n"
 
 const EMAIL = "hello@barbassie.be"
 const PHONE = "32470487252"
@@ -9,6 +11,8 @@ const IG = "https://instagram.com/barbassie.wintercircus"
 
 export function Footer() {
   const t = useTranslations()
+  const locale = useLocale() as Locale
+  const jobsHref = locale === defaultLocale ? "/jobs" : `/${locale}/jobs`
   return (
     <footer className="bg-ink text-bg px-4 py-16">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
@@ -64,6 +68,11 @@ export function Footer() {
               >
                 <Icon.Instagram className="h-4 w-4" /> @barbassie.wintercircus
               </a>
+            </li>
+            <li>
+              <Link href={jobsHref} className="hover:text-accent inline-flex items-center gap-2">
+                {t("footer.jobs")}
+              </Link>
             </li>
           </ul>
           <div className="mt-6">

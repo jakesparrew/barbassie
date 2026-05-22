@@ -71,8 +71,7 @@ function FallbackCard({ popup, locale }: { popup: Popup; locale: Locale }) {
     <div
       className="relative flex max-h-[85vh] w-[88vw] max-w-md flex-col items-center overflow-hidden text-center"
       style={{
-        background:
-          "radial-gradient(circle at top, #ffd84d 0%, #f4c020 45%, #e09a1c 100%)",
+        background: "radial-gradient(circle at top, #ffd84d 0%, #f4c020 45%, #e09a1c 100%)",
       }}
     >
       {/* Decorative stars border */}
@@ -105,19 +104,21 @@ function FallbackCard({ popup, locale }: { popup: Popup; locale: Locale }) {
 function Stars() {
   // 10 small star characters around the border. Pure decoration.
   const positions = [
-    "top-3 left-4", "top-3 right-4",
-    "top-1/4 left-2", "top-1/4 right-2",
-    "top-1/2 left-2", "top-1/2 right-2",
-    "top-3/4 left-2", "top-3/4 right-2",
-    "bottom-3 left-4", "bottom-3 right-4",
+    "top-3 left-4",
+    "top-3 right-4",
+    "top-1/4 left-2",
+    "top-1/4 right-2",
+    "top-1/2 left-2",
+    "top-1/2 right-2",
+    "top-3/4 left-2",
+    "top-3/4 right-2",
+    "bottom-3 left-4",
+    "bottom-3 right-4",
   ]
   return (
     <>
       {positions.map((cls, i) => (
-        <span
-          key={i}
-          className={`absolute ${cls} text-[color:#a31a1a]/80 text-lg`}
-        >
+        <span key={i} className={`absolute ${cls} text-lg text-[color:#a31a1a]/80`}>
           ★
         </span>
       ))}
