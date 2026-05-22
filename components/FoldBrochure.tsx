@@ -18,13 +18,7 @@ type FoldBrochureProps = {
   alt: string
 }
 
-export function FoldBrochure({
-  panels,
-  panelsPerSide,
-  label,
-  pdfHref,
-  alt,
-}: FoldBrochureProps) {
+export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: FoldBrochureProps) {
   const t = useTranslations("menu")
   const [open, setOpen] = useState(false)
 
@@ -35,9 +29,7 @@ export function FoldBrochure({
   return (
     <>
       <div className="flex flex-col items-stretch gap-4">
-        <h3 className="font-subtitle text-ink text-center tracking-wide uppercase">
-          {label}
-        </h3>
+        <h3 className="font-subtitle text-ink text-center tracking-wide uppercase">{label}</h3>
 
         <button
           type="button"
@@ -47,12 +39,7 @@ export function FoldBrochure({
         >
           <div className="relative mx-auto aspect-[3/4] w-full max-w-[420px] overflow-hidden rounded-md shadow-xl transition-transform duration-300 group-hover:scale-[1.02] group-hover:shadow-2xl">
             {/* eslint-disable-next-line @next/next/no-img-element -- intentional for poster-style cover */}
-            <img
-              src={cover}
-              alt={alt}
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
+            <img src={cover} alt={alt} className="h-full w-full object-cover" loading="lazy" />
             {/* Subtle "tap to open" overlay hint, visible on hover/focus */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
               <span className="font-subtitle text-sm tracking-wide text-white uppercase">
@@ -75,19 +62,24 @@ export function FoldBrochure({
         </a>
       </div>
 
-      {/* Lightbox: shows the unfolded inside spread at readable size */}
+      {/* Lightbox: shows the unfolded inside spread at readable size.
+          closeOnContentClick=true so tapping anywhere on the open menu refolds it. */}
       <Modal
         open={open}
         onClose={() => setOpen(false)}
         ariaLabel={`${label} menu`}
+        closeOnContentClick
         className="w-full"
       >
         <div className="relative">
           <button
             type="button"
-            onClick={() => setOpen(false)}
+            onClick={(e) => {
+              e.stopPropagation()
+              setOpen(false)
+            }}
             aria-label="Close"
-            className="absolute -top-12 right-0 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+            className="absolute -top-12 right-0 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur transition hover:scale-110 hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +97,8 @@ export function FoldBrochure({
             </svg>
           </button>
 
-          {/* Desktop: inside spread side-by-side. Mobile: vertical stack. */}
+          {/* Desktop: inside spread side-by-side. Mobile: vertical stack.
+              Clicks here bubble to the modal content wrapper, which closes the modal. */}
           <div
             className={cn(
               "max-h-[85vh] gap-2 overflow-y-auto rounded-md md:gap-3",
@@ -124,12 +117,12 @@ export function FoldBrochure({
             ))}
           </div>
 
-          <div className="mt-4 text-center">
+          <div className="mt-4 text-center" onClick={(e) => e.stopPropagation()}>
             <a
               href={pdfHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-subtitle text-white/90 text-sm tracking-wide uppercase hover:text-white hover:underline"
+              className="font-subtitle text-sm tracking-wide text-white/90 uppercase hover:text-white hover:underline"
             >
               {t("download")}
             </a>
