@@ -15,15 +15,19 @@ export function Reservation() {
   const [bgFailed, setBgFailed] = useState(false)
 
   return (
-    <section id="reserve" className="relative overflow-hidden px-4 py-24 md:py-32">
-      {/* Background: warm-lit cocktail shot. Falls back to a burgundy gradient
-          if the source isn't on disk yet. */}
+    <section
+      id="reserve"
+      className="relative flex min-h-[min(900px,100svh)] flex-col items-center overflow-hidden px-4 py-20 text-center md:py-28"
+    >
+      {/* Background: warm-lit cocktail shot.
+          We keep the gradient light so the cucumber-cocktail glass stays the visual anchor. */}
       {!bgFailed && (
         <Image
           src="/gallery/cocktail-bassie-glass.jpg"
           alt=""
           fill
           sizes="100vw"
+          priority={false}
           className="absolute inset-0 object-cover"
           onError={() => setBgFailed(true)}
           aria-hidden
@@ -34,50 +38,57 @@ export function Reservation() {
           "absolute inset-0",
           bgFailed
             ? "bg-gradient-to-b from-[#1a0708] via-[color:var(--color-ink)] to-[#1a0708]"
-            : "bg-gradient-to-b from-black/65 via-black/45 to-black/75"
+            : "bg-gradient-to-b from-black/30 via-black/15 to-black/55"
         )}
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-4xl text-[color:var(--color-bg)]">
-        <SectionLabel className="text-accent text-center drop-shadow-lg">
+      <div className="relative z-10 flex w-full max-w-2xl flex-col items-center text-[color:var(--color-bg)]">
+        <SectionLabel className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
           {t("label").toUpperCase()}
         </SectionLabel>
 
-        <div className="mt-10 grid items-center gap-10 md:mt-14 md:grid-cols-2 md:gap-12">
-          <div className="font-body space-y-4 text-center drop-shadow-md md:text-left">
-            <p className="text-lg leading-relaxed">{t("walkIns")}</p>
-            <p className="text-lg leading-relaxed">{t("groups")}</p>
-          </div>
-
-          <div className="flex justify-center md:justify-end">
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                // Sizing — full width on mobile, sized to content on desktop
-                "w-full max-w-sm md:w-auto",
-                // Touch target — generous on mobile
-                "inline-flex items-center justify-center gap-3",
-                "rounded-full px-8 py-4 md:px-7 md:py-4",
-                // Visual weight
-                "bg-accent text-white",
-                "font-subtitle text-base tracking-wide uppercase md:text-sm",
-                "shadow-[0_10px_40px_-10px_rgba(224,54,183,0.55)]",
-                // Hover / press
-                "transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_18px_50px_-12px_rgba(224,54,183,0.7)]",
-                "active:translate-y-0 active:shadow-[0_6px_20px_-6px_rgba(224,54,183,0.5)]",
-                // Focus ring on the lit background
-                "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:outline-none"
-              )}
-            >
-              <Icon.Whatsapp className="h-5 w-5 shrink-0" aria-hidden />
-              <span>{t("whatsappCta")}</span>
-            </a>
-          </div>
-        </div>
+        <p
+          className={cn(
+            "font-body mt-6 max-w-xl text-sm leading-relaxed tracking-wide uppercase",
+            "drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] md:text-base"
+          )}
+        >
+          {t("groups")}
+        </p>
+        <p
+          className={cn(
+            "font-body mt-3 text-sm tracking-wide uppercase",
+            "drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] md:text-base"
+          )}
+        >
+          {t("walkIns")}
+        </p>
       </div>
+
+      {/* Spacer pushes the CTA toward the bottom of the section,
+          letting the glass photo breathe in the middle */}
+      <div className="grow" aria-hidden />
+
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(
+          "relative z-10 mt-12",
+          "inline-flex w-full max-w-md items-center justify-center gap-3 md:w-auto md:max-w-none md:px-10",
+          "rounded-full px-8 py-4",
+          "bg-accent text-white",
+          "font-subtitle text-base tracking-wide uppercase",
+          "shadow-[0_18px_50px_-12px_rgba(224,54,183,0.65)]",
+          "transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_60px_-14px_rgba(224,54,183,0.8)]",
+          "active:translate-y-0",
+          "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:outline-none"
+        )}
+      >
+        <Icon.Whatsapp className="h-5 w-5 shrink-0" aria-hidden />
+        <span>{t("whatsappCta")}</span>
+      </a>
     </section>
   )
 }

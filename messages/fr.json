@@ -51,8 +51,8 @@
   },
   "reserve": {
     "label": "Réserver",
-    "walkIns": "Walk-ins toujours les bienvenus pour les petits groupes.",
-    "groups": "Pour les groupes de 6 personnes ou plus, écris-nous sur WhatsApp.",
+    "walkIns": "Les walk-ins sont toujours les bienvenus",
+    "groups": "Pour les groupes de 6 personnes ou plus, écris-nous sur WhatsApp et on s'occupe de toi.",
     "whatsappCta": "Écris-nous sur WhatsApp",
     "whatsappPrefill": "Salut Bassie ! On aimerait réserver une table — "
   },

@@ -4,7 +4,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { Pill } from "@/components/ui/Pill"
-import { SectionLabel } from "@/components/ui/SectionLabel"
 import { Footer } from "@/components/sections/Footer"
 import { getJobs } from "@/lib/content"
 import { isLocale, locales, type Locale, defaultLocale } from "@/lib/i18n"
@@ -45,7 +44,10 @@ export default async function JobsPage({ params }: { params: Promise<{ locale: s
           </Link>
 
           <header className="mt-10">
-            <SectionLabel>{t("label").toUpperCase()}</SectionLabel>
+            {/* Small magenta kicker — keeps the big h1 as the visual anchor on this dedicated page */}
+            <p className="font-subtitle text-accent text-xs tracking-[0.3em] uppercase">
+              {t("label")}
+            </p>
             <h1 className="font-title text-ink mt-3 text-5xl leading-none tracking-tight md:text-7xl">
               {t("heading")}
             </h1>

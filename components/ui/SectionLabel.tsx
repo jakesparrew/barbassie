@@ -2,11 +2,21 @@
 import { type ReactNode } from "react"
 import { cn } from "@/lib/cn"
 
-export function SectionLabel({ children, className }: { children: ReactNode; className?: string }) {
+/**
+ * The big magenta Lioney section title used at the top of each scroll section.
+ * (Mockup style: condensed serif, huge, uppercase.)
+ */
+export function SectionLabel({
+  children,
+  className,
+}: {
+  children: ReactNode
+  className?: string
+}) {
   return (
     <h2
       className={cn(
-        "font-subtitle text-accent text-3xl tracking-wide uppercase md:text-4xl",
+        "font-title text-accent text-5xl leading-[0.95] tracking-tight uppercase md:text-7xl",
         className
       )}
     >
