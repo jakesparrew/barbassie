@@ -1,14 +1,17 @@
 // components/sections/Hero.tsx
 "use client"
-import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { useTranslations } from "next-intl"
 import { instagramUrl, mailtoUrl } from "@/lib/contact"
+import { cn } from "@/lib/cn"
 
 /**
  * Hero — matches the user's reference screenshot:
  *   - Full-bleed chrome video background (poster fallback for reduced-motion)
- *   - TOP-LEFT: INSTAGRAM   TOP-RIGHT: CONTACT (mailto:hello@barbassie.be)
- *   - Center: large BASSIE wordmark + tagline + 3-line hours + magenta hamburger
+ *   - TOP-LEFT: INSTAGRAM   TOP-RIGHT: CONTACT (mailto)
+ *   - Center: BASSIE wordmark + tagline + 3-line hours + 3-bar hamburger
+ *     The hamburger toggles an inline nav (Menu / Location / Reservation / Happening)
  *   - BOTTOM: venue address on 2 centered lines
  */
 const fadeUp = {
@@ -16,8 +19,26 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } },
 } as const
 
-export function Hero() {
+export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
   const t = useTranslations()
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  // Close menu on Escape
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false)
+    }
+    document.addEventListener("keydown", onKey)
+    return () => document.removeEventListener("keydown", onKey)
+  }, [menuOpen])
+
+  const navItems = [
+    { label: t("nav.menu"), href: "#menu" },
+    { label: t("nav.location"), href: "#location" },
+    { label: t("nav.reservation"), href: "#reserve" },
+    { label: t("nav.happening"), onClick: onHappeningClick },
+  ] as const
 
   return (
     <section
@@ -45,7 +66,7 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-black/15" aria-hidden />
 
-      {/* Top corners: INSTAGRAM (left), CONTACT (right) */}
+      {/* Top corners */}
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
@@ -65,27 +86,25 @@ export function Hero() {
         </a>
       </motion.div>
 
-      {/* Center stack: BASSIE wordmark → tagline → hours → hamburger */}
+      {/* Center stack */}
       <motion.div
         className="relative z-10 flex h-full flex-col items-center justify-center px-4 pt-20 pb-24 text-center md:pt-24 md:pb-28"
         initial="hidden"
         animate="show"
         transition={{ staggerChildren: 0.14, delayChildren: 0.15 }}
       >
-        {/* BASSIE wordmark — bigger again per user's reference. Keep an upper
-            height cap so the rest of the stack always stays underneath. */}
+        {/* BASSIE wordmark — using the tight-cropped PNG (no transparent padding) */}
         <motion.img
           variants={fadeUp}
           src="/logo-bassie.png"
           alt="BASSIE"
-          className="h-auto max-h-[42vh] w-[90vw] max-w-[1100px] object-contain drop-shadow-2xl md:max-h-[48vh]"
+          className="h-auto w-[90vw] max-w-[1100px] object-contain drop-shadow-2xl"
         />
 
-        {/* Tagline — sits directly under the wordmark. Tight margins so the
-            small text reads as part of the logo lockup, not a separate block. */}
+        {/* Tagline — directly under the wordmark */}
         <motion.p
           variants={fadeUp}
-          className="font-body mt-1 text-[11px] leading-snug tracking-[0.2em] uppercase drop-shadow-lg md:mt-2 md:text-xs"
+          className="font-body mt-4 text-[11px] leading-snug tracking-[0.2em] uppercase drop-shadow-lg md:mt-6 md:text-xs"
         >
           {t("hero.taglineLine1")}
           <br />
@@ -96,7 +115,7 @@ export function Hero() {
           {t("hero.taglineLine2Suffix")}
         </motion.p>
 
-        {/* Hours block — 3 lines, tight to the tagline */}
+        {/* Hours block — 3 lines */}
         <motion.div
           variants={fadeUp}
           className="font-body mt-3 space-y-1 text-[10px] leading-snug tracking-[0.18em] uppercase drop-shadow-lg md:mt-4 md:text-[11px]"
@@ -106,26 +125,107 @@ export function Hero() {
           <p>{t("hours.sunday")}</p>
         </motion.div>
 
-        {/* Magenta 3-line hamburger */}
-        <motion.div variants={fadeUp} className="mt-4 md:mt-5">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-            className="text-accent h-8 w-8 drop-shadow-lg md:h-10 md:w-10"
-            aria-hidden
-          >
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
+        {/* Hamburger / expanded nav */}
+        <motion.div variants={fadeUp} className="mt-5 flex flex-col items-center md:mt-7">
+          <AnimatePresence initial={false} mode="wait">
+            {!menuOpen ? (
+              <motion.button
+                key="bars"
+                type="button"
+                onClick={() => setMenuOpen(true)}
+                aria-label={t("nav.openMenu")}
+                aria-expanded={false}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                className="text-accent focus-visible:ring-accent group flex h-12 w-12 items-center justify-center rounded-md transition-transform duration-200 hover:scale-110 focus-visible:ring-2 focus-visible:outline-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  className="h-8 w-8 drop-shadow-lg md:h-10 md:w-10"
+                  aria-hidden
+                >
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+              </motion.button>
+            ) : (
+              <motion.nav
+                key="nav"
+                aria-label="Hero navigation"
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.22 }}
+                className="flex flex-col items-center gap-3"
+              >
+                {navItems.map((item) => {
+                  const baseClass = cn(
+                    "font-subtitle text-accent text-xl md:text-2xl tracking-widest uppercase",
+                    "drop-shadow-lg transition-transform duration-150",
+                    "hover:scale-105 hover:text-white",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1"
+                  )
+                  if ("href" in item) {
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={() => setMenuOpen(false)}
+                        className={baseClass}
+                      >
+                        {item.label}
+                      </a>
+                    )
+                  }
+                  return (
+                    <button
+                      key={item.label}
+                      type="button"
+                      onClick={() => {
+                        item.onClick()
+                        setMenuOpen(false)
+                      }}
+                      className={baseClass}
+                    >
+                      {item.label}
+                    </button>
+                  )
+                })}
+                <button
+                  type="button"
+                  onClick={() => setMenuOpen(false)}
+                  aria-label={t("nav.closeMenu")}
+                  className="text-accent/70 hover:text-accent focus-visible:ring-accent mt-2 rounded-full p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    className="h-5 w-5"
+                    aria-hidden
+                  >
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                    <line x1="6" y1="18" x2="18" y2="6" />
+                  </svg>
+                </button>
+              </motion.nav>
+            )}
+          </AnimatePresence>
         </motion.div>
       </motion.div>
 
-      {/* Bottom: venue address on 2 centered lines */}
+      {/* Bottom address — 2 centered lines */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

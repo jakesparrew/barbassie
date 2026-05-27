@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <StickyNav onHappeningClick={openHappening} />
       <main>
-        <Hero />
+        <Hero onHappeningClick={openHappening} />
         <Menu />
         <About />
         <Location />
