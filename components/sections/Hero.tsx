@@ -101,24 +101,24 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
           className="h-auto w-[90vw] max-w-[1100px] object-contain drop-shadow-2xl"
         />
 
-        {/* Tagline — directly under the wordmark */}
+        {/* Tagline + hours block — heavy VTC Marsha Bold per the user's
+            reference (the geometric Gothic Regular reads too thin here). */}
         <motion.p
           variants={fadeUp}
-          className="font-body mt-4 text-[11px] leading-snug tracking-[0.2em] uppercase drop-shadow-lg md:mt-6 md:text-xs"
+          className="font-subtitle mt-4 text-xs leading-snug tracking-[0.18em] uppercase drop-shadow-lg md:mt-6 md:text-sm"
         >
           {t("hero.taglineLine1")}
           <br />
           {t("hero.taglineLine2Prefix")}{" "}
-          <span className="text-[0.6em] tracking-normal underline underline-offset-2">
+          <span className="text-[0.65em] tracking-normal underline underline-offset-2">
             {t("hero.taglineLine2Joiner")}
           </span>{" "}
           {t("hero.taglineLine2Suffix")}
         </motion.p>
 
-        {/* Hours block — 3 lines */}
         <motion.div
           variants={fadeUp}
-          className="font-body mt-3 space-y-1 text-[10px] leading-snug tracking-[0.18em] uppercase drop-shadow-lg md:mt-4 md:text-[11px]"
+          className="font-subtitle mt-3 space-y-1 text-[11px] leading-snug tracking-[0.16em] uppercase drop-shadow-lg md:mt-4 md:text-xs"
         >
           <p>{t("hours.weekdays")}</p>
           <p>{t("hours.weekends")}</p>
