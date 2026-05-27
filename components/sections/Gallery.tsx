@@ -48,12 +48,34 @@ export function Gallery() {
   return (
     <section id="gallery" className="bg-bg px-4 py-24">
       <RevealOnView className="mx-auto max-w-6xl">
-        {/* Mockup p6: two-line heading "BASSIE'S" (big magenta) + "GALLERY" (small underlined) */}
-        <header className="text-center">
-          <h2 className="font-subtitle text-accent text-5xl leading-[0.95] tracking-tight uppercase md:text-7xl">
-            BASSIE&rsquo;S
+        {/* Heading: the actual BASSIE logo wordmark (colorized to magenta via
+            CSS mask so it matches the hero exactly) + a tiny apostrophe-S in
+            the same font + small underlined "Gallery" kicker. */}
+        <header className="flex flex-col items-center">
+          <h2 className="flex items-baseline gap-1" aria-label="Bassie's Gallery">
+            <span
+              role="img"
+              aria-hidden
+              className="bg-accent inline-block h-16 w-[260px] md:h-24 md:w-[400px]"
+              style={{
+                maskImage: "url(/logo-bassie.png)",
+                WebkitMaskImage: "url(/logo-bassie.png)",
+                maskSize: "contain",
+                WebkitMaskSize: "contain",
+                maskRepeat: "no-repeat",
+                WebkitMaskRepeat: "no-repeat",
+                maskPosition: "center",
+                WebkitMaskPosition: "center",
+              }}
+            />
+            <span
+              aria-hidden
+              className="font-subtitle text-accent text-5xl leading-none tracking-tight md:text-7xl"
+            >
+              &rsquo;S
+            </span>
           </h2>
-          <p className="font-body text-ink mt-1 inline-block border-b border-current text-xs tracking-[0.25em] uppercase">
+          <p className="font-body text-ink mt-3 inline-block border-b border-current text-xs tracking-[0.25em] uppercase">
             {t("label")}
           </p>
         </header>

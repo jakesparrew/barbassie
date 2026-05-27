@@ -69,7 +69,12 @@ export function LocaleSwitcher({ className }: { className?: string }) {
                 onClick={() => onPick(loc)}
                 className={cn(
                   "font-body w-full rounded px-3 py-2 text-left text-sm",
-                  loc === current ? "bg-accent/10 text-accent" : "hover:bg-ink/5"
+                  // Explicit text-ink so the dropdown stays readable even when
+                  // the LocaleSwitcher is mounted inside a dark Footer (where
+                  // it would otherwise inherit text-bg / white-on-white).
+                  loc === current
+                    ? "bg-accent/10 text-accent"
+                    : "text-ink hover:bg-ink/5"
                 )}
               >
                 {localeNames[loc]}

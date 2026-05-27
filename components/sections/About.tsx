@@ -28,18 +28,10 @@ export function About() {
         className="absolute inset-0 object-cover object-center"
         aria-hidden
       />
-      {/* Top-weighted overlay per mockup: dark in the upper half (where the pull
-          quote + body sit so the magenta + white stay legible), fading to
-          transparent across the middle, leaving the lower half of the photo
-          (bar + chandelier + sofa) untouched. */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.55) 30%, rgba(0,0,0,0) 55%)",
-        }}
-        aria-hidden
-      />
+      {/* Solid dark box covering the top half of the section (where the pull
+          quote + body sit). Hard cut-off at 50% so the lower half of the photo
+          stays at full brightness, per the user's reference. */}
+      <div className="absolute inset-x-0 top-0 h-1/2 bg-black/70" aria-hidden />
 
       <RevealOnView className="relative mx-auto w-full max-w-3xl text-[color:var(--color-bg)]">
         <blockquote className="font-subtitle text-accent text-right text-4xl leading-[0.95] tracking-tight uppercase drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)] md:text-6xl">
