@@ -48,16 +48,38 @@ export function Gallery() {
   return (
     <section id="gallery" className="bg-bg px-4 py-24">
       <RevealOnView className="mx-auto max-w-6xl">
-        {/* Heading: "BASSIE'S" as one cohesive piece of text in the same VTC
-            Marsha Bold the logo uses, so BASSIE and 'S are proportionally
-            matched (the prior PNG + separate 'S approach made the 'S look
-            oversized because the logo PNG has transparent padding around the
-            letters). Plus the small underlined "Gallery" kicker. */}
-        <header className="text-center">
-          <h2 className="font-subtitle text-accent text-6xl leading-[0.95] tracking-tight uppercase md:text-8xl">
-            BASSIE&rsquo;S
+        {/* Heading: the actual BASSIE logo wordmark (PNG, now cropped tight so
+            it has no transparent padding) colorized to magenta via CSS mask,
+            followed by an apostrophe-S in matching font-subtitle. Sized so the
+            letter heights line up. Plus the small underlined "Gallery" kicker. */}
+        <header className="flex flex-col items-center">
+          <h2 className="flex items-end gap-1.5" aria-label="Bassie's Gallery">
+            <span
+              role="img"
+              aria-hidden
+              className="bg-accent inline-block h-12 md:h-20"
+              style={{
+                // The cropped logo's exact aspect (3144 x 584) — width follows
+                // height automatically, so a single height knob controls size.
+                aspectRatio: "3144 / 584",
+                maskImage: "url(/logo-bassie.png)",
+                WebkitMaskImage: "url(/logo-bassie.png)",
+                maskSize: "contain",
+                WebkitMaskSize: "contain",
+                maskRepeat: "no-repeat",
+                WebkitMaskRepeat: "no-repeat",
+                maskPosition: "center",
+                WebkitMaskPosition: "center",
+              }}
+            />
+            <span
+              aria-hidden
+              className="font-subtitle text-accent text-6xl leading-none tracking-tight md:text-8xl"
+            >
+              &rsquo;S
+            </span>
           </h2>
-          <p className="font-body text-ink mt-2 inline-block border-b border-current text-xs tracking-[0.25em] uppercase">
+          <p className="font-body text-ink mt-3 inline-block border-b border-current text-xs tracking-[0.25em] uppercase">
             {t("label")}
           </p>
         </header>
