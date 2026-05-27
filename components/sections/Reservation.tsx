@@ -44,9 +44,7 @@ export function Reservation() {
       />
 
       <div className="relative z-10 flex w-full max-w-2xl flex-col items-center text-[color:var(--color-bg)]">
-        <SectionLabel className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
-          {t("label").toUpperCase()}
-        </SectionLabel>
+        <SectionLabel>{t("label").toUpperCase()}</SectionLabel>
 
         <p
           className={cn(

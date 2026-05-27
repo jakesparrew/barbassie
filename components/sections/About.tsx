@@ -34,7 +34,7 @@ export function About() {
       <div className="absolute inset-x-0 top-0 h-1/2 bg-black/70" aria-hidden />
 
       <RevealOnView className="relative mx-auto w-full max-w-3xl text-[color:var(--color-bg)]">
-        <blockquote className="font-subtitle text-accent text-right text-4xl leading-[0.95] tracking-tight uppercase drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)] md:text-6xl">
+        <blockquote className="font-subtitle text-accent text-right text-4xl leading-[0.95] tracking-tight uppercase md:text-6xl">
           {t("pullQuote")}
         </blockquote>
         <p className="font-body mt-8 max-w-xl text-left text-sm leading-relaxed tracking-wide uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] md:text-base">
