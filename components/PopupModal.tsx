@@ -83,7 +83,7 @@ function FallbackCard({ popup, locale }: { popup: Popup; locale: Locale }) {
         <p className="font-subtitle text-xs tracking-[0.25em] uppercase">
           {popup.subtitle?.[locale] ?? ""}
         </p>
-        <h2 className="font-title mt-4 text-5xl leading-[0.9] tracking-tight md:text-6xl">
+        <h2 className="font-subtitle mt-4 text-5xl leading-[0.9] tracking-tight uppercase md:text-6xl">
           {popup.title?.[locale] ?? popup.imageAlt[locale]}
         </h2>
         <div className="mx-auto mt-8 inline-block rounded-full border-2 border-[color:#a31a1a] px-4 py-1">
@@ -92,7 +92,7 @@ function FallbackCard({ popup, locale }: { popup: Popup; locale: Locale }) {
           </p>
         </div>
         {popup.detail && (
-          <p className="font-subtitle mt-6 max-w-xs text-xs leading-relaxed tracking-wide uppercase">
+          <p className="font-body mt-6 max-w-xs text-xs leading-relaxed tracking-wide uppercase">
             {popup.detail[locale]}
           </p>
         )}

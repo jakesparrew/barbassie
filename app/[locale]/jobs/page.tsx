@@ -38,14 +38,14 @@ export default async function JobsPage({ params }: { params: Promise<{ locale: s
           {/* Back link */}
           <Link
             href={homeHref}
-            className="font-subtitle text-ink/60 hover:text-accent inline-flex items-center gap-2 text-xs tracking-wide uppercase transition-colors"
+            className="font-body text-ink/60 hover:text-accent inline-flex items-center gap-2 text-xs tracking-wide uppercase transition-colors"
           >
             ← {t("back")}
           </Link>
 
           <header className="mt-10">
             {/* Small magenta kicker — keeps the big h1 as the visual anchor on this dedicated page */}
-            <p className="font-subtitle text-accent text-xs tracking-[0.3em] uppercase">
+            <p className="font-body text-accent text-xs tracking-[0.3em] uppercase">
               {t("label")}
             </p>
             <h1 className="font-subtitle text-ink mt-3 text-5xl leading-none tracking-tight uppercase md:text-7xl">
@@ -62,7 +62,7 @@ export default async function JobsPage({ params }: { params: Promise<{ locale: s
             <ul className="mt-16 space-y-12">
               {jobs.map((job) => (
                 <li key={job.id} className="border-accent border-l-2 pl-6">
-                  <h2 className="font-title text-ink text-3xl">{job.title[locale as Locale]}</h2>
+                  <h2 className="font-subtitle text-ink text-3xl uppercase">{job.title[locale as Locale]}</h2>
                   <p className="font-body text-ink/80 mt-3 leading-relaxed">
                     {job.description[locale as Locale]}
                   </p>

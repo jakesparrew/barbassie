@@ -53,7 +53,7 @@ export function Gallery() {
           <h2 className="font-subtitle text-accent text-5xl leading-[0.95] tracking-tight uppercase md:text-7xl">
             BASSIE&rsquo;S
           </h2>
-          <p className="font-subtitle text-ink mt-1 inline-block border-b border-current text-xs tracking-[0.25em] uppercase">
+          <p className="font-body text-ink mt-1 inline-block border-b border-current text-xs tracking-[0.25em] uppercase">
             {t("label")}
           </p>
         </header>

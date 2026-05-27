@@ -7,13 +7,7 @@ import { cn } from "@/lib/cn"
  * Uses VTC Marsha Bold (font-subtitle) — wide, heavy, sign-paint sans —
  * to match the BASSIE wordmark and the user's reference mockup.
  */
-export function SectionLabel({
-  children,
-  className,
-}: {
-  children: ReactNode
-  className?: string
-}) {
+export function SectionLabel({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <h2
       className={cn(

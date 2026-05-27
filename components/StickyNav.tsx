@@ -26,7 +26,7 @@ export function StickyNav({ onHappeningClick }: { onHappeningClick: () => void }
       aria-hidden={!visible}
     >
       <div className="bg-bg/90 mx-auto flex h-[var(--nav-h)] max-w-7xl items-center justify-between gap-4 px-4 shadow-sm backdrop-blur-md md:px-8">
-        <a href="#hero" className="font-title text-ink text-2xl tracking-tight">
+        <a href="#hero" className="font-subtitle text-ink text-2xl tracking-tight">
           BASSIE
         </a>
         <div className="flex items-center gap-2">

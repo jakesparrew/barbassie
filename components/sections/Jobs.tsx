@@ -20,7 +20,7 @@ export function Jobs() {
           <ul className="mt-10 space-y-8">
             {jobs.map((job) => (
               <li key={job.id} className="border-accent border-l-2 pl-4">
-                <h3 className="font-title text-ink text-2xl">{job.title[locale]}</h3>
+                <h3 className="font-subtitle text-ink text-2xl uppercase">{job.title[locale]}</h3>
                 <p className="font-body text-ink/80 mt-2">{job.description[locale]}</p>
                 <Pill
                   href={`mailto:${job.applyEmail}?subject=${encodeURIComponent(`Bar Bassie — application: ${job.title.en}`)}`}

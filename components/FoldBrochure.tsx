@@ -50,7 +50,7 @@ export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: Fol
             <img src={cover} alt={alt} className="h-full w-full object-cover" loading="lazy" />
             {/* Subtle "tap to open" overlay hint, visible on hover/focus */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-4 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-              <span className="font-subtitle text-sm tracking-wide text-white uppercase">
+              <span className="font-body text-sm tracking-wide text-white uppercase">
                 {t("tapToOpen")}
               </span>
             </div>
@@ -64,7 +64,7 @@ export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: Fol
           href={pdfHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-subtitle text-accent inline-flex items-center gap-2 self-center text-sm tracking-wide uppercase hover:underline"
+          className="font-body text-accent inline-flex items-center gap-2 self-center text-sm tracking-wide uppercase hover:underline"
         >
           {t("download")}
         </a>
@@ -130,7 +130,7 @@ export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: Fol
               href={pdfHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-subtitle text-sm tracking-wide text-white/90 uppercase hover:text-white hover:underline"
+              className="font-body text-sm tracking-wide text-white/90 uppercase hover:text-white hover:underline"
             >
               {t("download")}
             </a>

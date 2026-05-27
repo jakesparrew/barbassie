@@ -58,7 +58,7 @@ export function Location() {
             sizes="(max-width:768px) 100vw, 1100px"
             className="bg-bg h-auto w-full"
           />
-          <figcaption className="font-subtitle text-ink/60 mt-3 text-center text-[10px] tracking-[0.2em] uppercase">
+          <figcaption className="font-body text-ink/60 mt-3 text-center text-[10px] tracking-[0.2em] uppercase">
             {t("floorplanCaption")}
           </figcaption>
         </figure>
@@ -71,7 +71,7 @@ export function Location() {
             href="https://maps.google.com/?q=Lammerstraat+13,+9000+Gent"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-subtitle text-accent inline-flex items-center gap-1.5 text-xs tracking-wide uppercase hover:underline"
+            className="font-body text-accent inline-flex items-center gap-1.5 text-xs tracking-wide uppercase hover:underline"
           >
             <Icon.MapPin className="h-3.5 w-3.5" /> {t("directions")}
           </a>
