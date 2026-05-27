@@ -81,10 +81,11 @@ export function Hero() {
           className="h-auto max-h-[42vh] w-[90vw] max-w-[1100px] object-contain drop-shadow-2xl md:max-h-[48vh]"
         />
 
-        {/* Tagline — small uppercase font-body, tiny underlined "AND" mid-line */}
+        {/* Tagline — sits directly under the wordmark. Tight margins so the
+            small text reads as part of the logo lockup, not a separate block. */}
         <motion.p
           variants={fadeUp}
-          className="font-body mt-5 text-[11px] leading-snug tracking-[0.2em] uppercase drop-shadow-lg md:text-xs"
+          className="font-body mt-1 text-[11px] leading-snug tracking-[0.2em] uppercase drop-shadow-lg md:mt-2 md:text-xs"
         >
           {t("hero.taglineLine1")}
           <br />
@@ -95,10 +96,10 @@ export function Hero() {
           {t("hero.taglineLine2Suffix")}
         </motion.p>
 
-        {/* Hours block — 3 lines, smaller, same font as tagline */}
+        {/* Hours block — 3 lines, tight to the tagline */}
         <motion.div
           variants={fadeUp}
-          className="font-body mt-4 space-y-1 text-[10px] leading-snug tracking-[0.18em] uppercase drop-shadow-lg md:text-[11px]"
+          className="font-body mt-3 space-y-1 text-[10px] leading-snug tracking-[0.18em] uppercase drop-shadow-lg md:mt-4 md:text-[11px]"
         >
           <p>{t("hours.weekdays")}</p>
           <p>{t("hours.weekends")}</p>
@@ -106,7 +107,7 @@ export function Hero() {
         </motion.div>
 
         {/* Magenta 3-line hamburger */}
-        <motion.div variants={fadeUp} className="mt-6 md:mt-8">
+        <motion.div variants={fadeUp} className="mt-4 md:mt-5">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
