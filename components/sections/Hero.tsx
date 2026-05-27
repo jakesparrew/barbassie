@@ -84,26 +84,30 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         </a>
       </motion.div>
 
-      {/* Center stack: BASSIE logo → tagline → hours → hamburger */}
+      {/* Center stack: BASSIE logo → tagline → hours → hamburger.
+          Reserve top/bottom padding so the top IG/CONTACT bar and the bottom
+          address strip both have clear breathing room and never overlap. */}
       <motion.div
-        className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center"
+        className="relative z-10 flex h-full flex-col items-center justify-center px-4 pt-20 pb-24 text-center md:pt-24 md:pb-28"
         initial="hidden"
         animate="show"
         transition={{ staggerChildren: 0.14, delayChildren: 0.15 }}
       >
-        {/* BASSIE wordmark */}
+        {/* BASSIE wordmark — constrained on both width AND height so the rest
+            of the stack always sits visibly underneath, even on ultrawide /
+            short viewports. */}
         {/* eslint-disable-next-line @next/next/no-img-element -- crisp transparent PNG, no optimization needed */}
         <motion.img
           variants={fadeUp}
           src="/logo-bassie.png"
           alt="BASSIE"
-          className="w-[80vw] max-w-[900px] drop-shadow-2xl"
+          className="h-auto max-h-[30vh] w-full max-w-[640px] object-contain drop-shadow-2xl md:max-h-[36vh] md:max-w-[760px]"
         />
 
-        {/* Tagline (font-subtitle uppercase) */}
+        {/* Tagline (font-subtitle uppercase) — sits directly under the logo */}
         <motion.p
           variants={fadeUp}
-          className="font-subtitle mt-3 text-xs tracking-[0.18em] uppercase drop-shadow-lg md:text-sm"
+          className="font-subtitle mt-6 text-xs tracking-[0.18em] uppercase drop-shadow-lg md:mt-8 md:text-sm"
         >
           {t("hero.taglineLine1")}
           <br />
@@ -113,7 +117,7 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         {/* Hours block — 3 lines stacked, smaller than tagline */}
         <motion.div
           variants={fadeUp}
-          className="font-subtitle mt-6 text-[10px] leading-relaxed tracking-[0.15em] uppercase drop-shadow-lg md:text-[11px]"
+          className="font-subtitle mt-5 text-[10px] leading-relaxed tracking-[0.15em] uppercase drop-shadow-lg md:mt-6 md:text-[11px]"
         >
           <p>{t("hours.weekdays")}</p>
           <p>{t("hours.weekends")}</p>
@@ -121,7 +125,7 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         </motion.div>
 
         {/* Magenta hamburger / expanded menu */}
-        <motion.div variants={fadeUp} className="mt-8 flex flex-col items-center md:mt-10">
+        <motion.div variants={fadeUp} className="mt-6 flex flex-col items-center md:mt-8">
           {!menuOpen ? (
             <button
               type="button"
