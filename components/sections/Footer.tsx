@@ -19,10 +19,7 @@ export function Footer() {
           </h4>
           <ul className="font-body mt-4 space-y-2">
             <li>
-              <a
-                href={mailtoUrl()}
-                className="hover:text-accent inline-flex items-center gap-2"
-              >
+              <a href={mailtoUrl()} className="hover:text-accent inline-flex items-center gap-2">
                 <Icon.Mail className="h-4 w-4" /> {CONTACT.email}
               </a>
             </li>
@@ -49,7 +46,7 @@ export function Footer() {
           <ul className="font-body mt-4 space-y-2">
             <li>{t("hours.weekdays")}</li>
             <li>{t("hours.weekends")}</li>
-            <li>{t("hours.closed")}</li>
+            <li>{t("hours.sunday")}</li>
           </ul>
         </div>
 

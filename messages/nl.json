@@ -11,15 +11,18 @@
   },
   "hero": {
     "taglineLine1": "Frisse drinks",
-    "taglineLine2": "Kleine gerechten en schitterend uitzicht",
-    "infoLine1": "Rooftop bar · Wintercircus, Lammerstraat 13, 9000 Gent",
-    "infoLine2": "Gewoon binnenwandelen. Groepen vanaf 6 personen: reserveren via WhatsApp",
+    "taglineLine2Prefix": "Kleine gerechten",
+    "taglineLine2Joiner": "en",
+    "taglineLine2Suffix": "schitterend uitzicht",
+    "infoLine1": "Rooftop bar - Wintercircus, Lammerstraat 13, 9000 Gent",
+    "infoLine2Prefix": "Gewoon binnenwandelen. Groepen vanaf 6 personen: reserveren via",
+    "infoLine2Link": "WhatsApp",
     "address": "Wintercircus, Lammerstraat 13, 9000 Gent"
   },
   "hours": {
-    "weekdays": "Ma · Wo · Do  16:00 — Middernacht",
-    "weekends": "Vr · Za  12:00 — 01:00",
-    "closed": "Gesloten op di · zo"
+    "weekdays": "Ma tot do van 16u tot middernacht",
+    "weekends": "Vr tot za van 12u tot 1u",
+    "sunday": "Zo van 12u tot 21u"
   },
   "about": {
     "pullQuote": "Duik erin, beweeg mee en geniet van het circus van het leven",

@@ -18,7 +18,7 @@ export function SchemaOrg() {
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Wednesday", "Thursday"],
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
         opens: "16:00",
         closes: "00:00",
       },
@@ -27,6 +27,12 @@ export function SchemaOrg() {
         dayOfWeek: ["Friday", "Saturday"],
         opens: "12:00",
         closes: "01:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Sunday"],
+        opens: "12:00",
+        closes: "21:00",
       },
     ],
   }
