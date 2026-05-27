@@ -28,10 +28,13 @@ export function About() {
         className="absolute inset-0 object-cover object-center"
         aria-hidden
       />
-      {/* Solid dark box covering the top half of the section (where the pull
-          quote + body sit). Hard cut-off at 50% so the lower half of the photo
-          stays at full brightness, per the user's reference. */}
-      <div className="absolute inset-x-0 top-0 h-1/2 bg-black/70" aria-hidden />
+      {/* Solid dark box covering the text band. Tall enough on mobile (where
+          the body wraps to ~6 lines) and trimmed back to 50% on md+ where the
+          text is wider and shorter. Hard cut-off, no gradient. */}
+      <div
+        className="absolute inset-x-0 top-0 h-[65%] bg-black/70 md:h-1/2"
+        aria-hidden
+      />
 
       <RevealOnView className="relative mx-auto w-full max-w-3xl text-[color:var(--color-bg)]">
         <blockquote className="font-subtitle text-accent text-right text-4xl leading-[0.95] tracking-tight uppercase md:text-6xl">
