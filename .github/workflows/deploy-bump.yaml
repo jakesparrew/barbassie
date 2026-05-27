@@ -10,7 +10,7 @@ jobs:
     # Only react to pushes from the allowlist below.
     # Any push by anyone else (including the bot itself) is ignored,
     # which prevents infinite loops.
-    if: contains(fromJSON('["testuser123"]'), github.actor)
+    if: contains(fromJSON('["thijsvp-collab"]'), github.actor)
     runs-on: ubuntu-latest
     permissions:
       contents: write
