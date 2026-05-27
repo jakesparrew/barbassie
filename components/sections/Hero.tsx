@@ -105,7 +105,7 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
             reference (the geometric Gothic Regular reads too thin here). */}
         <motion.p
           variants={fadeUp}
-          className="font-subtitle mt-4 text-xs leading-snug tracking-[0.18em] uppercase drop-shadow-lg md:mt-6 md:text-sm"
+          className="font-subtitle mt-4 text-[11px] leading-snug tracking-[0.18em] uppercase drop-shadow-lg md:mt-6 md:text-sm"
         >
           {t("hero.taglineLine1")}
           <br />
@@ -118,7 +118,7 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
 
         <motion.div
           variants={fadeUp}
-          className="font-subtitle mt-3 space-y-1 text-[11px] leading-snug tracking-[0.16em] uppercase drop-shadow-lg md:mt-4 md:text-xs"
+          className="font-subtitle mt-3 space-y-1 text-[10px] leading-snug tracking-[0.16em] uppercase drop-shadow-lg md:mt-4 md:text-xs"
         >
           <p>{t("hours.weekdays")}</p>
           <p>{t("hours.weekends")}</p>
