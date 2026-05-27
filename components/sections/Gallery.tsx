@@ -50,7 +50,7 @@ export function Gallery() {
       <RevealOnView className="mx-auto max-w-6xl">
         {/* Mockup p6: two-line heading "BASSIE'S" (big magenta) + "GALLERY" (small underlined) */}
         <header className="text-center">
-          <h2 className="font-title text-accent text-5xl leading-[0.95] tracking-tight uppercase md:text-7xl">
+          <h2 className="font-subtitle text-accent text-5xl leading-[0.95] tracking-tight uppercase md:text-7xl">
             BASSIE&rsquo;S
           </h2>
           <p className="font-subtitle text-ink mt-1 inline-block border-b border-current text-xs tracking-[0.25em] uppercase">

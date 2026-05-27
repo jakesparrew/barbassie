@@ -18,7 +18,7 @@ export const CONTACT = {
   },
 } as const
 
-export const instagramUrl = `https://instagram.com/${CONTACT.instagramHandle}`
+export const instagramUrl = `https://www.instagram.com/${CONTACT.instagramHandle}/`
 export const whatsappUrl = (text?: string) =>
   `https://wa.me/${CONTACT.phoneDigits}${text ? `?text=${encodeURIComponent(text)}` : ""}`
 export const mailtoUrl = (subject?: string) =>

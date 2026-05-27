@@ -48,7 +48,7 @@ export default async function JobsPage({ params }: { params: Promise<{ locale: s
             <p className="font-subtitle text-accent text-xs tracking-[0.3em] uppercase">
               {t("label")}
             </p>
-            <h1 className="font-title text-ink mt-3 text-5xl leading-none tracking-tight md:text-7xl">
+            <h1 className="font-subtitle text-ink mt-3 text-5xl leading-none tracking-tight uppercase md:text-7xl">
               {t("heading")}
             </h1>
             <p className="font-body text-ink/80 mt-6 max-w-2xl text-lg leading-relaxed">
