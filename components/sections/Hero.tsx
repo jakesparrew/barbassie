@@ -86,9 +86,12 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
         </a>
       </motion.div>
 
-      {/* Center stack */}
+      {/* Center stack. pointer-events-none on the full-height column so the
+          top-corner INSTAGRAM / CONTACT links (siblings with the same z-10)
+          stay clickable — the hamburger below re-enables pointer events on
+          itself so it can still receive clicks. */}
       <motion.div
-        className="relative z-10 flex h-full flex-col items-center justify-center px-4 pt-20 pb-24 text-center md:pt-24 md:pb-28"
+        className="pointer-events-none relative z-10 flex h-full flex-col items-center justify-center px-4 pt-20 pb-24 text-center md:pt-24 md:pb-28"
         initial="hidden"
         animate="show"
         transition={{ staggerChildren: 0.14, delayChildren: 0.15 }}
@@ -125,8 +128,12 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
           <p>{t("hours.sunday")}</p>
         </motion.div>
 
-        {/* Hamburger / expanded nav */}
-        <motion.div variants={fadeUp} className="mt-5 flex flex-col items-center md:mt-7">
+        {/* Hamburger / expanded nav — pointer-events-auto re-enables clicks
+            inside the pointer-events-none center column above. */}
+        <motion.div
+          variants={fadeUp}
+          className="pointer-events-auto mt-5 flex flex-col items-center md:mt-7"
+        >
           <AnimatePresence initial={false} mode="wait">
             {!menuOpen ? (
               <motion.button

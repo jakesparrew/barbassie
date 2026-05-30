@@ -17,7 +17,7 @@ export function Reservation() {
   return (
     <section
       id="reserve"
-      className="relative flex min-h-[min(900px,100svh)] flex-col items-center overflow-hidden px-4 py-20 text-center md:py-28"
+      className="relative flex min-h-[min(640px,75svh)] flex-col items-center overflow-hidden px-4 py-16 text-center md:py-20"
     >
       {/* Background: warm-lit cocktail shot.
           We keep the gradient light so the cucumber-cocktail glass stays the visual anchor. */}
