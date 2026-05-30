@@ -26,8 +26,26 @@ export function StickyNav({ onHappeningClick }: { onHappeningClick: () => void }
       aria-hidden={!visible}
     >
       <div className="bg-bg/90 mx-auto flex h-[var(--nav-h)] max-w-7xl items-center justify-between gap-4 px-4 shadow-sm backdrop-blur-md md:px-8">
-        <a href="#hero" className="font-subtitle text-ink text-2xl tracking-tight">
-          BASSIE
+        {/* Real BASSIE wordmark — cropped PNG colorized to ink (burgundy) via
+            CSS mask, so it matches the hero wordmark instead of being styled
+            text. Aspect ratio is the exact aspect of the cropped logo. */}
+        <a href="#hero" aria-label="BASSIE" className="inline-block">
+          <span
+            role="img"
+            aria-hidden
+            className="bg-ink block h-5 md:h-6"
+            style={{
+              aspectRatio: "3144 / 584",
+              maskImage: "url(/logo-bassie.png)",
+              WebkitMaskImage: "url(/logo-bassie.png)",
+              maskSize: "contain",
+              WebkitMaskSize: "contain",
+              maskRepeat: "no-repeat",
+              WebkitMaskRepeat: "no-repeat",
+              maskPosition: "left center",
+              WebkitMaskPosition: "left center",
+            }}
+          />
         </a>
         <div className="flex items-center gap-2">
           <Pill href="#menu" className="hidden sm:inline-flex">
