@@ -19,7 +19,7 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } },
 } as const
 
-export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
+export function Hero() {
   const t = useTranslations()
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -33,11 +33,13 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
     return () => document.removeEventListener("keydown", onKey)
   }, [menuOpen])
 
+  // All hero nav items are anchor links now — Happening scrolls to the
+  // Events carousel section instead of opening a modal.
   const navItems = [
     { label: t("nav.menu"), href: "#menu" },
     { label: t("nav.location"), href: "#location" },
     { label: t("nav.reservation"), href: "#reserve" },
-    { label: t("nav.happening"), onClick: onHappeningClick },
+    { label: t("nav.happening"), href: "#events" },
   ] as const
 
   return (
@@ -173,39 +175,21 @@ export function Hero({ onHappeningClick }: { onHappeningClick: () => void }) {
                 transition={{ duration: 0.22 }}
                 className="flex flex-col items-center gap-3"
               >
-                {navItems.map((item) => {
-                  const baseClass = cn(
-                    "font-subtitle text-accent text-xl md:text-2xl tracking-widest uppercase",
-                    "drop-shadow-lg transition-transform duration-150",
-                    "hover:scale-105 hover:text-white",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1"
-                  )
-                  if ("href" in item) {
-                    return (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        onClick={() => setMenuOpen(false)}
-                        className={baseClass}
-                      >
-                        {item.label}
-                      </a>
-                    )
-                  }
-                  return (
-                    <button
-                      key={item.label}
-                      type="button"
-                      onClick={() => {
-                        item.onClick()
-                        setMenuOpen(false)
-                      }}
-                      className={baseClass}
-                    >
-                      {item.label}
-                    </button>
-                  )
-                })}
+                {navItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={cn(
+                      "font-subtitle text-accent text-xl md:text-2xl tracking-widest uppercase",
+                      "drop-shadow-lg transition-transform duration-150",
+                      "hover:scale-105 hover:text-white",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1"
+                    )}
+                  >
+                    {item.label}
+                  </a>
+                ))}
                 <button
                   type="button"
                   onClick={() => setMenuOpen(false)}

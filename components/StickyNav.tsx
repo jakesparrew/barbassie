@@ -6,7 +6,7 @@ import { Pill } from "@/components/ui/Pill"
 import { LocaleSwitcher } from "@/components/ui/LocaleSwitcher"
 import { cn } from "@/lib/cn"
 
-export function StickyNav({ onHappeningClick }: { onHappeningClick: () => void }) {
+export function StickyNav() {
   const t = useTranslations("nav")
   const [visible, setVisible] = useState(false)
 
@@ -54,7 +54,7 @@ export function StickyNav({ onHappeningClick }: { onHappeningClick: () => void }
           <Pill href="#reserve" className="hidden sm:inline-flex">
             {t("reservation")}
           </Pill>
-          <Pill onClick={onHappeningClick}>{t("happening")}</Pill>
+          <Pill href="#events">{t("happening")}</Pill>
           <LocaleSwitcher className="ml-2" />
         </div>
       </div>

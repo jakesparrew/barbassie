@@ -42,6 +42,14 @@
     "floorplanCaption": "Binnenkomen via Lammerstraat 13 — neem de lift naar de 4e verdieping"
   },
   "gallery": { "label": "Galerij" },
+  "events": {
+    "label": "Wat is er",
+    "finished": "Voorbij",
+    "currently": "Nu",
+    "upcoming": "Binnenkort",
+    "prev": "Vorig event",
+    "next": "Volgend event"
+  },
   "jobs": {
     "label": "Jobs",
     "heading": "Werken bij Bassie",

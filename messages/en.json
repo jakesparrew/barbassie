@@ -44,6 +44,14 @@
   "gallery": {
     "label": "Gallery"
   },
+  "events": {
+    "label": "Happening",
+    "finished": "Finished",
+    "currently": "Currently",
+    "upcoming": "Upcoming",
+    "prev": "Previous event",
+    "next": "Next event"
+  },
   "jobs": {
     "label": "Jobs",
     "heading": "Work with us at Bassie",

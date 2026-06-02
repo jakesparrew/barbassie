@@ -42,6 +42,14 @@
     "floorplanCaption": "Entrée par Lammerstraat 13 — prends l'ascenseur jusqu'au 4ème étage"
   },
   "gallery": { "label": "Galerie" },
+  "events": {
+    "label": "Évènement",
+    "finished": "Terminé",
+    "currently": "En cours",
+    "upcoming": "À venir",
+    "prev": "Évènement précédent",
+    "next": "Évènement suivant"
+  },
   "jobs": {
     "label": "Emplois",
     "heading": "Travailler chez Bassie",
