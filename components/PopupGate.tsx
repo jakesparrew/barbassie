@@ -1,44 +1,75 @@
 // components/PopupGate.tsx
 "use client"
-import { useEffect, useState, useImperativeHandle, forwardRef } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { PopupModal } from "./PopupModal"
-import { getPopup } from "@/lib/content"
-import { isPopupActiveNow, shouldAutoOpenToday, markSeen, popupId } from "@/lib/popup"
+import { type Popup, shouldAutoOpenToday, markSeen, popupId } from "@/lib/popup"
 import { todayBrussels } from "@/lib/dates"
+import eventsData from "@/content/events.json"
 
-export type PopupGateHandle = { open: () => void }
+type EventItem = {
+  id: string
+  title: string
+  subtitle?: string
+  image: string
+  dateStart: string
+  dateEnd: string
+}
 
-export const PopupGate = forwardRef<PopupGateHandle>(function PopupGate(_, ref) {
-  const popup = getPopup()
-  const [open, setOpen] = useState(false)
-  const id = popupId(popup)
+const getStatus = (event: EventItem, today: string) => {
+  if (today > event.dateEnd) return "finished" as const
+  if (today < event.dateStart) return "upcoming" as const
+  return "currently" as const
+}
+
+/**
+ * Convert an events.json entry into the Popup shape PopupModal expects.
+ * Title / subtitle / alt are not currently localized in events.json so we
+ * mirror the same value across all locales for now; swap to per-locale
+ * fields when copy needs to differ per language.
+ */
+const eventToPopup = (event: EventItem): Popup => {
+  const alt = event.subtitle ? `${event.title} — ${event.subtitle}` : event.title
+  return {
+    active: true,
+    kind: "poster",
+    image: event.image,
+    imageAlt: { en: alt, nl: alt, fr: alt },
+    dateStart: event.dateStart,
+    dateEnd: event.dateEnd,
+    title: { en: event.title, nl: event.title, fr: event.title },
+    subtitle: event.subtitle
+      ? { en: event.subtitle, nl: event.subtitle, fr: event.subtitle }
+      : undefined,
+  }
+}
+
+/**
+ * PopupGate — auto-opens the *currently* running campaign once per day per
+ * visitor. Driven by content/events.json (single source of truth shared with
+ * the Events carousel). No imperative open() ref anymore; the Happening pill
+ * now scrolls to #events instead of opening this modal.
+ */
+export function PopupGate() {
   const today = todayBrussels()
-  const activeForAutoOpen = isPopupActiveNow(popup, today)
+  const events = eventsData as EventItem[]
 
-  // Auto-open: only when the campaign is in its date range AND the visitor
-  // hasn't dismissed it today.
+  const currentPopup = useMemo<Popup | null>(() => {
+    const current = events.find((e) => getStatus(e, today) === "currently")
+    return current ? eventToPopup(current) : null
+  }, [events, today])
+
+  const id = currentPopup ? popupId(currentPopup) : ""
+  const [open, setOpen] = useState(false)
+
   useEffect(() => {
-    if (activeForAutoOpen && shouldAutoOpenToday(id, today)) setOpen(true)
-  }, [activeForAutoOpen, id, today])
-
-  // Manual open via the "Happening" pill / hero menu: always honored as long
-  // as the campaign is switched on, even if today falls outside the date
-  // range. This lets staff preview the active poster off-window and prevents
-  // the pill from looking broken when the dates lapse.
-  useImperativeHandle(
-    ref,
-    () => ({
-      open: () => setOpen(true),
-    }),
-    []
-  )
+    if (currentPopup && shouldAutoOpenToday(id, today)) setOpen(true)
+  }, [currentPopup, id, today])
 
   const onClose = () => {
     setOpen(false)
-    markSeen(id, today)
+    if (currentPopup) markSeen(id, today)
   }
 
-  // Only hide entirely when popup.active is explicitly false (campaign off).
-  if (!popup.active) return null
-  return <PopupModal popup={popup} open={open} onClose={onClose} />
-})
+  if (!currentPopup) return null
+  return <PopupModal popup={currentPopup} open={open} onClose={onClose} />
+}

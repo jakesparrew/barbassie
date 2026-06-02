@@ -8,6 +8,7 @@ import { Events } from "@/components/sections/Events"
 import { Reservation } from "@/components/sections/Reservation"
 import { Footer } from "@/components/sections/Footer"
 import { StickyNav } from "@/components/StickyNav"
+import { PopupGate } from "@/components/PopupGate"
 
 export default function Home() {
   return (
@@ -23,6 +24,9 @@ export default function Home() {
         <Reservation />
       </main>
       <Footer />
+      {/* Auto-opens the currently-running campaign once per day per visitor,
+          driven by the same events.json the carousel reads. */}
+      <PopupGate />
     </>
   )
 }
