@@ -13,20 +13,24 @@ export const PopupGate = forwardRef<PopupGateHandle>(function PopupGate(_, ref) 
   const [open, setOpen] = useState(false)
   const id = popupId(popup)
   const today = todayBrussels()
-  const active = isPopupActiveNow(popup, today)
+  const activeForAutoOpen = isPopupActiveNow(popup, today)
 
+  // Auto-open: only when the campaign is in its date range AND the visitor
+  // hasn't dismissed it today.
   useEffect(() => {
-    if (active && shouldAutoOpenToday(id, today)) setOpen(true)
-  }, [active, id, today])
+    if (activeForAutoOpen && shouldAutoOpenToday(id, today)) setOpen(true)
+  }, [activeForAutoOpen, id, today])
 
+  // Manual open via the "Happening" pill / hero menu: always honored as long
+  // as the campaign is switched on, even if today falls outside the date
+  // range. This lets staff preview the active poster off-window and prevents
+  // the pill from looking broken when the dates lapse.
   useImperativeHandle(
     ref,
     () => ({
-      open: () => {
-        if (active) setOpen(true)
-      },
+      open: () => setOpen(true),
     }),
-    [active]
+    []
   )
 
   const onClose = () => {
@@ -34,6 +38,7 @@ export const PopupGate = forwardRef<PopupGateHandle>(function PopupGate(_, ref) 
     markSeen(id, today)
   }
 
-  if (!active) return null
+  // Only hide entirely when popup.active is explicitly false (campaign off).
+  if (!popup.active) return null
   return <PopupModal popup={popup} open={open} onClose={onClose} />
 })
