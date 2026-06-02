@@ -33,13 +33,14 @@ export function Hero() {
     return () => document.removeEventListener("keydown", onKey)
   }, [menuOpen])
 
-  // All hero nav items are anchor links now — Happening scrolls to the
-  // Events carousel section instead of opening a modal.
+  // Order matches the on-page section order: Happening -> Menu ->
+  // Reservation -> Location. Gallery is the visual closer and not surfaced
+  // in the nav.
   const navItems = [
-    { label: t("nav.menu"), href: "#menu" },
-    { label: t("nav.location"), href: "#location" },
-    { label: t("nav.reservation"), href: "#reserve" },
     { label: t("nav.happening"), href: "#events" },
+    { label: t("nav.menu"), href: "#menu" },
+    { label: t("nav.reservation"), href: "#reserve" },
+    { label: t("nav.location"), href: "#location" },
   ] as const
 
   return (
@@ -181,10 +182,10 @@ export function Hero() {
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     className={cn(
-                      "font-subtitle text-accent text-xl md:text-2xl tracking-widest uppercase",
+                      "font-subtitle text-accent text-xl tracking-widest uppercase md:text-2xl",
                       "drop-shadow-lg transition-transform duration-150",
                       "hover:scale-105 hover:text-white",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded px-2 py-1"
+                      "focus-visible:ring-accent rounded px-2 py-1 focus-visible:ring-2 focus-visible:outline-none"
                     )}
                   >
                     {item.label}

@@ -16,12 +16,15 @@ export default function Home() {
       <StickyNav />
       <main>
         <Hero />
-        <Menu />
-        <About />
-        <Location />
-        <Gallery />
+        {/* Section order per the user's brief:
+              Happening (Events) -> Menu -> Reservation -> Location -> About,
+              and finish on Gallery as the visual closer. */}
         <Events />
+        <Menu />
         <Reservation />
+        <Location />
+        <About />
+        <Gallery />
       </main>
       <Footer />
       {/* Auto-opens the currently-running campaign once per day per visitor,
