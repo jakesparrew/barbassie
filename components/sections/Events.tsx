@@ -1,10 +1,18 @@
 // components/sections/Events.tsx
 "use client"
-import { useState, useMemo } from "react"
+import { useState, useMemo, useRef } from "react"
 import { useTranslations, useLocale } from "next-intl"
 import { todayBrussels } from "@/lib/dates"
 import { cn } from "@/lib/cn"
 import eventsData from "@/content/events.json"
+
+// Horizontal pixels of drag movement before we consider a gesture a swipe
+// (and suppress the click that would otherwise activate the card under the
+// pointer). Tuned so a deliberate flick triggers, a tap doesn't.
+const SWIPE_THRESHOLD = 70
+// Smaller threshold for marking the gesture as a drag (vs. a click) so we
+// know to swallow the trailing click event when the user releases.
+const DRAG_DETECT_THRESHOLD = 6
 
 type EventStatus = "finished" | "currently" | "upcoming"
 
@@ -45,6 +53,45 @@ export function Events() {
   const prev = () => setActiveIndex((i) => Math.max(0, i - 1))
   const next = () => setActiveIndex((i) => Math.min(events.length - 1, i + 1))
 
+  // Drag-to-swipe state. We use a ref for "was dragging" so card onClick
+  // handlers can read it synchronously after pointerup without the React
+  // re-render race.
+  const dragStartXRef = useRef<number | null>(null)
+  const wasDraggingRef = useRef(false)
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    dragStartXRef.current = e.clientX
+    wasDraggingRef.current = false
+  }
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (dragStartXRef.current === null) return
+    const delta = e.clientX - dragStartXRef.current
+    if (Math.abs(delta) > DRAG_DETECT_THRESHOLD) wasDraggingRef.current = true
+  }
+
+  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    const start = dragStartXRef.current
+    dragStartXRef.current = null
+    if (start === null) return
+    const delta = e.clientX - start
+    if (Math.abs(delta) > SWIPE_THRESHOLD) {
+      // Swipe left -> show the next (newer) event; swipe right -> previous.
+      if (delta < 0) next()
+      else prev()
+    }
+    // Clear the wasDragging flag on the next tick so the card click
+    // handler that fires immediately after pointerup can still see it.
+    queueMicrotask(() => {
+      wasDraggingRef.current = false
+    })
+  }
+
+  const onCardClick = (i: number) => {
+    if (wasDraggingRef.current) return
+    setActiveIndex(i)
+  }
+
   const activeEvent = events[activeIndex]
   const activeStatus = activeEvent ? getStatus(activeEvent, today) : "currently"
 
@@ -75,8 +122,17 @@ export function Events() {
         </div>
       </div>
 
-      {/* 3D carousel */}
-      <div className="relative h-[440px] md:h-[640px]" style={{ perspective: "1400px" }}>
+      {/* 3D carousel — drag/swipe with mouse or finger, click cards to focus.
+          touch-action: pan-y lets the browser keep handling vertical
+          page-scroll while we capture horizontal gestures for the carousel. */}
+      <div
+        className="relative h-[440px] cursor-grab touch-pan-y select-none active:cursor-grabbing md:h-[640px]"
+        style={{ perspective: "1400px", touchAction: "pan-y" }}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+      >
         {events.map((event, i) => {
           const offset = i - activeIndex
           const abs = Math.abs(offset)
@@ -96,13 +152,13 @@ export function Events() {
             <button
               key={event.id}
               type="button"
-              onClick={() => setActiveIndex(i)}
+              onClick={() => onCardClick(i)}
               aria-label={`${event.title} — ${getStatus(event, today)}`}
               aria-current={abs === 0 ? "true" : undefined}
               className={cn(
                 "absolute top-1/2 left-1/2",
                 "transition-all duration-500 ease-out",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg"
+                "focus-visible:ring-accent rounded-lg focus-visible:ring-2 focus-visible:outline-none"
               )}
               style={{
                 transform: `translate(-50%, -50%) translateX(${translateXVw}vw) scale(${scale}) rotateY(${rotate}deg)`,
@@ -137,7 +193,13 @@ export function Events() {
             "focus-visible:ring-bg focus-visible:ring-2 focus-visible:outline-none"
           )}
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="h-5 w-5"
+          >
             <polyline points="15 18 9 12 15 6" />
           </svg>
         </button>
@@ -155,7 +217,13 @@ export function Events() {
             "focus-visible:ring-bg focus-visible:ring-2 focus-visible:outline-none"
           )}
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="h-5 w-5"
+          >
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </button>
