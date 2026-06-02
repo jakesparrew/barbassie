@@ -107,26 +107,41 @@ export function Events() {
   return (
     <section
       id="events"
-      className="bg-ink text-bg relative overflow-hidden py-20 md:py-24"
+      className="bg-ink text-bg relative overflow-hidden py-14 md:py-24"
       aria-labelledby="events-heading"
     >
-      {/* Status labels row */}
-      <div className="relative mx-auto mb-10 max-w-6xl px-4 md:mb-14 md:px-8">
+      {/* Status labels — the one matching the active card's status is held at
+          full opacity while the other two fade back, so the carousel
+          position is always visually anchored to a category. */}
+      <div className="relative mx-auto mb-8 max-w-6xl px-4 md:mb-14 md:px-8">
         <div
           id="events-heading"
-          className="font-subtitle text-accent grid grid-cols-3 items-baseline gap-2 text-xs tracking-[0.25em] uppercase md:text-sm"
+          className="font-subtitle text-accent grid grid-cols-3 items-baseline gap-2 text-[10px] tracking-[0.22em] uppercase md:text-sm"
         >
-          <span className="text-left">{t("finished")}</span>
-          <span className="text-center">{t("currently")}</span>
-          <span className="text-right">{t("upcoming")}</span>
+          {(["finished", "currently", "upcoming"] as const).map((status, idx) => (
+            <span
+              key={status}
+              className={cn(
+                "transition-opacity duration-300",
+                idx === 0 && "text-left",
+                idx === 1 && "text-center",
+                idx === 2 && "text-right",
+                activeStatus === status ? "opacity-100" : "opacity-25"
+              )}
+            >
+              {t(status)}
+            </span>
+          ))}
         </div>
       </div>
 
       {/* 3D carousel — drag/swipe with mouse or finger, click cards to focus.
           touch-action: pan-y lets the browser keep handling vertical
-          page-scroll while we capture horizontal gestures for the carousel. */}
+          page-scroll while we capture horizontal gestures for the carousel.
+          Card height is the single sizing knob; everything else (width,
+          spread, button hit area) follows from it. */}
       <div
-        className="relative h-[440px] cursor-grab touch-pan-y select-none active:cursor-grabbing md:h-[640px]"
+        className="relative h-[320px] cursor-grab touch-pan-y select-none active:cursor-grabbing md:h-[640px]"
         style={{ perspective: "1400px", touchAction: "pan-y" }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
@@ -171,7 +186,7 @@ export function Events() {
               <img
                 src={event.image}
                 alt={event.title}
-                className="block h-[380px] w-auto rounded-md shadow-[0_20px_60px_-12px_rgba(0,0,0,0.6)] md:h-[560px]"
+                className="block h-[280px] w-auto rounded-md shadow-[0_20px_60px_-12px_rgba(0,0,0,0.6)] md:h-[560px]"
                 draggable={false}
               />
             </button>
@@ -231,19 +246,19 @@ export function Events() {
 
       {/* Meta line for the active card */}
       {activeEvent && (
-        <div className="mx-auto mt-10 max-w-2xl px-4 text-center md:mt-14">
-          <p className="font-subtitle text-accent text-xs tracking-[0.3em] uppercase">
+        <div className="mx-auto mt-6 max-w-2xl px-4 text-center md:mt-14">
+          <p className="font-subtitle text-accent text-[10px] tracking-[0.3em] uppercase md:text-xs">
             {t(activeStatus)}
           </p>
-          <h3 className="font-subtitle text-bg mt-2 text-2xl tracking-tight uppercase md:text-3xl">
+          <h3 className="font-subtitle text-bg mt-2 text-xl tracking-tight uppercase md:text-3xl">
             {activeEvent.title}
           </h3>
           {activeEvent.subtitle && (
-            <p className="font-body text-bg/80 mt-1 text-sm tracking-wide uppercase">
+            <p className="font-body text-bg/80 mt-1 text-xs tracking-wide uppercase md:text-sm">
               {activeEvent.subtitle}
             </p>
           )}
-          <p className="font-body text-bg/60 mt-3 text-xs tracking-[0.2em] uppercase">
+          <p className="font-body text-bg/60 mt-2 text-[10px] tracking-[0.2em] uppercase md:mt-3 md:text-xs">
             {formatDate(activeEvent.dateStart)} → {formatDate(activeEvent.dateEnd)}
           </p>
         </div>
