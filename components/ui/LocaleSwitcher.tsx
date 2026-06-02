@@ -48,10 +48,14 @@ export function LocaleSwitcher({ className }: { className?: string }) {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
+        // Compact on mobile (just the 2-letter code + chevron) so the
+        // sticky-nav cluster doesn't overflow narrow viewports; the full
+        // language name returns from md+ where the globe icon also shows.
         className="font-subtitle inline-flex items-center gap-1 text-sm tracking-wide uppercase"
       >
-        <Icon.Globe className="h-4 w-4" aria-hidden />
-        {localeNames[current]}
+        <Icon.Globe className="hidden h-4 w-4 md:inline" aria-hidden />
+        <span className="md:hidden">{current}</span>
+        <span className="hidden md:inline">{localeNames[current]}</span>
         <Icon.ChevronDown
           className={cn("h-4 w-4 transition-transform", open && "rotate-180")}
           aria-hidden
@@ -72,9 +76,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
                   // Explicit text-ink so the dropdown stays readable even when
                   // the LocaleSwitcher is mounted inside a dark Footer (where
                   // it would otherwise inherit text-bg / white-on-white).
-                  loc === current
-                    ? "bg-accent/10 text-accent"
-                    : "text-ink hover:bg-ink/5"
+                  loc === current ? "bg-accent/10 text-accent" : "text-ink hover:bg-ink/5"
                 )}
               >
                 {localeNames[loc]}
