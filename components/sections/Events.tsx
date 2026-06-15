@@ -5,6 +5,8 @@ import { useTranslations, useLocale } from "next-intl"
 import { todayBrussels } from "@/lib/dates"
 import { cn } from "@/lib/cn"
 import eventsData from "@/content/events.json"
+import { PopupModal } from "@/components/PopupModal"
+import type { Popup } from "@/lib/popup"
 
 // Horizontal pixels of drag movement before we consider a gesture a swipe
 // (and suppress the click that would otherwise activate the card under the
@@ -21,6 +23,7 @@ type EventItem = {
   title: string
   subtitle?: string
   image: string
+  video?: string
   dateStart: string
   dateEnd: string
 }
@@ -29,6 +32,24 @@ const getStatus = (event: EventItem, today: string): EventStatus => {
   if (today > event.dateEnd) return "finished"
   if (today < event.dateStart) return "upcoming"
   return "currently"
+}
+
+/** Build the Popup shape PopupModal expects from a carousel event. */
+const eventToPopup = (event: EventItem): Popup => {
+  const alt = event.subtitle ? `${event.title} — ${event.subtitle}` : event.title
+  return {
+    active: true,
+    kind: "poster",
+    image: event.image,
+    video: event.video,
+    imageAlt: { en: alt, nl: alt, fr: alt },
+    dateStart: event.dateStart,
+    dateEnd: event.dateEnd,
+    title: { en: event.title, nl: event.title, fr: event.title },
+    subtitle: event.subtitle
+      ? { en: event.subtitle, nl: event.subtitle, fr: event.subtitle }
+      : undefined,
+  }
 }
 
 /**
@@ -52,6 +73,12 @@ export function Events() {
   const [activeIndex, setActiveIndex] = useState(initialIndex)
   const prev = () => setActiveIndex((i) => Math.max(0, i - 1))
   const next = () => setActiveIndex((i) => Math.min(events.length - 1, i + 1))
+
+  // Clicking the already-centered card opens it in the modal (and plays the
+  // attached video, if any). We keep the event mounted while the modal exit
+  // animation runs by tracking open separately from the chosen event.
+  const [modalEvent, setModalEvent] = useState<EventItem | null>(null)
+  const [modalOpen, setModalOpen] = useState(false)
 
   // Drag-to-swipe state. We use a ref for "was dragging" so card onClick
   // handlers can read it synchronously after pointerup without the React
@@ -89,6 +116,15 @@ export function Events() {
 
   const onCardClick = (i: number) => {
     if (wasDraggingRef.current) return
+    // Tapping the centered card opens it; tapping a side card focuses it first.
+    if (i === activeIndex) {
+      const ev = events[i]
+      if (ev) {
+        setModalEvent(ev)
+        setModalOpen(true)
+      }
+      return
+    }
     setActiveIndex(i)
   }
 
@@ -262,6 +298,14 @@ export function Events() {
             {formatDate(activeEvent.dateStart)} → {formatDate(activeEvent.dateEnd)}
           </p>
         </div>
+      )}
+
+      {modalEvent && (
+        <PopupModal
+          popup={eventToPopup(modalEvent)}
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
       )}
     </section>
   )

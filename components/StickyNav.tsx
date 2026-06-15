@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import { useTranslations } from "next-intl"
 import { Pill } from "@/components/ui/Pill"
-import { LocaleSwitcher } from "@/components/ui/LocaleSwitcher"
 import { cn } from "@/lib/cn"
 
 export function StickyNav() {
@@ -55,7 +54,6 @@ export function StickyNav() {
             {t("reservation")}
           </Pill>
           <Pill href="#events">{t("happening")}</Pill>
-          <LocaleSwitcher className="ml-2" />
         </div>
       </div>
     </header>

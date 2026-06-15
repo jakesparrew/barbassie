@@ -41,6 +41,7 @@ export function Hero() {
     { label: t("nav.menu"), href: "#menu" },
     { label: t("nav.reservation"), href: "#reserve" },
     { label: t("nav.location"), href: "#location" },
+    { label: t("nav.gallery"), href: "#gallery" },
   ] as const
 
   return (
@@ -107,29 +108,14 @@ export function Hero() {
           className="h-auto w-[90vw] max-w-[1100px] object-contain drop-shadow-2xl"
         />
 
-        {/* Tagline + hours block — heavy VTC Marsha Bold per the user's
-            reference (the geometric Gothic Regular reads too thin here). */}
+        {/* "OPEN. EVERY. DAY." — Century Gothic Regular (font-body) per the
+            brief, sitting directly under the BASSIE wordmark. */}
         <motion.p
           variants={fadeUp}
-          className="font-subtitle mt-4 text-[11px] leading-snug tracking-[0.18em] uppercase drop-shadow-lg md:mt-6 md:text-sm"
+          className="font-body mt-4 text-sm leading-snug tracking-[0.3em] uppercase drop-shadow-lg md:mt-6 md:text-lg"
         >
-          {t("hero.taglineLine1")}
-          <br />
-          {t("hero.taglineLine2Prefix")}{" "}
-          <span className="text-[0.65em] tracking-normal underline underline-offset-2">
-            {t("hero.taglineLine2Joiner")}
-          </span>{" "}
-          {t("hero.taglineLine2Suffix")}
+          {t("hero.openEveryDay")}
         </motion.p>
-
-        <motion.div
-          variants={fadeUp}
-          className="font-subtitle mt-3 space-y-1 text-[10px] leading-snug tracking-[0.16em] uppercase drop-shadow-lg md:mt-4 md:text-xs"
-        >
-          <p>{t("hours.weekdays")}</p>
-          <p>{t("hours.weekends")}</p>
-          <p>{t("hours.sunday")}</p>
-        </motion.div>
 
         {/* Hamburger / expanded nav — pointer-events-auto re-enables clicks
             inside the pointer-events-none center column above. */}
@@ -217,15 +203,17 @@ export function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Bottom address — 2 centered lines */}
+      {/* Bottom — opening hours, Century Gothic Regular (font-body) per the
+          brief. Replaces the venue address, which now lives in the footer. */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.9 }}
-        className="font-body absolute inset-x-0 bottom-6 z-10 px-4 text-center text-[11px] leading-relaxed tracking-[0.2em] uppercase drop-shadow-lg md:bottom-8 md:text-xs"
+        className="font-body absolute inset-x-0 bottom-6 z-10 space-y-1 px-4 text-center text-[11px] leading-relaxed tracking-[0.2em] uppercase drop-shadow-lg md:bottom-8 md:text-xs"
       >
-        <p>{t("hero.addressLine1")}</p>
-        <p>{t("hero.addressLine2")}</p>
+        <p>{t("hours.weekdays")}</p>
+        <p>{t("hours.weekends")}</p>
+        <p>{t("hours.sunday")}</p>
       </motion.div>
     </section>
   )

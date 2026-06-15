@@ -1,6 +1,6 @@
 // components/PopupModal.tsx
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useTranslations, useLocale } from "next-intl"
 import { Modal } from "@/components/ui/Modal"
 import { Icon } from "@/components/ui/Icon"
@@ -20,12 +20,22 @@ export function PopupModal({
   const t = useTranslations("popup")
   const locale = useLocale() as Locale
   const [imageFailed, setImageFailed] = useState(false)
+  const [playing, setPlaying] = useState(false)
 
   // We render the poster image when it's available; otherwise fall back to a
   // branded card built from the popup's structured fields. This keeps the
   // modal meaningful even before the high-res poster artwork is uploaded.
   const showPoster = popup.kind === "poster" && !imageFailed
-  const closeOnContent = showPoster
+  const hasVideo = Boolean(popup.video)
+  // When the poster has an attached video, a click should start the video
+  // rather than dismiss the modal. Otherwise keep the click-to-close behaviour.
+  const closeOnContent = showPoster && !hasVideo && !playing
+
+  // Rewind back to the poster whenever the modal is dismissed so the next
+  // open starts fresh.
+  useEffect(() => {
+    if (!open) setPlaying(false)
+  }, [open])
 
   return (
     <Modal
@@ -47,16 +57,51 @@ export function PopupModal({
         <Icon.X className="h-4 w-4" />
       </button>
 
-      {showPoster ? (
-        // Real poster artwork. Using <img> so we can detect 404 and gracefully
-        // swap to the fallback card without a runtime crash.
-        // eslint-disable-next-line @next/next/no-img-element -- need onError + intrinsic size
-        <img
-          src={popup.image}
-          alt={popup.imageAlt[locale]}
-          onError={() => setImageFailed(true)}
+      {showPoster && playing && popup.video ? (
+        // Video takes over once the poster is clicked.
+        <video
+          src={popup.video}
+          autoPlay
+          controls
+          playsInline
           className="block h-auto max-h-[85vh] w-auto max-w-[90vw] object-contain"
         />
+      ) : showPoster ? (
+        // Real poster artwork. Using <img> so we can detect 404 and gracefully
+        // swap to the fallback card without a runtime crash.
+        hasVideo ? (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              setPlaying(true)
+            }}
+            aria-label={t("play")}
+            className="group relative block cursor-pointer"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element -- need onError + intrinsic size */}
+            <img
+              src={popup.image}
+              alt={popup.imageAlt[locale]}
+              onError={() => setImageFailed(true)}
+              className="block h-auto max-h-[85vh] w-auto max-w-[90vw] object-contain"
+            />
+            {/* Play affordance overlaid on the poster. */}
+            <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-black/55 text-white shadow-lg transition group-hover:scale-110 group-hover:bg-black/70">
+                <Icon.Play className="ml-0.5 h-7 w-7 fill-current" />
+              </span>
+            </span>
+          </button>
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element -- need onError + intrinsic size
+          <img
+            src={popup.image}
+            alt={popup.imageAlt[locale]}
+            onError={() => setImageFailed(true)}
+            className="block h-auto max-h-[85vh] w-auto max-w-[90vw] object-contain"
+          />
+        )
       ) : (
         // Branded fallback card: yellow/red Mexico-poster vibe driven by
         // structured fields. Used until the real poster lands in /public/popup/.

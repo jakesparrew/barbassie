@@ -14,7 +14,7 @@ vi.mock("next/navigation", () => ({
 import { StickyNav } from "./StickyNav"
 
 describe("StickyNav", () => {
-  it("renders three pills (menu, reservation, happening) and locale switcher", () => {
+  it("renders three pills (menu, reservation, happening)", () => {
     render(<StickyNav />)
     expect(screen.getByText("menu")).toBeInTheDocument()
     expect(screen.getByText("reservation")).toBeInTheDocument()

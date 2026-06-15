@@ -4,12 +4,14 @@
     "location": "Lieu",
     "reservation": "Réservation",
     "happening": "Évènement",
+    "gallery": "Galerie",
     "instagram": "Instagram",
     "contact": "Contact",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu"
   },
   "hero": {
+    "openEveryDay": "Open. Every. Day.",
     "taglineLine1": "Boissons fraîches",
     "taglineLine2Prefix": "Petites assiettes",
     "taglineLine2Joiner": "et",
@@ -24,7 +26,7 @@
   },
   "about": {
     "pullQuote": "Plonge, suis le mouvement et profite du cirque de la vie",
-    "body": "Bar Bassie est le rooftop bar tout en haut du Wintercircus de Gand. Boissons fraîches, assiettes à partager et une vue plongeante sur l'arène centrale."
+    "body": "At the very top of Ghent's Wintercircus, Bar Bassie serves cooling drinks, small plates, and stunning views. By that, we mean a rooftop terrace and a front-row seat overlooking the arena. A place that gives “worth staying for” its true meaning."
   },
   "menu": {
     "label": "Menu",
@@ -62,7 +64,7 @@
   "reserve": {
     "label": "Réserver",
     "walkIns": "Les walk-ins sont toujours les bienvenus",
-    "groups": "Pour les groupes de 6 personnes ou plus, écris-nous sur WhatsApp et on s'occupe de toi.",
+    "groups": "For groups of <pink>6</pink> or more, message us on WhatsApp and we'll set you up.",
     "whatsappCta": "Écris-nous sur WhatsApp",
     "whatsappPrefill": "Salut Bassie ! On aimerait réserver une table — "
   },
@@ -73,5 +75,5 @@
     "jobs": "Emplois",
     "designed": "Conçu par LOBSTER Anvers"
   },
-  "popup": { "close": "Fermer", "happening": "Évènement" }
+  "popup": { "close": "Fermer", "happening": "Évènement", "play": "Lire la vidéo" }
 }

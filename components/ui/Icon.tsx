@@ -42,4 +42,5 @@ export const Icon = {
   Mail: (p: LucideProps) => <L.Mail {...p} />,
   Clock: (p: LucideProps) => <L.Clock {...p} />,
   Globe: (p: LucideProps) => <L.Globe {...p} />,
+  Play: (p: LucideProps) => <L.Play {...p} />,
 } as const

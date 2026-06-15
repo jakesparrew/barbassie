@@ -52,7 +52,9 @@ export function Reservation() {
             "drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] md:text-base"
           )}
         >
-          {t("groups")}
+          {t.rich("groups", {
+            pink: (chunks) => <span className="text-accent">{chunks}</span>,
+          })}
         </p>
         <p
           className={cn(
@@ -76,10 +78,10 @@ export function Reservation() {
           "relative z-10 mt-12",
           "inline-flex w-full max-w-md items-center justify-center gap-3 md:w-auto md:max-w-none md:px-10",
           "rounded-full px-8 py-4",
-          "bg-accent text-white",
+          "bg-[#25D366] text-white",
           "font-subtitle text-base tracking-wide uppercase",
-          "shadow-[0_18px_50px_-12px_rgba(224,54,183,0.65)]",
-          "transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_60px_-14px_rgba(224,54,183,0.8)]",
+          "shadow-[0_18px_50px_-12px_rgba(37,211,102,0.7)]",
+          "transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#1FB855] hover:shadow-[0_22px_60px_-14px_rgba(37,211,102,0.85)]",
           "active:translate-y-0",
           "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:outline-none"
         )}

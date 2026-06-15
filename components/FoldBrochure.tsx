@@ -120,7 +120,7 @@ export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: Fol
                 key={i}
                 src={src}
                 alt={`${alt} — panel ${i + 1}`}
-                className="h-auto w-full rounded-sm bg-white shadow-2xl"
+                className="bg-bg h-auto w-full rounded-sm shadow-2xl"
               />
             ))}
           </div>

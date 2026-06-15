@@ -7,6 +7,8 @@ export type Popup = {
   active: boolean
   kind: "poster" | "card"
   image: string
+  /** Optional video that plays inline when the poster is clicked. */
+  video?: string
   imageAlt: LocalizedString
   dateStart: string
   dateEnd: string

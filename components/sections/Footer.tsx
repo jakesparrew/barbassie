@@ -2,7 +2,6 @@
 import Link from "next/link"
 import { useTranslations, useLocale } from "next-intl"
 import { Icon } from "@/components/ui/Icon"
-import { LocaleSwitcher } from "@/components/ui/LocaleSwitcher"
 import { defaultLocale, type Locale } from "@/lib/i18n"
 import { CONTACT, instagramUrl, mailtoUrl, whatsappUrl } from "@/lib/contact"
 
@@ -71,9 +70,6 @@ export function Footer() {
               </Link>
             </li>
           </ul>
-          <div className="mt-6">
-            <LocaleSwitcher />
-          </div>
         </div>
       </div>
       <p className="font-body text-bg/60 mt-12 text-center text-xs">

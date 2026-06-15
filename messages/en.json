@@ -4,12 +4,14 @@
     "location": "Location",
     "reservation": "Reservation",
     "happening": "Happening",
+    "gallery": "Gallery",
     "instagram": "Instagram",
     "contact": "Contact",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
   },
   "hero": {
+    "openEveryDay": "Open. Every. Day.",
     "taglineLine1": "Cooling drinks",
     "taglineLine2Prefix": "Small plates",
     "taglineLine2Joiner": "and",
@@ -24,7 +26,7 @@
   },
   "about": {
     "pullQuote": "Plunge in, move with it and enjoy life's circus",
-    "body": "Bar Bassie is the rooftop bar perched at the very top of Ghent's Wintercircus. Cooling drinks, sharable small plates, and a front-row seat overlooking the central arena."
+    "body": "At the very top of Ghent's Wintercircus, Bar Bassie serves cooling drinks, small plates, and stunning views. By that, we mean a rooftop terrace and a front-row seat overlooking the arena. A place that gives “worth staying for” its true meaning."
   },
   "menu": {
     "label": "Menu",
@@ -64,7 +66,7 @@
   "reserve": {
     "label": "Reserve",
     "walkIns": "Walk-ins are always welcome",
-    "groups": "For groups of 6 or more, message us on WhatsApp and we'll set you up.",
+    "groups": "For groups of <pink>6</pink> or more, message us on WhatsApp and we'll set you up.",
     "whatsappCta": "Message us on WhatsApp",
     "whatsappPrefill": "Hi Bassie! We'd love to reserve a table — "
   },
@@ -77,6 +79,7 @@
   },
   "popup": {
     "close": "Close",
-    "happening": "Happening"
+    "happening": "Happening",
+    "play": "Play video"
   }
 }

@@ -11,6 +11,7 @@ type EventItem = {
   title: string
   subtitle?: string
   image: string
+  video?: string
   dateStart: string
   dateEnd: string
 }
@@ -33,6 +34,7 @@ const eventToPopup = (event: EventItem): Popup => {
     active: true,
     kind: "poster",
     image: event.image,
+    video: event.video,
     imageAlt: { en: alt, nl: alt, fr: alt },
     dateStart: event.dateStart,
     dateEnd: event.dateEnd,

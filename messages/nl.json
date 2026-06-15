@@ -4,12 +4,14 @@
     "location": "Locatie",
     "reservation": "Reservatie",
     "happening": "Wat is er",
+    "gallery": "Gallerij",
     "instagram": "Instagram",
     "contact": "Contact",
     "openMenu": "Menu openen",
     "closeMenu": "Menu sluiten"
   },
   "hero": {
+    "openEveryDay": "Open. Every. Day.",
     "taglineLine1": "Frisse drinks",
     "taglineLine2Prefix": "Kleine gerechten",
     "taglineLine2Joiner": "en",
@@ -24,7 +26,7 @@
   },
   "about": {
     "pullQuote": "Duik erin, beweeg mee en geniet van het circus van het leven",
-    "body": "Bar Bassie is de rooftop bar op de top van het Wintercircus in Gent. Frisse drinks, deelbare hapjes en een vooraan-plaats boven de centrale arena."
+    "body": "At the very top of Ghent's Wintercircus, Bar Bassie serves cooling drinks, small plates, and stunning views. By that, we mean a rooftop terrace and a front-row seat overlooking the arena. A place that gives “worth staying for” its true meaning."
   },
   "menu": {
     "label": "Menu",
@@ -62,7 +64,7 @@
   "reserve": {
     "label": "Reserveren",
     "walkIns": "Walk-ins zijn altijd welkom",
-    "groups": "Voor groepen vanaf 6 personen: stuur ons een WhatsApp en we regelen het.",
+    "groups": "For groups of <pink>6</pink> or more, message us on WhatsApp and we'll set you up.",
     "whatsappCta": "Stuur ons een WhatsApp",
     "whatsappPrefill": "Hoi Bassie! We willen graag een tafel reserveren — "
   },
@@ -73,5 +75,5 @@
     "jobs": "Jobs",
     "designed": "Ontworpen door LOBSTER Antwerpen"
   },
-  "popup": { "close": "Sluiten", "happening": "Wat is er" }
+  "popup": { "close": "Sluiten", "happening": "Wat is er", "play": "Video afspelen" }
 }
