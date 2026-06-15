@@ -6,6 +6,7 @@ import { todayBrussels } from "@/lib/dates"
 import { cn } from "@/lib/cn"
 import eventsData from "@/content/events.json"
 import { PopupModal } from "@/components/PopupModal"
+import { Icon } from "@/components/ui/Icon"
 import type { Popup } from "@/lib/popup"
 
 // Horizontal pixels of drag movement before we consider a gesture a swipe
@@ -225,6 +226,19 @@ export function Events() {
                 className="block h-[280px] w-auto rounded-md shadow-[0_20px_60px_-12px_rgba(0,0,0,0.6)] md:h-[560px]"
                 draggable={false}
               />
+              {/* "Watch video" affordance — only on the centered card that has a
+                  recap video, so users know a click plays it (not just a poster). */}
+              {event.video && abs === 0 && (
+                <span
+                  aria-hidden
+                  className="text-bg pointer-events-none absolute inset-x-0 bottom-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-black/75 px-3 py-1.5 shadow-lg backdrop-blur-sm md:bottom-5 md:px-4 md:py-2"
+                >
+                  <Icon.Play className="h-3.5 w-3.5 fill-current md:h-4 md:w-4" />
+                  <span className="font-subtitle text-[10px] tracking-wide uppercase md:text-xs">
+                    {t("watchVideo")}
+                  </span>
+                </span>
+              )}
             </button>
           )
         })}

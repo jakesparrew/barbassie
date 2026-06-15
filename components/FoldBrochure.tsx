@@ -31,10 +31,10 @@ export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: Fol
       <div className="flex flex-col items-stretch gap-4">
         {/* Big magenta VTC Marsha title + small underlined "Menu" tagline */}
         <header className="text-center">
-          <h3 className="font-subtitle text-accent text-4xl leading-none tracking-tight uppercase md:text-5xl">
+          <h3 className="font-subtitle text-4xl leading-none tracking-tight text-black uppercase md:text-5xl">
             {label}
           </h3>
-          <p className="font-body text-ink mt-1 inline-block border-b border-current text-xs tracking-[0.25em] uppercase">
+          <p className="font-subtitle mt-1 inline-block border-b border-current text-xs tracking-[0.25em] text-black uppercase">
             {t("label")}
           </p>
         </header>
@@ -64,7 +64,7 @@ export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: Fol
           href={pdfHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-body text-accent inline-flex items-center gap-2 self-center text-sm tracking-wide uppercase hover:underline"
+          className="font-subtitle inline-flex items-center gap-2 self-center text-sm tracking-wide text-black uppercase hover:underline"
         >
           {t("download")}
         </a>
@@ -130,7 +130,7 @@ export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: Fol
               href={pdfHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body text-sm tracking-wide text-white/90 uppercase hover:text-white hover:underline"
+              className="font-subtitle text-sm tracking-wide text-white/90 uppercase hover:text-white hover:underline"
             >
               {t("download")}
             </a>

@@ -20,9 +20,9 @@
     "addressLine2": "9000 Ghent"
   },
   "hours": {
-    "weekdays": "Mon to Thu from 4pm to Midnight",
-    "weekends": "Fri to Sat from 12pm to 1am",
-    "sunday": "Sun 12pm to 9pm"
+    "weekdays": "MON-TUE-WED-THU 16U00 - 00U00",
+    "weekends": "FRI-SAT 12U00 - 01U00",
+    "sunday": "SUN - 12U00 - 21U00"
   },
   "about": {
     "pullQuote": "Plunge in, move with it and enjoy life's circus",
@@ -52,7 +52,8 @@
     "currently": "Currently",
     "upcoming": "Upcoming",
     "prev": "Previous event",
-    "next": "Next event"
+    "next": "Next event",
+    "watchVideo": "Watch video"
   },
   "jobs": {
     "label": "Jobs",
@@ -75,6 +76,7 @@
     "hours": "Hours",
     "follow": "Follow",
     "jobs": "Jobs",
+    "jobsTeaser": "Love cold drinks, great food and lively vibes? Join us.",
     "designed": "Designed by LOBSTER Antwerp"
   },
   "popup": {

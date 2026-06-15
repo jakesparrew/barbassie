@@ -20,9 +20,9 @@
     "addressLine2": "9000 Gent"
   },
   "hours": {
-    "weekdays": "Ma tot do van 16u tot middernacht",
-    "weekends": "Vr tot za van 12u tot 1u",
-    "sunday": "Zo van 12u tot 21u"
+    "weekdays": "MON-TUE-WED-THU 16U00 - 00U00",
+    "weekends": "FRI-SAT 12U00 - 01U00",
+    "sunday": "SUN - 12U00 - 21U00"
   },
   "about": {
     "pullQuote": "Duik erin, beweeg mee en geniet van het circus van het leven",
@@ -50,7 +50,8 @@
     "currently": "Nu",
     "upcoming": "Binnenkort",
     "prev": "Vorig event",
-    "next": "Volgend event"
+    "next": "Volgend event",
+    "watchVideo": "Watch video"
   },
   "jobs": {
     "label": "Jobs",
@@ -73,6 +74,7 @@
     "hours": "Openingsuren",
     "follow": "Volg ons",
     "jobs": "Jobs",
+    "jobsTeaser": "Love cold drinks, great food and lively vibes? Join us.",
     "designed": "Ontworpen door LOBSTER Antwerpen"
   },
   "popup": { "close": "Sluiten", "happening": "Wat is er", "play": "Video afspelen" }

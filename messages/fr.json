@@ -20,9 +20,9 @@
     "addressLine2": "9000 Gand"
   },
   "hours": {
-    "weekdays": "Lun au jeu de 16h à minuit",
-    "weekends": "Ven au sam de 12h à 1h",
-    "sunday": "Dim de 12h à 21h"
+    "weekdays": "MON-TUE-WED-THU 16U00 - 00U00",
+    "weekends": "FRI-SAT 12U00 - 01U00",
+    "sunday": "SUN - 12U00 - 21U00"
   },
   "about": {
     "pullQuote": "Plonge, suis le mouvement et profite du cirque de la vie",
@@ -50,7 +50,8 @@
     "currently": "En cours",
     "upcoming": "À venir",
     "prev": "Évènement précédent",
-    "next": "Évènement suivant"
+    "next": "Évènement suivant",
+    "watchVideo": "Watch video"
   },
   "jobs": {
     "label": "Emplois",
@@ -72,7 +73,8 @@
     "contact": "Contact",
     "hours": "Horaires",
     "follow": "Suis-nous",
-    "jobs": "Emplois",
+    "jobs": "Jobs",
+    "jobsTeaser": "Love cold drinks, great food and lively vibes? Join us.",
     "designed": "Conçu par LOBSTER Anvers"
   },
   "popup": { "close": "Fermer", "happening": "Évènement", "play": "Lire la vidéo" }

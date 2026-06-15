@@ -11,7 +11,7 @@ export function Footer() {
   const jobsHref = locale === defaultLocale ? "/jobs" : `/${locale}/jobs`
   return (
     <footer className="bg-ink text-bg px-4 py-16">
-      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <h4 className="font-subtitle text-accent text-sm tracking-wide uppercase">
             {t("footer.contact")}
@@ -64,12 +64,19 @@ export function Footer() {
                 <Icon.Instagram className="h-4 w-4" /> @{CONTACT.instagramHandle}
               </a>
             </li>
-            <li>
-              <Link href={jobsHref} className="hover:text-accent inline-flex items-center gap-2">
-                {t("footer.jobs")}
-              </Link>
-            </li>
           </ul>
+        </div>
+
+        <div>
+          <h4 className="font-subtitle text-accent text-sm tracking-wide uppercase">
+            {t("footer.jobs")}
+          </h4>
+          <Link
+            href={jobsHref}
+            className="font-body hover:text-accent mt-4 inline-block tracking-wide uppercase"
+          >
+            {t("footer.jobsTeaser")}
+          </Link>
         </div>
       </div>
       <p className="font-body text-bg/60 mt-12 text-center text-xs">

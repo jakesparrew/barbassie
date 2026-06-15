@@ -13,7 +13,7 @@ type ButtonPill = Common & ButtonHTMLAttributes<HTMLButtonElement> & { href?: un
 type PillProps = LinkPill | ButtonPill
 
 const base =
-  "inline-flex items-center justify-center rounded-full px-5 py-2 font-subtitle uppercase tracking-wide text-sm transition-transform duration-150 ease-out hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+  "inline-flex items-center justify-center rounded-full px-5 py-2 font-title uppercase tracking-wide text-sm transition-transform duration-150 ease-out hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
 
 const variants: Record<NonNullable<Common["variant"]>, string> = {
   solid: "bg-accent text-white shadow-sm",
