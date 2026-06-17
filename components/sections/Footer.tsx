@@ -64,14 +64,13 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="font-subtitle text-accent text-sm tracking-wide uppercase">
-            {t("footer.jobs")}
-          </h4>
-          <a
-            href={mailtoUrl("Jobs at Bar Bassie")}
-            className="font-body hover:text-accent mt-4 inline-block tracking-wide uppercase"
-          >
-            {t("footer.jobsTeaser")}
+          <a href={mailtoUrl("Jobs at Bar Bassie")} className="group block">
+            <h4 className="font-subtitle text-accent text-sm tracking-wide uppercase">
+              {t("footer.jobs")}
+            </h4>
+            <span className="font-body group-hover:text-accent mt-4 inline-block tracking-wide uppercase">
+              {t("footer.jobsTeaser")}
+            </span>
           </a>
         </div>
       </div>
