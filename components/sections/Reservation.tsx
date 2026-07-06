@@ -23,7 +23,7 @@ export function Reservation() {
           We keep the gradient light so the cucumber-cocktail glass stays the visual anchor. */}
       {!bgFailed && (
         <Image
-          src="/gallery/cocktail-bassie-glass.jpg"
+          src="/gallery/3.jpg"
           alt=""
           fill
           sizes="100vw"

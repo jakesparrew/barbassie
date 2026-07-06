@@ -12,7 +12,7 @@
     "id": "studio-eluno-bassie",
     "title": "studio eluno × BASSIE",
     "subtitle": "Pop-up event",
-    "image": "/events/POPUP.png",
+    "image": "/events/POPUP.webp",
     "dateStart": "2026-07-12",
     "dateEnd": "2026-07-12"
   },
@@ -20,7 +20,7 @@
     "id": "cube-bassie",
     "title": "CUBE × BASSIE",
     "subtitle": "Rooftop Open Air",
-    "image": "/events/cube-bassie.png",
+    "image": "/events/cube-bassie.webp",
     "dateStart": "2026-07-18",
     "dateEnd": "2026-07-18"
   },
@@ -28,7 +28,7 @@
     "id": "summer-mixtape",
     "title": "Bassie's Summer Mixtape",
     "subtitle": "Gentse Feesten",
-    "image": "/events/summer-mixtape.png",
+    "image": "/events/summer-mixtape.webp",
     "dateStart": "2026-07-19",
     "dateEnd": "2026-07-26"
   }

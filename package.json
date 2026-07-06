@@ -14,7 +14,8 @@
     "format": "prettier --write .",
     "convert-fonts": "node scripts/convert-fonts.mjs",
     "transcode-hero": "node scripts/transcode-hero.mjs",
-    "extract-panels": "node scripts/extract-menu-panels.mjs"
+    "extract-panels": "node scripts/extract-menu-panels.mjs",
+    "optimize-assets": "node scripts/optimize-assets.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

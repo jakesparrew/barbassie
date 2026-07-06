@@ -18,7 +18,7 @@ export function About() {
     <section id="about" className="relative min-h-[100svh] overflow-hidden">
       {/* Background: gallery photo 8 */}
       <Image
-        src="/gallery/8.png"
+        src="/gallery/8.jpg"
         alt=""
         fill
         priority={false}

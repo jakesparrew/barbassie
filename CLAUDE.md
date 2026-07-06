@@ -29,8 +29,26 @@ next-intl (EN default, NL, FR).
 - `npm run convert-fonts` — OTF/TTF → WOFF2
 - `npm run transcode-hero` — source MP4 → multi-format hero
 - `npm run extract-panels` — drinks + food PDFs → panel JPGs
+- `npm run optimize-assets` — compress oversized images/PDFs under `public/`
 
 These are dev-machine scripts only. Vercel runs `next build`, nothing else.
+
+## Always compress new images & PDFs
+Whenever images or PDFs are added to `public/` (uploaded by hand or introduced
+in a task), they MUST be compressed before use — raw camera exports can be
+20–40 MB each and tank page speed.
+
+- Run `npm run optimize-assets`. It downsizes any raster image whose long edge
+  exceeds ~2000px and re-encodes at web quality **in place** (same filename &
+  format, so references never break), and downsamples large PDFs when
+  Ghostscript is available. It's idempotent — safe to run every time.
+- A Stop hook runs this automatically after each turn, but run it yourself too
+  when you add assets so verification uses the compressed files.
+- When it makes sense, also convert formats for extra savings — photos stored
+  as PNG → JPEG, and posters/graphics loaded via a raw `<img>` (Events,
+  PopupModal) → WebP — and update the reference in code/`content/*.json`. The
+  auto-script never renames, so these format swaps are a manual step.
+- Target sizes: gallery/background photos ≲400 KB, posters ≲300 KB.
 
 ## V2 roadmap (not in scope yet)
 Supabase CMS, Resend email, supershift.work reservations. See the spec

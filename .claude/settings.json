@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "export PATH=\"/opt/homebrew/bin:$PATH\"; cd \"$CLAUDE_PROJECT_DIR\" 2>/dev/null && command -v node >/dev/null 2>&1 && node scripts/optimize-assets.mjs 2>/dev/null || true",
+            "async": true,
+            "statusMessage": "Compressing new images/PDFs…"
+          }
+        ]
+      }
+    ]
+  }
+}
