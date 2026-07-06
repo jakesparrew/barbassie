@@ -11,32 +11,52 @@ type Photo = { src: string; alt: string }
 
 const photos: Photo[] = [
   {
-    src: "/gallery/interior-sofa.jpg",
-    alt: "Bar Bassie interior: mint green curved sofa, chandelier, and rooftop window view",
+    src: "/gallery/1.jpg",
+    alt: "Ceviche with verbena leaves and olive oil on a metal plate",
   },
   {
-    src: "/gallery/cocktails-rim.jpg",
-    alt: "Two coupe cocktails with chili-salt rims being poured",
+    src: "/gallery/2.jpg",
+    alt: "Sliced Ibérico charcuterie on Bassie-branded paper",
   },
   {
-    src: "/gallery/oysters-trio.jpg",
+    src: "/gallery/3.jpg",
+    alt: "Cucumber cocktail in a BASSIE-branded wine glass beside a globe",
+  },
+  {
+    src: "/gallery/4.jpg",
+    alt: "Cocktail poured into a coupe with a chili-salt rim",
+  },
+  {
+    src: "/gallery/5.jpg",
+    alt: "Crème brûlée with berries in a silver coupe",
+  },
+  {
+    src: "/gallery/7.jpg",
     alt: "Trio of dressed oysters on ice in a metal bowl",
   },
   {
-    src: "/gallery/charcuterie-paleta.jpg",
-    alt: "Charcuterie plate with paleta iberico on Bassie-branded paper",
+    src: "/gallery/9.jpg",
+    alt: "BASSIE-branded card on a silver tray with cutlery",
   },
   {
-    src: "/gallery/cocktail-bassie-glass.jpg",
-    alt: "Cucumber cocktail in a BASSIE-branded wine glass on a warm-lit shelf",
+    src: "/gallery/14.jpg",
+    alt: "Creamy small plate topped with herbs and cucumber",
   },
   {
-    src: "/gallery/ceviche-verbena.jpg",
-    alt: "Ceviche with verbena leaves and olive oil drizzle on a moss-green surface",
+    src: "/gallery/15.jpg",
+    alt: "Table spread of small plates, charcuterie and drinks",
   },
   {
-    src: "/gallery/dessert-brulee.jpg",
-    alt: "Crème brûlée with berries in a silver coupe",
+    src: "/gallery/16.jpg",
+    alt: "Rooftop terrace garden with a Champagne bucket",
+  },
+  {
+    src: "/gallery/17.jpg",
+    alt: "Spritz cocktail held up against the Ghent skyline",
+  },
+  {
+    src: "/gallery/18.jpg",
+    alt: "Overhead of a round table full of cocktails and bites",
   },
 ]
 
@@ -47,10 +67,14 @@ export function Gallery() {
 
   return (
     <section id="gallery" className="bg-bg px-4 py-24">
-      <RevealOnView className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl">
         {/* Heading: the BASSIE'S wordmark image (designer-supplied, cropped
             tight) colorized to magenta via CSS mask, plus the small underlined
-            "Gallery" kicker below it. Single image — no separate 'S. */}
+            "Gallery" kicker below it. Single image — no separate 'S.
+            Only the header fades in on scroll; the tall photo grid renders
+            unconditionally so it can't get stuck hidden when it's taller than
+            the viewport (framer's whileInView amount can't be reached then). */}
+        <RevealOnView>
         <header className="flex flex-col items-center">
           <h2
             role="img"
@@ -74,29 +98,11 @@ export function Gallery() {
             {t("label")}
           </p>
         </header>
+        </RevealOnView>
 
-        {/* Mockup p6 shows a 2x2 grid on mobile (4 photos).
-            We render a 2-col grid on mobile and reveal the rest from md+ in 3 cols. */}
-        <div className="mt-10 grid grid-cols-2 gap-3 md:hidden">
-          {photos.slice(0, 4).map((p, i) => (
-            <button
-              key={p.src}
-              type="button"
-              onClick={() => setActiveIndex(i)}
-              aria-label={`Open photo ${i + 1} of ${photos.length}: ${p.alt}`}
-              className="focus-visible:ring-accent group relative block aspect-square w-full overflow-hidden rounded focus-visible:ring-2 focus-visible:outline-none"
-            >
-              <Image
-                src={p.src}
-                alt={p.alt}
-                fill
-                sizes="50vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </button>
-          ))}
-        </div>
-        <div className="mt-10 hidden columns-3 gap-3 md:block [&>button]:mb-3">
+        {/* Two photos per row on every screen; masonry keeps each photo's
+            natural aspect ratio. */}
+        <div className="mt-10 columns-2 gap-3 [&>button]:mb-3">
           {photos.map((p, i) => (
             <button
               key={p.src}
@@ -110,13 +116,13 @@ export function Gallery() {
                 alt={p.alt}
                 width={1200}
                 height={1600}
-                sizes="(min-width: 768px) 33vw, 50vw"
+                sizes="50vw"
                 className="h-auto w-full transition-transform duration-500 group-hover:scale-105"
               />
             </button>
           ))}
         </div>
-      </RevealOnView>
+      </div>
 
       {/* Lightbox */}
       <Modal

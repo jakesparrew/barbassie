@@ -1,59 +1,35 @@
 [
   {
-    "id": "sporty-spice-feb",
-    "title": "Sporty Spice",
-    "subtitle": "Tennis night",
-    "image": "/events/sporty-spice.jpg",
-    "dateStart": "2026-02-01",
-    "dateEnd": "2026-02-28"
-  },
-  {
-    "id": "sporty-spice-mar",
-    "title": "Sporty Spice",
-    "subtitle": "Tennis night",
-    "image": "/events/sporty-spice.jpg",
-    "dateStart": "2026-03-01",
-    "dateEnd": "2026-03-31"
-  },
-  {
-    "id": "sporty-spice-apr",
-    "title": "Sporty Spice",
-    "subtitle": "Tennis night",
-    "image": "/events/sporty-spice.jpg",
-    "dateStart": "2026-04-01",
-    "dateEnd": "2026-04-30"
-  },
-  {
     "id": "bassie-goes-mexico",
     "title": "Bassie Goes Mexico",
     "subtitle": "Tequila Surprise",
     "image": "/events/bassie-goes-mexico.jpg",
     "video": "/video-mexico.mp4",
     "dateStart": "2026-05-11",
-    "dateEnd": "2026-12-31"
+    "dateEnd": "2026-05-31"
   },
   {
-    "id": "check-mate-jul",
-    "title": "Check Mate",
-    "subtitle": "Chess night",
-    "image": "/events/check-mate.jpg",
-    "dateStart": "2027-01-01",
-    "dateEnd": "2027-01-31"
+    "id": "studio-eluno-bassie",
+    "title": "studio eluno × BASSIE",
+    "subtitle": "Pop-up event",
+    "image": "/events/POPUP.png",
+    "dateStart": "2026-07-12",
+    "dateEnd": "2026-07-12"
   },
   {
-    "id": "check-mate-aug",
-    "title": "Check Mate",
-    "subtitle": "Chess tournament",
-    "image": "/events/check-mate.jpg",
-    "dateStart": "2027-02-01",
-    "dateEnd": "2027-02-28"
+    "id": "cube-bassie",
+    "title": "CUBE × BASSIE",
+    "subtitle": "Rooftop Open Air",
+    "image": "/events/cube-bassie.png",
+    "dateStart": "2026-07-18",
+    "dateEnd": "2026-07-18"
   },
   {
-    "id": "check-mate-sep",
-    "title": "Check Mate",
-    "subtitle": "Chess night",
-    "image": "/events/check-mate.jpg",
-    "dateStart": "2027-03-01",
-    "dateEnd": "2027-03-31"
+    "id": "summer-mixtape",
+    "title": "Bassie's Summer Mixtape",
+    "subtitle": "Gentse Feesten",
+    "image": "/events/summer-mixtape.png",
+    "dateStart": "2026-07-19",
+    "dateEnd": "2026-07-26"
   }
 ]

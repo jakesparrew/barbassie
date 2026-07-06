@@ -5,11 +5,12 @@ import { SectionLabel } from "@/components/ui/SectionLabel"
 import { FoldBrochure } from "@/components/FoldBrochure"
 import { RevealOnView } from "@/components/ui/RevealOnView"
 
-// panels[0] = front cover (the new burgundy / green hand-cut artwork).
-// panels[panelsPerSide..panelsPerSide*2] = inside spread shown in the modal
-// after the cover is tapped (kept from the original extracted PDF pages).
+// panels[0] = front cover (the burgundy / green hand-cut artwork) shown on the
+// card; panels[1..] = the readable menu columns shown, in order, in the modal
+// (all pages of the extracted PDF — page 1 columns then page 2 columns).
 const drinksPanels = [
-  "/menu/drinks/cover.jpg", // burgundy cover, replaces panel-1
+  "/menu/drinks/cover.jpg", // burgundy cover artwork
+  "/menu/drinks/panel-1.jpg",
   "/menu/drinks/panel-2.jpg",
   "/menu/drinks/panel-3.jpg",
   "/menu/drinks/panel-4.jpg",
@@ -17,10 +18,9 @@ const drinksPanels = [
   "/menu/drinks/panel-6.jpg",
 ]
 const foodPanels = [
-  "/menu/food/cover.jpg", // green cover, replaces panel-1
+  "/menu/food/cover.jpg", // green cover artwork
+  "/menu/food/panel-1.jpg",
   "/menu/food/panel-2.jpg",
-  "/menu/food/panel-3.jpg",
-  "/menu/food/panel-4.jpg",
 ]
 
 export function Menu() {

@@ -6,9 +6,10 @@ import { Modal } from "@/components/ui/Modal"
 import { cn } from "@/lib/cn"
 
 type FoldBrochureProps = {
-  /** Panel image URLs. First N are cover side, next N are the inside spread. */
+  /** Panel image URLs. panels[0] is the cover shown on the card; the rest are
+      the readable menu panels shown, in order, inside the lightbox. */
   panels: string[]
-  /** Number of panels per side (3 = rolvouw, 2 = luik). */
+  /** Number of columns the menu panels lay out in on desktop (3 = rolvouw, 2 = luik). */
   panelsPerSide: 2 | 3
   /** Label shown above the brochure (e.g. "Drinks"). */
   label: string
@@ -23,8 +24,8 @@ export function FoldBrochure({ panels, panelsPerSide, label, pdfHref, alt }: Fol
   const [open, setOpen] = useState(false)
 
   const cover = panels[0]
-  // First N panels are the cover/back side; next N are the inside spread.
-  const inside = panels.slice(panelsPerSide, panelsPerSide * 2)
+  // Everything after the cover is a readable menu panel shown in the lightbox.
+  const inside = panels.slice(1)
 
   return (
     <>

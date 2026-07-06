@@ -4,10 +4,9 @@ import { useState, useMemo, useRef } from "react"
 import { useTranslations, useLocale } from "next-intl"
 import { todayBrussels } from "@/lib/dates"
 import { cn } from "@/lib/cn"
-import eventsData from "@/content/events.json"
+import { allEvents, getStatus, featuredEventIndex, eventToPopup, type EventItem } from "@/lib/events"
 import { PopupModal } from "@/components/PopupModal"
 import { Icon } from "@/components/ui/Icon"
-import type { Popup } from "@/lib/popup"
 
 // Horizontal pixels of drag movement before we consider a gesture a swipe
 // (and suppress the click that would otherwise activate the card under the
@@ -17,46 +16,10 @@ const SWIPE_THRESHOLD = 70
 // know to swallow the trailing click event when the user releases.
 const DRAG_DETECT_THRESHOLD = 6
 
-type EventStatus = "finished" | "currently" | "upcoming"
-
-type EventItem = {
-  id: string
-  title: string
-  subtitle?: string
-  image: string
-  video?: string
-  dateStart: string
-  dateEnd: string
-}
-
-const getStatus = (event: EventItem, today: string): EventStatus => {
-  if (today > event.dateEnd) return "finished"
-  if (today < event.dateStart) return "upcoming"
-  return "currently"
-}
-
-/** Build the Popup shape PopupModal expects from a carousel event. */
-const eventToPopup = (event: EventItem): Popup => {
-  const alt = event.subtitle ? `${event.title} — ${event.subtitle}` : event.title
-  return {
-    active: true,
-    kind: "poster",
-    image: event.image,
-    video: event.video,
-    imageAlt: { en: alt, nl: alt, fr: alt },
-    dateStart: event.dateStart,
-    dateEnd: event.dateEnd,
-    title: { en: event.title, nl: event.title, fr: event.title },
-    subtitle: event.subtitle
-      ? { en: event.subtitle, nl: event.subtitle, fr: event.subtitle }
-      : undefined,
-  }
-}
-
 /**
- * Events — 3D fan carousel of past / current / upcoming Bassie campaigns.
+ * Events — 3D fan carousel of finished / upcoming Bassie campaigns.
  * Replaces the auto-opening Mexico popup with a section that the Happening
- * pill scrolls to. The center card is the "currently" event; the arrows
+ * pill scrolls to. The center card is the next upcoming event; the arrows
  * navigate left (older) and right (newer).
  */
 export function Events() {
@@ -64,11 +27,12 @@ export function Events() {
   const locale = useLocale()
   const today = todayBrussels()
 
-  // Auto-center on the currently-running event; fallback to middle of list.
-  const events = eventsData as EventItem[]
+  // Auto-center on the next upcoming event (falls back to the most recently
+  // finished one when nothing is ahead).
+  const events = allEvents
   const initialIndex = useMemo(() => {
-    const idx = events.findIndex((e) => getStatus(e, today) === "currently")
-    return idx >= 0 ? idx : Math.floor(events.length / 2)
+    const idx = featuredEventIndex(events, today)
+    return idx >= 0 ? idx : 0
   }, [events, today])
 
   const [activeIndex, setActiveIndex] = useState(initialIndex)
@@ -130,7 +94,7 @@ export function Events() {
   }
 
   const activeEvent = events[activeIndex]
-  const activeStatus = activeEvent ? getStatus(activeEvent, today) : "currently"
+  const activeStatus = activeEvent ? getStatus(activeEvent, today) : "upcoming"
 
   // Format dates per locale for the meta line below the carousel.
   const formatDate = (iso: string) => {
@@ -153,16 +117,14 @@ export function Events() {
       <div className="relative mx-auto mb-8 max-w-6xl px-4 md:mb-14 md:px-8">
         <div
           id="events-heading"
-          className="font-subtitle text-accent grid grid-cols-3 items-baseline gap-2 text-[10px] tracking-[0.22em] uppercase md:text-sm"
+          className="font-subtitle text-accent grid grid-cols-2 items-baseline gap-2 text-[10px] tracking-[0.22em] uppercase md:text-sm"
         >
-          {(["finished", "currently", "upcoming"] as const).map((status, idx) => (
+          {(["finished", "upcoming"] as const).map((status, idx) => (
             <span
               key={status}
               className={cn(
                 "transition-opacity duration-300",
-                idx === 0 && "text-left",
-                idx === 1 && "text-center",
-                idx === 2 && "text-right",
+                idx === 0 ? "text-left" : "text-right",
                 activeStatus === status ? "opacity-100" : "opacity-25"
               )}
             >

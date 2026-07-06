@@ -1,5 +1,5 @@
 // scripts/extract-menu-panels.mjs
-// Crops the drinks (3-fold, 2 pages) and food (2-fold, 2 pages) PDFs into panel JPGs.
+// Crops the drinks (3-fold, 2 pages) and food (2-fold, 1 page) PDFs into panel JPGs.
 // Requires Python 3 with `pymupdf`. No Pillow needed — uses pix.tobytes("jpeg") directly.
 import { execSync } from "node:child_process"
 import { writeFileSync } from "node:fs"
@@ -29,7 +29,7 @@ def crop(pdf_path, out_dir, layout):
     doc.close()
 
 crop("public/menu/bar-bassie-drinks.pdf", "public/menu/drinks", [3, 3])
-crop("public/menu/bar-bassie-food.pdf",   "public/menu/food",   [2, 2])
+crop("public/menu/bar-bassie-food.pdf",   "public/menu/food",   [2])
 `
 
 const scriptPath = join(tmpdir(), "extract-menu-panels.py")

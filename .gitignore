@@ -45,3 +45,6 @@ next-env.d.ts
 assets/hero/source.mp4
 
 .vercel
+
+# Claude Code local-only settings
+.claude/settings.local.json

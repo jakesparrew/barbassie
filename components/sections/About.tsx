@@ -16,9 +16,9 @@ export function About() {
   const t = useTranslations("about")
   return (
     <section id="about" className="relative min-h-[100svh] overflow-hidden">
-      {/* Background: iconic mint-sofa + chandelier + Ghent skyline interior */}
+      {/* Background: gallery photo 8 */}
       <Image
-        src="/gallery/interior-sofa.jpg"
+        src="/gallery/8.png"
         alt=""
         fill
         priority={false}

@@ -31,7 +31,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "hero" })
-  const description = `${t("taglineLine1")} · ${t("taglineLine2")}`
+  const taglineLine2 = `${t("taglineLine2Prefix")} ${t("taglineLine2Joiner")} ${t("taglineLine2Suffix")}`
+  const description = `${t("taglineLine1")} · ${taglineLine2}`
   return {
     metadataBase: new URL("https://barbassie.be"),
     title: { default: "Bar Bassie · Wintercircus Ghent", template: "%s · Bar Bassie" },
