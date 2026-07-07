@@ -38,7 +38,7 @@ export function Reservation() {
           "absolute inset-0",
           bgFailed
             ? "bg-gradient-to-b from-[#1a0708] via-[color:var(--color-ink)] to-[#1a0708]"
-            : "bg-gradient-to-b from-black/30 via-black/15 to-black/55"
+            : "bg-gradient-to-b from-black/50 via-black/25 to-black/60"
         )}
         aria-hidden
       />
@@ -48,18 +48,20 @@ export function Reservation() {
 
         <p
           className={cn(
-            "font-body mt-6 max-w-xl text-sm leading-relaxed tracking-wide uppercase",
-            "drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] md:text-base"
+            "font-body mt-6 max-w-xl text-base font-semibold leading-relaxed tracking-wide uppercase",
+            "drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] md:text-lg"
           )}
         >
           {t.rich("groups", {
-            pink: (chunks) => <span className="text-accent">{chunks}</span>,
+            pink: (chunks) => (
+              <span className="font-bold text-[color:var(--color-bg)]">{chunks}</span>
+            ),
           })}
         </p>
         <p
           className={cn(
-            "font-body mt-3 text-sm tracking-wide uppercase",
-            "drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] md:text-base"
+            "font-body mt-3 text-base font-semibold tracking-wide uppercase",
+            "drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)] md:text-lg"
           )}
         >
           {t("walkIns")}
