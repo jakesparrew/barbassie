@@ -56,6 +56,9 @@ export function Hero() {
         muted
         loop
         playsInline
+        // Lets browsers that defer autoplay (data-saver, low battery) skip the
+        // 10.6 MB download entirely; the poster still paints instantly.
+        preload="none"
         poster="/hero/hero-poster.jpg"
         aria-hidden
       >

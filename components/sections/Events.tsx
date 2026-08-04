@@ -187,6 +187,10 @@ export function Events() {
                 alt={event.title}
                 className="block h-[280px] w-auto rounded-md shadow-[0_20px_60px_-12px_rgba(0,0,0,0.6)] md:h-[560px]"
                 draggable={false}
+                // The carousel sits below the fold; without this every poster
+                // is fetched on page load even by visitors who never scroll.
+                loading="lazy"
+                decoding="async"
               />
               {/* "Watch video" affordance — only on the centered card that has a
                   recap video, so users know a click plays it (not just a poster). */}
