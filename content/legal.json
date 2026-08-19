@@ -1,0 +1,205 @@
+{
+  "privacy": {
+    "slug": "privacy",
+    "title": "Privacy Policy",
+    "updated": "2026-08-14",
+    "intro": "Bar Bassie respects your privacy. This policy explains which personal data we collect when you visit this website or get in touch with us, why we collect it, how long we keep it, and the rights you have under the General Data Protection Regulation (GDPR).",
+    "sections": [
+      {
+        "heading": "Who is responsible for your data",
+        "body": [
+          "The controller of your personal data is [LEGAL ENTITY NAME — to complete], trading as Bar Bassie, with its establishment at Wintercircus, Lammerstraat 13, 9000 Ghent, Belgium, registered in the Belgian Crossroads Bank for Enterprises under number [COMPANY NUMBER — to complete].",
+          "For any question about this policy or your data, contact us at hello@barbassie.be or +32 470 48 72 52."
+        ]
+      },
+      {
+        "heading": "What we collect and why",
+        "body": [
+          "We keep data collection to the minimum needed to run a bar and answer the people who contact us."
+        ],
+        "items": [
+          "Contact by email — if you email us, we receive your address, your name if you give it, and the content of your message. Purpose: answering you. Legal basis: our legitimate interest in responding to enquiries.",
+          "Reservations by WhatsApp — if you use the WhatsApp button, we receive your phone number, your WhatsApp profile name and your messages. Purpose: arranging and confirming your table. Legal basis: taking steps at your request before providing a service.",
+          "Job applications — if you apply, we receive whatever you send us (name, contact details, CV, experience). Purpose: assessing your application. Legal basis: taking steps at your request before entering into a contract.",
+          "Website usage — aggregated, anonymous statistics about how the site is used (pages viewed, referring site, country, device type). This does not identify you. Legal basis: our legitimate interest in understanding and improving the site."
+        ]
+      },
+      {
+        "heading": "What we do not do",
+        "items": [
+          "We do not sell, rent or trade your personal data.",
+          "We do not use advertising or cross-site tracking technology.",
+          "We do not build visitor profiles and we do not take automated decisions about you.",
+          "We do not ask for payment details on this website. No transaction takes place here."
+        ]
+      },
+      {
+        "heading": "How long we keep it",
+        "items": [
+          "Email and WhatsApp correspondence: up to 12 months after our last contact, unless it relates to an ongoing agreement.",
+          "Job applications: up to 6 months after the selection process closes, unless you agree to us keeping them longer for future openings.",
+          "Website statistics: aggregated figures only, with nothing retained that identifies an individual visitor."
+        ]
+      },
+      {
+        "heading": "Who else processes your data",
+        "body": [
+          "We use a small number of service providers who process data strictly on our instructions:"
+        ],
+        "items": [
+          "Vercel Inc. — hosting and delivery of this website, including server logs.",
+          "WhatsApp Ireland Ltd. (Meta) — only if you choose to message us on WhatsApp. Your use of WhatsApp is also governed by the Meta privacy policy.",
+          "Our email provider — for receiving and storing correspondence sent to hello@barbassie.be."
+        ]
+      },
+      {
+        "heading": "Transfers outside the European Economic Area",
+        "body": [
+          "Some of these providers are established outside the EEA or may process data there. Where that happens, the transfer is covered by the Standard Contractual Clauses of the European Commission or an equivalent lawful transfer mechanism."
+        ]
+      },
+      {
+        "heading": "Your rights",
+        "body": ["Under the GDPR you have the right to:"],
+        "items": [
+          "Access the personal data we hold about you and receive a copy of it.",
+          "Have inaccurate data corrected.",
+          "Have your data erased where there is no overriding reason for us to keep it.",
+          "Ask us to restrict processing, or object to processing based on legitimate interest.",
+          "Receive the data you provided in a portable, machine-readable format.",
+          "Withdraw your consent at any time, where processing is based on consent."
+        ],
+        "after": [
+          "To exercise any of these rights, email hello@barbassie.be. We answer within one month. We may ask you to confirm your identity first, so that we do not disclose your data to someone else.",
+          "If you are not satisfied with how we handle your request, you can lodge a complaint with the Belgian Data Protection Authority, Drukpersstraat 35, 1000 Brussels — contact@apd-gba.be, www.dataprotectionauthority.be."
+        ]
+      },
+      {
+        "heading": "Security",
+        "body": [
+          "This website is served entirely over an encrypted HTTPS connection. Access to correspondence and applications is limited to the people at Bar Bassie who need it to do their job."
+        ]
+      },
+      {
+        "heading": "Changes to this policy",
+        "body": [
+          "We may update this policy when our practices or the law change. The date at the top always shows the current version."
+        ]
+      }
+    ]
+  },
+  "cookies": {
+    "slug": "cookies",
+    "title": "Cookie Policy",
+    "updated": "2026-08-14",
+    "intro": "Short version: this website uses no tracking or advertising cookies, which is why you are not asked to accept anything. This page explains exactly what is stored on your device, and why.",
+    "sections": [
+      {
+        "heading": "We use no tracking cookies",
+        "body": [
+          "We place no advertising cookies, no social media cookies and no cross-site tracking cookies. We do not use advertising pixels or any technology that follows you to other websites."
+        ]
+      },
+      {
+        "heading": "Functional storage we do use",
+        "body": [
+          "To make the site work properly, one small piece of information is stored locally in your browser. It never leaves your device and is not sent to us or to anyone else."
+        ],
+        "items": [
+          "Event pop-up preference — when an event announcement appears and you close it, your browser remembers this so the same announcement does not reappear on every page you open that day. It stores only a date and an event reference. No identifier, no personal data."
+        ],
+        "after": [
+          "Under European ePrivacy rules, storage that is strictly necessary to deliver a function you asked for does not require consent. That is why this site shows no cookie banner."
+        ]
+      },
+      {
+        "heading": "Website statistics",
+        "body": [
+          "We measure how the site is used with privacy-friendly, cookieless analytics. It records aggregated figures such as page views, referring website, country and device type. It sets no cookies, stores nothing on your device, does not fingerprint your browser, and cannot identify you or follow you across websites."
+        ]
+      },
+      {
+        "heading": "Services you choose to use",
+        "body": [
+          "If you click through to WhatsApp, Instagram or Google Maps, you leave this website and the cookie and privacy policies of those services apply. We have no control over what they store on your device."
+        ]
+      },
+      {
+        "heading": "Clearing what is stored",
+        "body": [
+          "You can delete this local storage at any time through your browser settings, or by browsing in a private window. Clearing it only means a closed event announcement may appear once more."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "slug": "terms",
+    "title": "Legal Notice & Terms of Use",
+    "updated": "2026-08-14",
+    "intro": "This page contains the legal information about the operator of this website, required under the Belgian Code of Economic Law, together with the terms on which the site is made available.",
+    "sections": [
+      {
+        "heading": "Website operator",
+        "items": [
+          "Trading name: Bar Bassie",
+          "Legal entity: [LEGAL ENTITY NAME AND FORM — to complete]",
+          "Registered office: [REGISTERED OFFICE ADDRESS — to complete]",
+          "Venue: Wintercircus, Lammerstraat 13, 9000 Ghent, Belgium",
+          "Enterprise number (KBO/BCE): [COMPANY NUMBER — to complete]",
+          "VAT number: [VAT NUMBER — to complete]",
+          "Email: hello@barbassie.be",
+          "Telephone: +32 470 48 72 52",
+          "Website built by Sidestream — sidestream.be"
+        ]
+      },
+      {
+        "heading": "Purpose of this website",
+        "body": [
+          "This website presents Bar Bassie, its location, opening hours, menus and events. It is informational. No contract is concluded and no payment is taken through this website."
+        ]
+      },
+      {
+        "heading": "Menus, prices and opening hours",
+        "body": [
+          "We keep the information on this site as accurate as we can, but menus, prices, opening hours and events change, and items sell out. Nothing on this website is a binding offer. The prices and dishes that apply are the ones displayed at the bar itself. If a detail matters to your visit, contact us to confirm."
+        ]
+      },
+      {
+        "heading": "Reservations",
+        "body": [
+          "Walk-ins are always welcome. For groups of six or more, contact us on WhatsApp. A reservation exists only once we have confirmed it to you directly — sending a message does not by itself guarantee a table."
+        ]
+      },
+      {
+        "heading": "Intellectual property",
+        "body": [
+          "The name Bar Bassie, the Bassie wordmark, the design of this website and all photography, video, artwork and text on it are protected by intellectual property rights and belong to the operator or its licensors. You may view and share the pages of this site normally. You may not reproduce, republish or use any of this material commercially without our prior written permission."
+        ]
+      },
+      {
+        "heading": "Links to other websites",
+        "body": [
+          "This site links to services such as Instagram, WhatsApp and Google Maps. We do not control those services and are not responsible for their content, availability or privacy practices."
+        ]
+      },
+      {
+        "heading": "Liability",
+        "body": [
+          "We take care to keep this website accurate and available, but we cannot guarantee that it will always be free of errors or uninterrupted. To the extent permitted by law, we are not liable for damage arising from the use of, or inability to use, this website. Nothing here limits liability that cannot be excluded under Belgian law, including liability for fraud, for death or personal injury caused by negligence, or the rights you have as a consumer."
+        ]
+      },
+      {
+        "heading": "Accessibility and feedback",
+        "body": [
+          "We want this site to work for everyone. If you run into a problem using it, or you spot something wrong or out of date, tell us at hello@barbassie.be and we will fix it."
+        ]
+      },
+      {
+        "heading": "Applicable law",
+        "body": [
+          "This website and this notice are governed by Belgian law. Any dispute falls under the jurisdiction of the courts of the judicial district of East Flanders, Ghent division, without prejudice to your right as a consumer to bring proceedings elsewhere under mandatory law."
+        ]
+      }
+    ]
+  }
+}
