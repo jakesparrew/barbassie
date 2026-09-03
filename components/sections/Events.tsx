@@ -170,7 +170,7 @@ export function Events() {
               aria-label={`${event.title} — ${getStatus(event, today)}`}
               aria-current={abs === 0 ? "true" : undefined}
               className={cn(
-                "absolute top-1/2 left-1/2",
+                "absolute top-1/2 left-1/2 flex flex-col items-center",
                 "transition-all duration-500 ease-out",
                 "focus-visible:ring-accent rounded-lg focus-visible:ring-2 focus-visible:outline-none"
               )}
@@ -205,11 +205,12 @@ export function Events() {
                   </span>
                 </span>
               )}
-              {/* Same affordance for posters that have a second details panel. */}
+              {/* Same affordance for posters that have a second details panel —
+                  placed UNDER the poster so it never covers the artwork. */}
               {!event.video && event.image2 && abs === 0 && (
                 <span
                   aria-hidden
-                  className="text-bg pointer-events-none absolute inset-x-0 bottom-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-black/75 px-3 py-1.5 shadow-lg backdrop-blur-sm md:bottom-5 md:px-4 md:py-2"
+                  className="text-bg pointer-events-none mt-2 flex w-fit items-center gap-2 rounded-full bg-black/75 px-3 py-1.5 shadow-lg backdrop-blur-sm md:mt-3 md:px-4 md:py-2"
                 >
                   <span className="font-subtitle text-[10px] tracking-wide uppercase md:text-xs">
                     {t("moreInfo")}
