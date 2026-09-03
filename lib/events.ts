@@ -10,6 +10,7 @@ export type EventItem = {
   subtitle?: string
   image: string
   video?: string
+  image2?: string
   dateStart: string
   dateEnd: string
 }
@@ -58,6 +59,7 @@ export const eventToPopup = (event: EventItem): Popup => {
     kind: "poster",
     image: event.image,
     video: event.video,
+    image2: event.image2,
     imageAlt: { en: alt, nl: alt, fr: alt },
     dateStart: event.dateStart,
     dateEnd: event.dateEnd,

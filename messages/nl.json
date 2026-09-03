@@ -43,7 +43,9 @@
     "directions": "Routebeschrijving",
     "floorplanCaption": "Binnenkomen via Lammerstraat 13 — neem de lift naar de 4e verdieping"
   },
-  "gallery": { "label": "Galerij" },
+  "gallery": {
+    "label": "Galerij"
+  },
   "events": {
     "label": "Wat is er",
     "finished": "Voorbij",
@@ -51,7 +53,8 @@
     "upcoming": "Binnenkort",
     "prev": "Vorig event",
     "next": "Volgend event",
-    "watchVideo": "Watch video"
+    "watchVideo": "Watch video",
+    "moreInfo": "Meer info"
   },
   "jobs": {
     "label": "Jobs",
@@ -77,5 +80,11 @@
     "jobsTeaser": "Love cold drinks, great food and lively vibes? Join us.",
     "designed": "Website by <link>sidestream.be</link>"
   },
-  "popup": { "close": "Sluiten", "happening": "Wat is er", "play": "Video afspelen" }
+  "popup": {
+    "close": "Sluiten",
+    "happening": "Wat is er",
+    "play": "Video afspelen",
+    "moreInfo": "Meer info",
+    "back": "Terug"
+  }
 }

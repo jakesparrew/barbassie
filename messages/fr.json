@@ -43,7 +43,9 @@
     "directions": "Itinéraire",
     "floorplanCaption": "Entrée par Lammerstraat 13 — prends l'ascenseur jusqu'au 4ème étage"
   },
-  "gallery": { "label": "Galerie" },
+  "gallery": {
+    "label": "Galerie"
+  },
   "events": {
     "label": "Évènement",
     "finished": "Terminé",
@@ -51,7 +53,8 @@
     "upcoming": "À venir",
     "prev": "Évènement précédent",
     "next": "Évènement suivant",
-    "watchVideo": "Watch video"
+    "watchVideo": "Watch video",
+    "moreInfo": "Plus d’infos"
   },
   "jobs": {
     "label": "Emplois",
@@ -77,5 +80,11 @@
     "jobsTeaser": "Love cold drinks, great food and lively vibes? Join us.",
     "designed": "Website by <link>sidestream.be</link>"
   },
-  "popup": { "close": "Fermer", "happening": "Évènement", "play": "Lire la vidéo" }
+  "popup": {
+    "close": "Fermer",
+    "happening": "Évènement",
+    "play": "Lire la vidéo",
+    "moreInfo": "Plus d’infos",
+    "back": "Retour"
+  }
 }

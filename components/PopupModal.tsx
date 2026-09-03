@@ -21,20 +21,26 @@ export function PopupModal({
   const locale = useLocale() as Locale
   const [imageFailed, setImageFailed] = useState(false)
   const [playing, setPlaying] = useState(false)
+  // Posters can carry a second "details" panel; page 1 is that panel.
+  const [page, setPage] = useState<0 | 1>(0)
 
   // We render the poster image when it's available; otherwise fall back to a
   // branded card built from the popup's structured fields. This keeps the
   // modal meaningful even before the high-res poster artwork is uploaded.
   const showPoster = popup.kind === "poster" && !imageFailed
   const hasVideo = Boolean(popup.video)
-  // When the poster has an attached video, a click should start the video
-  // rather than dismiss the modal. Otherwise keep the click-to-close behaviour.
-  const closeOnContent = showPoster && !hasVideo && !playing
+  const hasDetail = Boolean(popup.image2)
+  // A click starts the video, or advances to the details panel when there is
+  // one. Only on the last panel does a click dismiss the modal.
+  const closeOnContent = showPoster && !hasVideo && !playing && !(hasDetail && page === 0)
 
   // Rewind back to the poster whenever the modal is dismissed so the next
   // open starts fresh.
   useEffect(() => {
-    if (!open) setPlaying(false)
+    if (!open) {
+      setPlaying(false)
+      setPage(0)
+    }
   }, [open])
 
   return (
@@ -93,6 +99,82 @@ export function PopupModal({
               </span>
             </span>
           </button>
+        ) : hasDetail ? (
+          // Poster with a details panel. The control sits BELOW the artwork so
+          // it never covers any of the poster's own type.
+          <div className="flex max-h-[85vh] flex-col">
+            {page === 0 ? (
+              <>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setPage(1)
+                  }}
+                  aria-label={t("moreInfo")}
+                  className="group block min-h-0 cursor-pointer"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element -- need onError + intrinsic size */}
+                  <img
+                    src={popup.image}
+                    alt={popup.imageAlt[locale]}
+                    onError={() => setImageFailed(true)}
+                    className="block h-auto max-h-[calc(85vh-3.25rem)] w-auto max-w-[90vw] object-contain"
+                  />
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setPage(1)
+                  }}
+                  className="font-subtitle flex shrink-0 items-center justify-center gap-2 bg-black px-4 py-3.5 text-[10px] tracking-[0.2em] text-white uppercase transition hover:bg-black/80 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none md:text-xs"
+                >
+                  {t("moreInfo")}
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="h-3.5 w-3.5"
+                    aria-hidden
+                  >
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </button>
+              </>
+            ) : (
+              <>
+                {/* eslint-disable-next-line @next/next/no-img-element -- need onError + intrinsic size */}
+                <img
+                  src={popup.image2}
+                  alt={popup.imageAlt[locale]}
+                  onError={() => setImageFailed(true)}
+                  className="block h-auto max-h-[calc(85vh-3.25rem)] w-auto max-w-[90vw] object-contain"
+                />
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setPage(0)
+                  }}
+                  className="font-subtitle flex shrink-0 items-center justify-center gap-2 bg-black px-4 py-3.5 text-[10px] tracking-[0.2em] text-white uppercase transition hover:bg-black/80 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none md:text-xs"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="h-3.5 w-3.5"
+                    aria-hidden
+                  >
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
+                  {t("back")}
+                </button>
+              </>
+            )}
+          </div>
         ) : (
           // eslint-disable-next-line @next/next/no-img-element -- need onError + intrinsic size
           <img

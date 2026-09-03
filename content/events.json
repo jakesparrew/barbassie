@@ -31,5 +31,14 @@
     "image": "/events/summer-mixtape.webp",
     "dateStart": "2026-07-19",
     "dateEnd": "2026-07-26"
+  },
+  {
+    "id": "two-years-bassie",
+    "title": "Two Years Bassie",
+    "subtitle": "Bassie × Opius",
+    "image": "/events/two-years-bassie.webp",
+    "image2": "/events/two-years-bassie-details.webp",
+    "dateStart": "2026-09-11",
+    "dateEnd": "2026-09-13"
   }
 ]

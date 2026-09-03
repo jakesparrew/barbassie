@@ -205,6 +205,26 @@ export function Events() {
                   </span>
                 </span>
               )}
+              {/* Same affordance for posters that have a second details panel. */}
+              {!event.video && event.image2 && abs === 0 && (
+                <span
+                  aria-hidden
+                  className="text-bg pointer-events-none absolute inset-x-0 bottom-3 mx-auto flex w-fit items-center gap-2 rounded-full bg-black/75 px-3 py-1.5 shadow-lg backdrop-blur-sm md:bottom-5 md:px-4 md:py-2"
+                >
+                  <span className="font-subtitle text-[10px] tracking-wide uppercase md:text-xs">
+                    {t("moreInfo")}
+                  </span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="h-3.5 w-3.5 md:h-4 md:w-4"
+                  >
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </span>
+              )}
             </button>
           )
         })}

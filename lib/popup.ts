@@ -9,6 +9,8 @@ export type Popup = {
   image: string
   /** Optional video that plays inline when the poster is clicked. */
   video?: string
+  /** Optional second poster, shown when the viewer clicks through for details. */
+  image2?: string
   imageAlt: LocalizedString
   dateStart: string
   dateEnd: string
