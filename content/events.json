@@ -40,5 +40,13 @@
     "image2": "/events/two-years-bassie-details-v3.webp",
     "dateStart": "2026-09-11",
     "dateEnd": "2026-09-13"
+  },
+  {
+    "id": "negroni-days",
+    "title": "Negroni Days",
+    "subtitle": "Bassie × Campari",
+    "image": "/events/negroni-days.webp",
+    "dateStart": "2026-10-22",
+    "dateEnd": "2026-10-30"
   }
 ]
