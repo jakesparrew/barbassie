@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl"
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import localFont from "next/font/local"
+import Script from "next/script"
 import { isLocale, locales } from "@/lib/i18n"
 import { SchemaOrg } from "@/components/SchemaOrg"
 import "../globals.css"
@@ -79,6 +80,12 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
+        {/* superhoreca.app site widget */}
+        <Script
+          src="https://superhoreca.app/embed/site.v1.js"
+          data-o="cmvmkuqz3000030546qz4l34u.CgOcjo9e8kzPoo6d"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
