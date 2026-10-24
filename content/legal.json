@@ -2,7 +2,7 @@
   "privacy": {
     "slug": "privacy",
     "title": "Privacy Policy",
-    "updated": "2026-08-14",
+    "updated": "2026-10-24",
     "intro": "Bar Bassie respects your privacy. This policy explains which personal data we collect when you visit this website or get in touch with us, why we collect it, how long we keep it, and the rights you have under the General Data Protection Regulation (GDPR).",
     "sections": [
       {
@@ -21,7 +21,7 @@
           "Contact by email — if you email us, we receive your address, your name if you give it, and the content of your message. Purpose: answering you. Legal basis: our legitimate interest in responding to enquiries.",
           "Reservations by WhatsApp — if you use the WhatsApp button, we receive your phone number, your WhatsApp profile name and your messages. Purpose: arranging and confirming your table. Legal basis: taking steps at your request before providing a service.",
           "Job applications — if you apply, we receive whatever you send us (name, contact details, CV, experience). Purpose: assessing your application. Legal basis: taking steps at your request before entering into a contract.",
-          "Website usage — aggregated, anonymous statistics about how the site is used (pages viewed, referring site, country, device type). This does not identify you. Legal basis: our legitimate interest in understanding and improving the site."
+          "Website usage — cookieless statistics per page view: the page visited, the referring website and any campaign tags in the link. No cookies, no identifier, nothing that identifies you. Legal basis: our legitimate interest in understanding and improving the site."
         ]
       },
       {
@@ -48,6 +48,7 @@
         ],
         "items": [
           "Vercel Inc. — hosting and delivery of this website, including server logs.",
+          "SuperHoreca (superhoreca.app) — cookieless website visit statistics.",
           "WhatsApp Ireland Ltd. (Meta) — only if you choose to message us on WhatsApp. Your use of WhatsApp is also governed by the Meta privacy policy.",
           "Our email provider — for receiving and storing correspondence sent to hello@barbassie.be."
         ]
@@ -60,7 +61,9 @@
       },
       {
         "heading": "Your rights",
-        "body": ["Under the GDPR you have the right to:"],
+        "body": [
+          "Under the GDPR you have the right to:"
+        ],
         "items": [
           "Access the personal data we hold about you and receive a copy of it.",
           "Have inaccurate data corrected.",
@@ -91,7 +94,7 @@
   "cookies": {
     "slug": "cookies",
     "title": "Cookie Policy",
-    "updated": "2026-08-14",
+    "updated": "2026-10-24",
     "intro": "Short version: this website uses no tracking or advertising cookies, which is why you are not asked to accept anything. This page explains exactly what is stored on your device, and why.",
     "sections": [
       {
@@ -115,7 +118,8 @@
       {
         "heading": "Website statistics",
         "body": [
-          "We measure how the site is used with privacy-friendly, cookieless analytics. It records aggregated figures such as page views, referring website, country and device type. It sets no cookies, stores nothing on your device, does not fingerprint your browser, and cannot identify you or follow you across websites."
+          "We measure how the site is used with cookieless visit statistics from SuperHoreca (superhoreca.app), the hospitality platform we work with. For each page view it records only the page visited, the website you came from, campaign tags in the link (for example a QR code or newsletter link) and whether the visit was automated. It sets no cookies, stores nothing on your device, uses no persistent identifier and cannot follow you across pages, visits or websites.",
+          "If your browser sends a Global Privacy Control signal, no statistics are recorded at all."
         ]
       },
       {
